@@ -66,7 +66,6 @@ public interface MovementBehavior {
 
     }
     public class KingMovement implements MovementBehavior{
-
         @Override
         public Boolean Pickup(Boolean player1, int x, int y) {
             Boolean canMove = false;
@@ -137,15 +136,91 @@ public interface MovementBehavior {
         }
     }
 
+    public class BishopMovement implements MovementBehavior{
+
+        @Override
+        public Boolean Pickup(Boolean player1, int x, int y) {
+            Boolean canMove = false;
+             int tx = x;
+             int ty = y;
+
+                Boolean kiriAtas = true;
+                Boolean kananAtas = true;
+                Boolean kiriBawah = true;
+                Boolean kananBawah = true;
+                //buat ngecek dee sudah nambrak 1 apa belom
+
+            for(int i=1;i<=4;i++){
+                //serong kiri atas
+                if(x - i >=0 && y - i >=0 && kiriAtas){
+                    if(MainActivity.papan[y-i][x-i].getBidak() == null || MainActivity.papan[y-i][x-i].getBidak().isP1() != player1 ){
+                        MainActivity.tiles[y-i][x-i].setBackgroundColor(Color.GREEN);
+                        canMove = true;
+                        if(MainActivity.papan[y-i][x-i].getBidak() != null){
+                            kiriAtas = false;
+                            // ben kalo nabrak dee berhenti
+                        }
+                    }else if(MainActivity.papan[y-i][x-i].getBidak().isP1() == player1 ){
+                            kiriAtas = false;
+                    }
+                }
+
+                //serong kanan bawah
+                if(x + i <=3 && y + i <=7 && kananBawah){
+                    if(MainActivity.papan[y+i][x+i].getBidak() == null || MainActivity.papan[y+i][x+i].getBidak().isP1() != player1 ){
+                        MainActivity.tiles[y+i][x+i].setBackgroundColor(Color.GREEN);
+                        canMove = true;
+                        if(MainActivity.papan[y+i][x+i].getBidak() != null){
+                            kananBawah = false;
+                        }
+                    }else if(MainActivity.papan[y+i][x+i].getBidak().isP1() == player1){
+                        kananBawah = false;
+                    }
+                }
+
+                //serong Kiri Bawh
+                if(x - i >=0 && y + i <=7 && kiriBawah){
+                    if(MainActivity.papan[y+i][x-i].getBidak() == null || MainActivity.papan[y+i][x-i].getBidak().isP1() != player1 ){
+                        MainActivity.tiles[y+i][x-i].setBackgroundColor(Color.GREEN);
+                        canMove = true;
+                        if(MainActivity.papan[y+i][x-i].getBidak() != null){
+                            kiriBawah = false;
+                        }
+                    }else if(MainActivity.papan[y+i][x-i].getBidak().isP1() == player1 ){
+                            kiriBawah = false;
+                    }
+                }
+
+                // kanan atas
+                if(x + i <=3 && y - i >=0 && kananAtas){
+                    if(MainActivity.papan[y-i][x+i].getBidak() == null || MainActivity.papan[y-i][x+i].getBidak().isP1() != player1 ){
+                        MainActivity.tiles[y-i][x+i].setBackgroundColor(Color.GREEN);
+                        canMove = true;
+                        if(MainActivity.papan[y-i][x+i].getBidak() != null){
+                            kananAtas = false;
+                        }
+                    }else if(MainActivity.papan[y-i][x+i].getBidak().isP1() == player1){
+                            kananAtas = false;
+                    }
+                }
+
+
+
+
+            }
+
+
+
+            return  canMove;
+        }
+    }
+
 //    public class QueenMovement implements  MovementBehavior{
 //
 //
 //    }
 
 //
-//    public class BishopMovement implements MovementBehavior{
-//
-//    }
 //
 //    public class HorseMovement implements MovementBehavior{
 //

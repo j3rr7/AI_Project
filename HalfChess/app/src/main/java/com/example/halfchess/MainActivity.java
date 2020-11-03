@@ -71,6 +71,11 @@ public class MainActivity extends AppCompatActivity {
         papan[7][0].setBidak(k);
         papan[0][0].setBidak(k2);
 
+        Bishop b = new Bishop(papan[3][3],true);
+        Bishop b2 = new Bishop(papan[0][1],false);
+        papan[3][3].setBidak(b);
+        papan[0][1].setBidak(b2);
+
         for(int i=0;i<8;i++){
             for(int j=0;j<4;j++){
                 if(papan[i][j].getBidak()!=null){
