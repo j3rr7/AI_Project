@@ -66,6 +66,11 @@ public class MainActivity extends AppCompatActivity {
         papan[6][3].setBidak(p4);
 
 
+        King k = new King(papan[7][0],true);
+        King k2 = new King(papan[0][0],false);
+        papan[7][0].setBidak(k);
+        papan[0][0].setBidak(k2);
+
         for(int i=0;i<8;i++){
             for(int j=0;j<4;j++){
                 if(papan[i][j].getBidak()!=null){

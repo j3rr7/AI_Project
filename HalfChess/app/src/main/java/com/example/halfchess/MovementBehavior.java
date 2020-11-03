@@ -5,7 +5,6 @@ import android.widget.Toast;
 
 public interface MovementBehavior {
     public Boolean Pickup(Boolean player1,int x,int y);
-    public void Replace(Boolean player1,int x,int y);
 
     public class PawnMovement implements MovementBehavior{
 
@@ -64,9 +63,27 @@ public interface MovementBehavior {
             return canMove;
         }
 
-        @Override
-        public void Replace(Boolean player1, int x, int y) {
+    }
+    public class KingMovement implements MovementBehavior{
 
+        @Override
+        public Boolean Pickup(Boolean player1, int x, int y) {
+            Boolean canMove = false;
+
+            if(x-1>=0){
+                if(MainActivity.papan[y][x-1].getBidak() == null || MainActivity.papan[y][x-1].getBidak().isP1() != player1 ){
+                    MainActivity.tiles[y][x-1].setBackgroundColor(Color.GREEN);
+                    canMove = true;
+                }
+            }
+
+            if(x+1 <=7){
+                if(MainActivity.papan[y][x+1].getBidak() == null || MainActivity.papan[y][x+1].getBidak().isP1() != player1 ){
+                    MainActivity.tiles[y][x+1].setBackgroundColor(Color.GREEN);
+                    canMove = true;
+                }
+            }
+            return canMove;
         }
     }
 
@@ -75,9 +92,6 @@ public interface MovementBehavior {
 //
 //    }
 
-//    public class KingMovement implements MovementBehavior{
-//
-//    }
 //
 //    public class BishopMovement implements MovementBehavior{
 //
