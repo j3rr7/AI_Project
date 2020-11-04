@@ -71,10 +71,22 @@ public class MainActivity extends AppCompatActivity {
         papan[7][0].setBidak(k);
         papan[0][0].setBidak(k2);
 
-        Bishop b = new Bishop(papan[3][3],true);
-        Bishop b2 = new Bishop(papan[0][1],false);
-        papan[3][3].setBidak(b);
-        papan[0][1].setBidak(b2);
+        Queen q = new Queen(papan[7][1],true);
+        Queen q2 = new Queen(papan[0][1],false);
+        papan[7][1].setBidak(q);
+        papan[0][1].setBidak(q2);
+
+
+
+        Bishop b = new Bishop(papan[7][3],true);
+        Bishop b2 = new Bishop(papan[0][3],false);
+        papan[7][3].setBidak(b);
+        papan[0][3].setBidak(b2);
+
+        Knight kuda = new Knight(papan[7][2],true);
+        Knight kuda2 = new Knight(papan[0][2],false);
+        papan[7][2].setBidak(kuda);
+        papan[0][2].setBidak(kuda2);
 
         for(int i=0;i<8;i++){
             for(int j=0;j<4;j++){
