@@ -173,6 +173,7 @@ public class MainActivity extends AppCompatActivity {
 
         // klik cancel diklik ngawur selain ijo
 
+
         if(papan[y][x].getBidak()!=null && temp==null){ // ada bidak e
             Boolean isP1 = papan[y][x].getBidak().isP1();
             if(isP1 && turnP1){ //player 1 turn
