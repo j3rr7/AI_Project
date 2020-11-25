@@ -200,12 +200,7 @@ public interface MovementBehavior {
                     }
                 }
 
-
-
-
             }
-
-
 
             return  canMove;
         }
