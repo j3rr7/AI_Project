@@ -34,8 +34,6 @@ public interface MovementBehavior {
                     canMove = true;
                 }
 
-
-
             }
             if(!player1 && y+1<=7){ // black move down
                 if(MainActivity.papan[y+1][x].getBidak() == null){

@@ -5,7 +5,6 @@ public abstract class Bidak {
     MovementBehavior move;
     MarkArea mark;
     Papan papan;
-
     boolean p1; // 1 punya e p1 0 p2
     int img;
 
