@@ -1,11 +1,14 @@
 package com.example.halfchess;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.media.Image;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -267,5 +270,27 @@ public class MainActivity extends AppCompatActivity {
         tiles[7][3] = findViewById(R.id.imageView37);
 
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.option_menu1,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.item_reset:
+                turnP1 = true;
+                for(int i = 0 ; i < 8 ; i++ ) {
+                    for(int j = 0 ; j < 4 ; j++) {
+                        tiles[i][j].setImageResource(0);
+                    }
+                }
+                resetMap();
+                setPapan();
+                setBidak();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
