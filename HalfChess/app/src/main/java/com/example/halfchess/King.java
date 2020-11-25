@@ -5,9 +5,9 @@ public class King extends Bidak {
         super(papan, p1);
         move = new MovementBehavior.KingMovement();
         if(p1){
-            img = R.mipmap.whiteking;
+            img = R.mipmap.whitequeen;
         }else{
-            img = R.mipmap.blackking;
+            img = R.mipmap.blackqueen;
         }
     }
 }

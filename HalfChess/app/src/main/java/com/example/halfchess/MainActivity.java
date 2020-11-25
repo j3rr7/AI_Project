@@ -16,7 +16,11 @@ public class MainActivity extends AppCompatActivity {
 
     public static ImageView[][] tiles = new ImageView[8][4];
     public static Papan[][] papan = new Papan[8][4];
-    public static Bidak[] bidakP1 = new Bidak[8];
+    public static Boolean[][] markedArea = new Boolean[8][4]; // semua jalan sg iso dilewati musuh
+                                                            // king gabole lewat sini soal e skak
+
+    public static Bidak[] bidakP1 = new Bidak[8]; //0 King , 1 Queen , 2 Bishop , 3 Kuda , sisa e pawn dari kiri
+    public static Bidak[] bidakP2 = new Bidak[8]; // podo
     Boolean turnP1;
     Papan temp;
     @Override
@@ -27,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
         setImageView();
         setPapan();
         setBidak();
+        setMarkedArea();
+
         turnP1 = true;
 
 
@@ -40,7 +46,28 @@ public class MainActivity extends AppCompatActivity {
         // terus papan lama diilangi bidak e;
 
     }
+    public void setMarkedArea(){
+        for(int i=0;i<8;i++){
+            for(int j=0;j<4;j++){
+               markedArea[i][j]=false;
+            }
+        }
+    }
+    public Boolean cekCheck(){
+        for(int i=4;i<=7;i++){
+            bidakP1[i].mark.Mark(bidakP1[i].isP1(),bidakP1[i].getX(),bidakP1[i].getY());
+            bidakP2[i].mark.Mark(bidakP2[i].isP1(),bidakP2[i].getX(),bidakP2[i].getY());
+        }
+        for(int i=0;i<8;i++){
+            for(int j=0;j<4;j++){
+                if(markedArea[i][j] == true){
+                    System.out.println("J: "+j+"- I: "+i);
+                }
+            }
 
+        }
+        return false;
+    }
 
     public void setBidak(){
         //white move up
@@ -48,11 +75,16 @@ public class MainActivity extends AppCompatActivity {
         Pawn p2 = new Pawn(papan[1][1],false);
         Pawn p3 = new Pawn(papan[1][2],false);
         Pawn p4 = new Pawn(papan[1][3],false);
-
         papan[1][0].setBidak(p1);
         papan[1][1].setBidak(p2);
         papan[1][2].setBidak(p3);
         papan[1][3].setBidak(p4);
+
+        // isi ke array
+        bidakP2[4] = p1;
+        bidakP2[5] = p2;
+        bidakP2[6] = p3;
+        bidakP2[7] = p4;
 
 
          p1 = new Pawn(papan[6][0],true);
@@ -65,28 +97,39 @@ public class MainActivity extends AppCompatActivity {
         papan[6][2].setBidak(p3);
         papan[6][3].setBidak(p4);
 
+        bidakP1[4] = p1;
+        bidakP1[5] = p2;
+        bidakP1[6] = p3;
+        bidakP1[7] = p4;
+
 
         King k = new King(papan[7][0],true);
         King k2 = new King(papan[0][0],false);
         papan[7][0].setBidak(k);
         papan[0][0].setBidak(k2);
 
+        bidakP1[0] = k;
+        bidakP2[0] = k2;
+
         Queen q = new Queen(papan[7][1],true);
         Queen q2 = new Queen(papan[0][1],false);
         papan[7][1].setBidak(q);
         papan[0][1].setBidak(q2);
 
+        bidakP1[1] = q;
+        bidakP2[1] = q2;
+
 
 
         Bishop b = new Bishop(papan[7][3],true);
         Bishop b2 = new Bishop(papan[0][3],false);
-        papan[7][3].setBidak(b);
-        papan[0][3].setBidak(b2);
+        papan[7][2].setBidak(b);
+        papan[0][2].setBidak(b2);
 
         Knight kuda = new Knight(papan[7][2],true);
         Knight kuda2 = new Knight(papan[0][2],false);
-        papan[7][2].setBidak(kuda);
-        papan[0][2].setBidak(kuda2);
+        papan[7][3].setBidak(kuda);
+        papan[0][3].setBidak(kuda2);
 
         for(int i=0;i<8;i++){
             for(int j=0;j<4;j++){
@@ -138,14 +181,19 @@ public class MainActivity extends AppCompatActivity {
                     temp = papan[y][x];
                 }
 
-            }else if(!isP1 && !turnP1){
+            }else if(!isP1 && !turnP1){ // player  2 turn
                 Toast.makeText(this, isP1+"", Toast.LENGTH_SHORT).show();
                 if(papan[y][x].getBidak().getMove().Pickup(isP1,x,y)){
                     temp = papan[y][x];
                 }
             }
-            //asasdas
+            // gerak e dee harus ngecek apa king e iki terancam
+            // oh shit
+
+
            // ini buat ngewarnai papan e ben oleh di klik
+            // pas nde kene artie ws dicek kabeh papan e lek dee iku ga bakal skak color e ijo
+
         }else if (colorId == Color.GREEN){
             // pindah mbe ganti player e
             papan[y][x].setBidak(temp.getBidak());
@@ -155,7 +203,8 @@ public class MainActivity extends AppCompatActivity {
             tiles[temp.getY()][temp.getX()].setImageResource(0);
             temp = null;
             turnP1 = !turnP1; // buat ganti player sg maenno
-
+            //abis aku pindah apakah king itu terancam ??
+            // di class e bidak kasih void isCheck() ???
             resetMap();
 
         }else if(temp!=null && colorId!=Color.GREEN){ // batal
