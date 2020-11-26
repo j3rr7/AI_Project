@@ -39,6 +39,12 @@ public abstract class Bidak {
     public int getY(){
         return papan.getY();
     }
+    public void setX(int x){
+        papan.setX(x);
+    }
+    public void setY(int y){
+        papan.setY(y);
+    }
 
     public Papan getPapan() {
         return papan;

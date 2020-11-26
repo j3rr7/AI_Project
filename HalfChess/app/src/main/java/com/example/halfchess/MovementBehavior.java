@@ -69,24 +69,28 @@ public interface MovementBehavior {
             //gerak ke horizontal e tak gabung ambe gerak serong
             // cuma kopas dari koding sg gerak vertikal tak gabung nde if e horizontal
 
-
             if(x-1>=0){
                 if(MainActivity.papan[y][x-1].getBidak() == null || MainActivity.papan[y][x-1].getBidak().isP1() != player1 ){
-                    MainActivity.tiles[y][x-1].setBackgroundColor(Color.GREEN);
-                    canMove = true;
+                    if(MainActivity.markCheck[y][x-1] == false){  // raja gaisa gerak ke kotak sg isa dijalanin lawan
+                        MainActivity.tiles[y][x-1].setBackgroundColor(Color.GREEN);
+                        canMove = true;
+                    }
                 }
-
                 //serong
                 if(y+1 <=7){
                     if(MainActivity.papan[y+1][x-1].getBidak() == null || MainActivity.papan[y+1][x-1].getBidak().isP1() != player1 ){
-                        MainActivity.tiles[y+1][x-1].setBackgroundColor(Color.GREEN);
-                        canMove = true;
+                        if(MainActivity.markCheck[y+1][x-1] == false){
+                            MainActivity.tiles[y+1][x-1].setBackgroundColor(Color.GREEN);
+                            canMove = true;
+                        }
                     }
                 }
                 if(y-1>=0){
                     if(MainActivity.papan[y-1][x-1].getBidak() == null || MainActivity.papan[y-1][x-1].getBidak().isP1() != player1 ){
-                        MainActivity.tiles[y-1][x-1].setBackgroundColor(Color.GREEN);
-                        canMove = true;
+                        if(MainActivity.markCheck[y-1][x-1] == false){
+                            MainActivity.tiles[y-1][x-1].setBackgroundColor(Color.GREEN);
+                            canMove = true;
+                        }
                     }
                 }
                 //end serong
@@ -94,21 +98,27 @@ public interface MovementBehavior {
 
             if(x+1 <=3){
                 if(MainActivity.papan[y][x+1].getBidak() == null || MainActivity.papan[y][x+1].getBidak().isP1() != player1 ){
-                    MainActivity.tiles[y][x+1].setBackgroundColor(Color.GREEN);
-                    canMove = true;
+                    if(MainActivity.markCheck[y][x+1] == false){
+                        MainActivity.tiles[y][x+1].setBackgroundColor(Color.GREEN);
+                        canMove = true;
+                    }
                 }
 
                 //serong
                 if(y+1 <=7){
                     if(MainActivity.papan[y+1][x+1].getBidak() == null || MainActivity.papan[y+1][x+1].getBidak().isP1() != player1 ){
-                        MainActivity.tiles[y+1][x+1].setBackgroundColor(Color.GREEN);
-                        canMove = true;
+                        if(MainActivity.markCheck[y+1][x+1] == false){
+                            MainActivity.tiles[y+1][x+1].setBackgroundColor(Color.GREEN);
+                            canMove = true;
+                        }
                     }
                 }
                 if(y-1>=0){
                     if(MainActivity.papan[y-1][x+1].getBidak() == null || MainActivity.papan[y-1][x+1].getBidak().isP1() != player1 ){
-                        MainActivity.tiles[y-1][x+1].setBackgroundColor(Color.GREEN);
-                        canMove = true;
+                        if(MainActivity.markCheck[y-1][x+1] == false){
+                            MainActivity.tiles[y-1][x+1].setBackgroundColor(Color.GREEN);
+                            canMove = true;
+                        }
                     }
                 }
                 //end serong
@@ -117,15 +127,19 @@ public interface MovementBehavior {
             // vertikal
             if(y+1 <=7){
                 if(MainActivity.papan[y+1][x].getBidak() == null || MainActivity.papan[y+1][x].getBidak().isP1() != player1 ){
-                    MainActivity.tiles[y+1][x].setBackgroundColor(Color.GREEN);
-                    canMove = true;
+                    if(MainActivity.markCheck[y+1][x] == false){
+                        MainActivity.tiles[y+1][x].setBackgroundColor(Color.GREEN);
+                        canMove = true;
+                    }
                 }
             }
 
             if(y-1>=0){
                 if(MainActivity.papan[y-1][x].getBidak() == null || MainActivity.papan[y-1][x].getBidak().isP1() != player1 ){
-                    MainActivity.tiles[y-1][x].setBackgroundColor(Color.GREEN);
-                    canMove = true;
+                    if(MainActivity.markCheck[y-1][x] == false){
+                        MainActivity.tiles[y-1][x].setBackgroundColor(Color.GREEN);
+                        canMove = true;
+                    }
                 }
             }
 

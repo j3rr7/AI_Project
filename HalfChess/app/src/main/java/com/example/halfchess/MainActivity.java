@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     public static ImageView[][] tiles = new ImageView[8][4];
     public static Boolean[][] markCheck = new Boolean[8][4];
     public static Papan[][] papan = new Papan[8][4];
-    public static Boolean[][] markedArea = new Boolean[8][4]; // semua jalan sg iso dilewati musuh
+//    public static Boolean[][] markedArea = new Boolean[8][4]; // semua jalan sg iso dilewati musuh
                                                             // king gabole lewat sini soal e skak
     public static Bidak[] bidakP1 = new Bidak[8]; //0 King , 1 Queen , 2 Bishop , 3 Kuda , sisa e pawn dari kiri
     public static Bidak[] bidakP2 = new Bidak[8]; // podo
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         setImageView();
         setPapan();
         setBidak();
-        setMarkedArea();
+        resetMarkedArea();
 
         p1 = new Player(bidakP1);
         p2 = new Player(bidakP2);
@@ -55,10 +55,11 @@ public class MainActivity extends AppCompatActivity {
         // terus papan lama diilangi bidak e;
 
     }
-    public void setMarkedArea(){
+
+    public void resetMarkedArea(){
         for(int i=0;i<8;i++){
             for(int j=0;j<4;j++){
-               markedArea[i][j]=false;
+               markCheck[i][j]=false;
             }
         }
     }
@@ -69,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         }
         for(int i=0;i<8;i++){
             for(int j=0;j<4;j++){
-                if(markedArea[i][j] == true){
+                if(markCheck[i][j] == true){
                     System.out.println("J: "+j+"- I: "+i);
                 }
             }
@@ -149,6 +150,11 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
+    public void showBidak(){
+
+    }
+
     public void resetMap(){ //gambar Ulang papan mbe bidak e
         for(int i=0;i<8;i++){
             for(int j=0;j<4;j++){
@@ -176,44 +182,92 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
-        //kalo ada bidak e , bikin temp papan;
-        // nde tiles e diwarnai sg bisa dijalan in
-        // kalo di klik itu ada warna e , bidak nde temp papan dipindah nde papan sg di klik
-        // terus papan lama diilangi bidak e;
 
-        // klik cancel diklik ngawur selain ijo
+
         if(papan[y][x].getBidak()!=null && temp==null){ // ada bidak e
             Boolean isP1 = papan[y][x].getBidak().isP1();
-            Toast.makeText(this,  papan[y][x].getBidak().getClass().getSimpleName()+"", Toast.LENGTH_SHORT).show();
-            bidakP1[1].mark.Mark(isP1,x,y);
-            bidakP2[1].mark.Mark(isP1,x,y);
+
+//            Toast.makeText(this,  papan[y][x].getBidak().getClass().getSimpleName()+"", Toast.LENGTH_SHORT).show();
+
+            // iki harus e ngefor semua bidak sg gak null ,just fine still testing
+            resetMarkedArea();
+            bidakP1[1].mark.Mark(true,bidakP1[1].getX(),bidakP1[1].getY());
+            bidakP2[1].mark.Mark(false,bidakP2[1].getX(),bidakP2[1].getY());
+
+
             if(isP1 && turnP1){ //player 1 turn
-                Toast.makeText(this, isP1+"", Toast.LENGTH_SHORT).show();
+                System.out.println("Player1 turn");
                 if(papan[y][x].getBidak().getMove().Pickup(isP1,x,y)){
                     temp = papan[y][x];
                 }
             }else if(!isP1 && !turnP1){ // player  2 turn
-                Toast.makeText(this, isP1+"", Toast.LENGTH_SHORT).show();
+                System.out.println("Player2 turn");
                 if(papan[y][x].getBidak().getMove().Pickup(isP1,x,y)){
                     temp = papan[y][x];
                 }
             }
-            // gerak e dee harus ngecek apa king e iki terancam
-            // oh shit
-           // ini buat ngewarnai papan e ben oleh di klik
-            // pas nde kene artie ws dicek kabeh papan e lek dee iku ga bakal skak color e ijo
 
         }else if (colorId == Color.GREEN){
             // pindah mbe ganti player e
+            // makan bidak e lwan berarti ngurangi 1 di array e
+            if(papan[y][x].getBidak()!=null){
+                System.out.println("Makan");
+                for (int i=0;i<8;i++){
+                    if(turnP1){
+
+                        if(bidakP2[i]!=null && bidakP2[i].getX() == x && bidakP2[i].getY() == y){ // thats the bidak  , u must chhange the location
+                            System.out.println("makan turn p1");
+                            bidakP2[i] = null;
+                        }
+
+                    }else{
+
+                        if(bidakP1[i]!=null && bidakP1[i].getX() == x && bidakP1[i].getY() == y){ // thats the bidak  , u must chhange the location
+                            System.out.println("makan turn p2");
+                            bidakP1[i] = null;
+                        }
+                    }
+                }
+            }
+
+            // set bidak di papan buat tampilan
             papan[y][x].setBidak(temp.getBidak());
             tiles[y][x].setImageResource(temp.getBidak().getImg());
 
             papan[temp.getY()][temp.getX()].setBidak(null);
             tiles[temp.getY()][temp.getX()].setImageResource(0);
+
+            // pindah lokasi e bidak sg di array , soal e kalo ga dipindah error nde pengecekan error nanti
+            for (int i=0;i<8;i++){
+                if(turnP1){
+                    if(bidakP1[i]!=null && bidakP1[i].getX() == temp.getX() && bidakP1[i].getY() ==temp
+                    .getY()){ // thats the bidak  , u must chhange the location
+                        System.out.println("set bidak p1");
+                        bidakP1[i].setX(x);
+                        bidakP1[i].setY(y);
+                        System.out.println("X:"+bidakP1[i].getX()+"|Y:"+bidakP1[i].getY());
+                    }
+
+                }else{
+
+                    if(bidakP2[i]!=null && bidakP2[i].getX() == temp.getX() && bidakP2[i].getY() ==temp
+                            .getY()){ // thats the bidak  , u must chhange the location
+                        System.out.println("set bidak p2");
+                        bidakP2[i].setX(x);
+                        bidakP2[i].setY(y);
+                        System.out.println("X:"+bidakP2[i].getX()+"|Y:"+bidakP2[i].getY());
+                    }
+                }
+            }
+
             temp = null;
             turnP1 = !turnP1; // buat ganti player sg maenno
             //abis aku pindah apakah king itu terancam ??
             // di class e bidak kasih void isCheck() ???
+
+            resetMarkedArea();
+            bidakP1[1].mark.Mark(true,bidakP1[1].getX(),bidakP1[1].getY());
+            bidakP2[1].mark.Mark(false,bidakP2[1].getX(),bidakP2[1].getY());
             resetMap();
 
         }else if(temp!=null && colorId!=Color.GREEN){ // batal
@@ -294,6 +348,25 @@ public class MainActivity extends AppCompatActivity {
                 resetMap();
                 setPapan();
                 setBidak();
+                break;
+
+            case R.id.markArea:
+//                Toast.makeText(this, "Mark", Toast.LENGTH_SHORT).show();
+                resetMarkedArea();
+                bidakP1[1].mark.Mark(true,bidakP1[1].getX(),bidakP1[1].getY());
+                bidakP2[1].mark.Mark(false,bidakP2[1].getX(),bidakP2[1].getY());
+                System.out.println("Marked");
+                for(int i=0;i<8;i++){
+                    for(int j=0;j<4;j++){
+                        if(markCheck[i][j]==false){
+                            System.out.print("[ ]");
+                        }else{
+                            System.out.print("[O]");
+                        }
+                    }
+                    System.out.println("");
+                }
+                resetMarkedArea();
                 break;
         }
         return super.onOptionsItemSelected(item);

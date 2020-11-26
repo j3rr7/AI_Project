@@ -4,4 +4,7 @@
         android:id="@+id/item_reset"
         android:title="Reset">
     </item>
+    <item
+        android:id="@+id/markArea"
+        android:title="show marked area" />
 </menu>
