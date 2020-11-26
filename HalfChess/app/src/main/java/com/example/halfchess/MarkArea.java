@@ -42,6 +42,14 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
 
     public class QueenArea implements MarkArea {
 
+        public void setMark(Boolean player1,int y,int x){
+            if(player1){ //area e player 1
+                MainActivity.markCheck[y][x] = true;
+            }else{
+                MainActivity.markCheck2[y][x] = true;
+            }
+
+        }
         @Override
         public void Mark(Boolean player1, int x, int y) { // x dan y dari posisi bidak
             Boolean kiri = true;
@@ -53,7 +61,7 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
                 if (x - i >= 0 && kiri) { // harus e kan berdasar dee dewe , yaampun tolol e cu
                     if (MainActivity.papan[y][x - i].getBidak() == null || MainActivity.papan[y][x - i].getBidak().isP1() != player1) {
                         System.out.println("tes kiri");
-                        MainActivity.markCheck[y][x - i] = true; // raja gaole gerak nde kene
+                        setMark(player1,y,x-i);
                         if (MainActivity.papan[y][x - i].getBidak() != null) {
                             kiri = false;
                             if (MainActivity.papan[y][x - i].getBidak().getClass().getSimpleName().equalsIgnoreCase("King")) {
@@ -73,7 +81,7 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
                 if (x + i <= 3 && kanan) {
                     if (MainActivity.papan[y][x + i].getBidak() == null || MainActivity.papan[y][x + i].getBidak().isP1() != player1) {
                         System.out.println("tes kanan");
-                        MainActivity.markCheck[y][x + i] = true; // raja gaole gerak nde kene
+                        setMark(player1,y,x+i);
                         if (MainActivity.papan[y][x + i].getBidak() != null) {
                             kiri = false;
                             if (MainActivity.papan[y][x + i].getBidak().getClass().getSimpleName().equalsIgnoreCase("King")) {

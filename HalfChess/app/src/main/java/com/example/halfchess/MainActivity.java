@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static ImageView[][] tiles = new ImageView[8][4];
     public static Boolean[][] markCheck = new Boolean[8][4];
+    public static Boolean[][] markCheck2 = new Boolean[8][4];
     public static Papan[][] papan = new Papan[8][4];
 //    public static Boolean[][] markedArea = new Boolean[8][4]; // semua jalan sg iso dilewati musuh
                                                             // king gabole lewat sini soal e skak
@@ -40,19 +41,7 @@ public class MainActivity extends AppCompatActivity {
         p1 = new Player(bidakP1);
         p2 = new Player(bidakP2);
 
-
         turnP1 = true;
-
-
-
-        // kalo move , Papan di class e bidak sg diganti
-        // Bidak sg nde papan diganti atau dihapus kalo ada
-        // terus di gambar ulang
-
-        //kalo ada bidak e , bikin temp papan;
-        // nde tiles e diwarnai sg bisa dijalan in
-        // kalo di klik itu ada warna e , bidak nde temp papan dipindah nde papan sg di klik
-        // terus papan lama diilangi bidak e;
 
     }
 
@@ -60,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         for(int i=0;i<8;i++){
             for(int j=0;j<4;j++){
                markCheck[i][j]=false;
+               markCheck2[i][j]=false;
             }
         }
     }
@@ -352,13 +342,25 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.markArea:
 //                Toast.makeText(this, "Mark", Toast.LENGTH_SHORT).show();
-                resetMarkedArea();
-                bidakP1[1].mark.Mark(true,bidakP1[1].getX(),bidakP1[1].getY());
-                bidakP2[1].mark.Mark(false,bidakP2[1].getX(),bidakP2[1].getY());
+//                resetMarkedArea();
+//                bidakP1[1].mark.Mark(true,bidakP1[1].getX(),bidakP1[1].getY());
+//                bidakP2[1].mark.Mark(false,bidakP2[1].getX(),bidakP2[1].getY());
                 System.out.println("Marked");
                 for(int i=0;i<8;i++){
                     for(int j=0;j<4;j++){
                         if(markCheck[i][j]==false){
+                            System.out.print("[ ]");
+                        }else{
+                            System.out.print("[O]");
+                        }
+                    }
+                    System.out.println("");
+                }
+
+                System.out.println("Marked2");
+                for(int i=0;i<8;i++){
+                    for(int j=0;j<4;j++){
+                        if(markCheck2[i][j]==false){
                             System.out.print("[ ]");
                         }else{
                             System.out.print("[O]");
