@@ -184,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
             bidakP1[1].mark.Mark(true,bidakP1[1].getX(),bidakP1[1].getY());
             bidakP2[1].mark.Mark(false,bidakP2[1].getX(),bidakP2[1].getY());
 
-
+            // untuk gerak checked e dikasih nde bahaviour
             if(isP1 && turnP1){ //player 1 turn
                 System.out.println("Player1 turn");
                 if(papan[y][x].getBidak().getMove().Pickup(isP1,x,y)){
