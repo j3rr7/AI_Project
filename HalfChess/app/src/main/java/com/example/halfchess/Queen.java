@@ -6,9 +6,9 @@ public class Queen extends Bidak {
         move = new MovementBehavior.QueenMovement();
         mark = new MarkArea.QueenArea();
         if(p1){
-            img = R.mipmap.whiteking;
+            img = R.mipmap.queeng;
         }else{
-            img = R.mipmap.blackking;
+            img = R.mipmap.queen1;
         }
     }
 }

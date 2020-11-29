@@ -7,9 +7,9 @@ public class Pawn extends Bidak {
         move = new MovementBehavior.PawnMovement();
         mark = new MarkArea.PawnArea();
         if(p1){
-            img = R.mipmap.whitepawn;
+            img = R.mipmap.pawn_newg;
         }else{
-            img = R.mipmap.blackpawn;
+            img = R.mipmap.pawn_new;
         }
     }
 

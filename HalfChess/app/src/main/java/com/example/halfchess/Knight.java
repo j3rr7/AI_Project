@@ -5,9 +5,9 @@ public class Knight extends Bidak {
         super(papan, p1);
         move = new MovementBehavior.HorseMovement();
         if(p1){
-            img = R.mipmap.whitekniht;
+            img = R.mipmap.knight_1g;
         }else{
-            img = R.mipmap.blackkinght;
+            img = R.mipmap.knight_2;
         }
     }
 }

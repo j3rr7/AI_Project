@@ -5,9 +5,9 @@ public class Bishop extends Bidak {
         super(papan, p1);
         move = new MovementBehavior.BishopMovement();
         if(p1){
-            img = R.mipmap.whitebishop;
+            img = R.mipmap.bishop_new_2g;
         }else{
-            img = R.mipmap.blackbishop;
+            img = R.mipmap.bishop_new_2;
         }
     }
 }
