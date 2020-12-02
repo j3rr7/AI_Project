@@ -81,6 +81,7 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
                             }
                         }
                     } else if (MainActivity.papan[y][x - i].getBidak().isP1() == player1) {
+                        setMark(player1, y, x - i);
                         kiri = false;
                     }
                 }
@@ -101,6 +102,7 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
                             }
                         }
                     } else if (MainActivity.papan[y][x + i].getBidak().isP1() == player1) {
+                        setMark(player1, y, x + i);
                         kanan = false;
                     }
                 }
@@ -121,6 +123,7 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
                             }
                         }
                     } else if (MainActivity.papan[y - i][x].getBidak().isP1() == player1) {
+                        setMark(player1, y - i, x);
                         atas = false;
                     }
                 }
@@ -141,6 +144,7 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
                             }
                         }
                     } else if (MainActivity.papan[y + i][x].getBidak().isP1() == player1) {
+                        setMark(player1, y + i, x);
                         bawah = false;
                     }
                 }
@@ -161,6 +165,7 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
                             }
                         }
                     } else if (MainActivity.papan[y + i][x + i].getBidak().isP1() == player1) {
+                        setMark(player1, y + i, x + i);
                         kananbawah = false;
                     }
                 }
@@ -181,8 +186,8 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
                             }
                         }
                     } else if (MainActivity.papan[y + i][x - i].getBidak().isP1() == player1) {
-                        kiribawah
-                                = false;
+                        setMark(player1, y + i, x - i);
+                        kiribawah = false;
                     }
                 }
 
@@ -202,6 +207,7 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
                             }
                         }
                     } else if (MainActivity.papan[y - i][x + i].getBidak().isP1() == player1) {
+                        setMark(player1, y - i, x + i);
                         kananatas = false;
                     }
                 }
@@ -222,6 +228,7 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
                             }
                         }
                     } else if (MainActivity.papan[y - i][x - i].getBidak().isP1() == player1) {
+                        setMark(player1, y - i, x - i);
                         kiriatas = false;
                     }
                 }
@@ -251,7 +258,6 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
 
             System.out.println("X = " + x + " || Y = " + y + "||" + player1);
             for (int i = 1; i <= 7; i++) {
-
                 if (kananbawah && y + i <= 7 && x + i <= 3) {
                     if (MainActivity.papan[y + i][x + i].getBidak() == null || MainActivity.papan[y + i][x + i].getBidak().isP1() != player1) {
                         System.out.println("tes kanan bawah");
@@ -268,6 +274,7 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
                             }
                         }
                     } else if (MainActivity.papan[y + i][x + i].getBidak().isP1() == player1) {
+                        setMark(player1, y + i, x + i);
                         kananbawah = false;
                     }
                 }
@@ -288,8 +295,8 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
                             }
                         }
                     } else if (MainActivity.papan[y + i][x - i].getBidak().isP1() == player1) {
-                        kiribawah
-                                = false;
+                        setMark(player1, y + i, x - i);
+                        kiribawah = false;
                     }
                 }
 
@@ -309,6 +316,7 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
                             }
                         }
                     } else if (MainActivity.papan[y - i][x + i].getBidak().isP1() == player1) {
+                        setMark(player1, y - i, x + i);
                         kananatas = false;
                     }
                 }
@@ -329,10 +337,10 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
                             }
                         }
                     } else if (MainActivity.papan[y - i][x - i].getBidak().isP1() == player1) {
+                        setMark(player1, y - i, x - i);
                         kiriatas = false;
                     }
                 }
-
             }
         }
 
