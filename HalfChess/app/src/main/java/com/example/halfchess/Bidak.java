@@ -8,6 +8,9 @@ public abstract class Bidak {
     boolean p1; // 1 punya e p1 0 p2
     int img;
 
+    // PS (JERE) : setiap jenis bidak diberi value ToDo Add value to every bidak
+    int value;
+
     public MovementBehavior getMove() {
         return move;
     }
