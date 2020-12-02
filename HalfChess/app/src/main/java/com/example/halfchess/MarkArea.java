@@ -16,10 +16,10 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
                     if (MainActivity.papan[y - 1][x].getBidak() == null) {
                         MainActivity.markCheck[y - 1][x] = true;
                     }
-                    if (x - 1 >= 0 && MainActivity.papan[y - 1][x - 1].getBidak() == null) {
+                    if (x - 1 >= 0 ) { // kan dee isa njaga sg ngiri atao kanan
                         MainActivity.markCheck[y - 1][x - 1] = true;
                     }
-                    if (x + 1 <= 3 && MainActivity.papan[y - 1][x + 1].getBidak() == null) {
+                    if (x + 1 <= 3 ) {
                         MainActivity.markCheck[y - 1][x + 1] = true;
                     }
                 }
@@ -27,13 +27,13 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
             } else { // black moves down
                 if (y + 1 <= 7) {
                     if (MainActivity.papan[y + 1][x].getBidak() == null) {
-                        MainActivity.markCheck[y + 1][x] = true;
+                        MainActivity.markCheck2[y + 1][x] = true;
                     }
-                    if (x - 1 >= 0 && MainActivity.papan[y + 1][x - 1].getBidak() == null) {
-                        MainActivity.markCheck[y + 1][x - 1] = true;
+                    if (x - 1 >= 0 ) {
+                        MainActivity.markCheck2[y + 1][x - 1] = true;
                     }
-                    if (x + 1 <= 3 && MainActivity.papan[y + 1][x + 1].getBidak() == null) {
-                        MainActivity.markCheck[y + 1][x + 1] = true;
+                    if (x + 1 <= 3 ) {
+                        MainActivity.markCheck2[y + 1][x + 1] = true;
                     }
                 }
             }
@@ -256,11 +256,9 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
             Boolean kananatas = true; /// x+ y-
             Boolean kiriatas = true; // x- y-
 
-            System.out.println("X = " + x + " || Y = " + y + "||" + player1);
             for (int i = 1; i <= 7; i++) {
+                System.out.println(i + "Bishop");
                 if (kananbawah && y + i <= 7 && x + i <= 3) {
-                    if (MainActivity.papan[y + i][x + i].getBidak() == null || MainActivity.papan[y + i][x + i].getBidak().isP1() != player1) {
-                        System.out.println("tes kanan bawah");
                         setMark(player1, y + i, x + i);
                         if (MainActivity.papan[y + i][x + i].getBidak() != null) {
                             kananbawah = false;
@@ -273,15 +271,10 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
                                 System.out.println("checkkkkk");
                             }
                         }
-                    } else if (MainActivity.papan[y + i][x + i].getBidak().isP1() == player1) {
-                        setMark(player1, y + i, x + i);
-                        kananbawah = false;
-                    }
+
                 }
 
                 if (kiribawah && y + i <= 7 && x - i >= 0) {
-                    if (MainActivity.papan[y + i][x - i].getBidak() == null || MainActivity.papan[y + i][x - i].getBidak().isP1() != player1) {
-                        System.out.println("tes kiri bawah");
                         setMark(player1, y + i, x - i);
                         if (MainActivity.papan[y + i][x - i].getBidak() != null) {
                             kiribawah = false;
@@ -294,15 +287,13 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
                                 System.out.println("checkkkkk");
                             }
                         }
-                    } else if (MainActivity.papan[y + i][x - i].getBidak().isP1() == player1) {
-                        setMark(player1, y + i, x - i);
-                        kiribawah = false;
-                    }
+
                 }
 
-                if (kananatas && y - i >= 0 && x + i <= 3) {
-                    if (MainActivity.papan[y - i][x + i].getBidak() == null || MainActivity.papan[y - i][x + i].getBidak().isP1() != player1) {
-                        System.out.println("tes kanan atas");
+                System.out.println();
+                System.out.println(player1+"Bishop X:"+(x+i) +"  Y:"+(y-i));
+                if ( y - i >= 0 && x + i < 4) {
+                    System.out.println("masuk bis");
                         setMark(player1, y - i, x + i);
                         if (MainActivity.papan[y - i][x + i].getBidak() != null) {
                             kananatas = false;
@@ -315,15 +306,11 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
                                 System.out.println("checkkkkk");
                             }
                         }
-                    } else if (MainActivity.papan[y - i][x + i].getBidak().isP1() == player1) {
-                        setMark(player1, y - i, x + i);
-                        kananatas = false;
-                    }
+
                 }
 
                 if (kiriatas && y - i >= 0 && x - i >= 0) {
-                    if (MainActivity.papan[y - i][x - i].getBidak() == null || MainActivity.papan[y - i][x - i].getBidak().isP1() != player1) {
-                        System.out.println("tes kiri atasa");
+
                         setMark(player1, y - i, x - i);
                         if (MainActivity.papan[y - i][x - i].getBidak() != null) {
                             kiriatas = false;
@@ -336,13 +323,96 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
                                 System.out.println("checkkkkk");
                             }
                         }
-                    } else if (MainActivity.papan[y - i][x - i].getBidak().isP1() == player1) {
-                        setMark(player1, y - i, x - i);
-                        kiriatas = false;
-                    }
-                }
+                                    }
             }
         }
 
     }
+
+    public class KingArea implements MarkArea{
+
+        @Override
+        public void Mark(Boolean p1, int x, int y) {
+            if(p1){
+                if (y - 1 >= 0) {
+                    MainActivity.markCheck[y - 1][x] = true;
+                    if (x - 1 >= 0 ) {
+                        MainActivity.markCheck[y][x - 1] = true;
+                    }
+                    if (x + 1 <= 3 ) {
+                        MainActivity.markCheck[y - 1][x + 1] = true;
+                    }
+                }
+                if (x - 1 >= 0 ) {
+                    MainActivity.markCheck[y][x - 1] = true;
+                }
+                if (x + 1 <= 3 ) {
+                    MainActivity.markCheck[y][x + 1] = true;
+                }
+
+                if(y+1 <8){
+                    MainActivity.markCheck[y + 1][x] = true;
+                    if (x - 1 >= 0 ) {
+                        MainActivity.markCheck[y + 1][x - 1] = true;
+                    }
+                    if (x + 1 <= 3 ) {
+                        MainActivity.markCheck[y + 1][x + 1] = true;
+                    }
+                }
+            }else{
+                if (y - 1 >= 0) {
+                    MainActivity.markCheck2[y - 1][x] = true;
+                    if (x - 1 >= 0 ) {
+                        MainActivity.markCheck2[y][x - 1] = true;
+                    }
+                    if (x + 1 <= 3 ) {
+                        MainActivity.markCheck2[y - 1][x + 1] = true;
+                    }
+                }
+                if (x - 1 >= 0 ) {
+                    MainActivity.markCheck2[y][x - 1] = true;
+                }
+                if (x + 1 <= 3 ) {
+                    MainActivity.markCheck2[y][x + 1] = true;
+                }
+
+                if(y+1 <8){
+                    MainActivity.markCheck2[y + 1][x] = true;
+                    if (x - 1 >= 0 ) {
+                        MainActivity.markCheck2[y + 1][x - 1] = true;
+                    }
+                    if (x + 1 <= 3 ) {
+                        MainActivity.markCheck2[y + 1][x + 1] = true;
+                    }
+                }
+            }
+
+
+        }
+    }
+
+    public class KnightArea implements  MarkArea{
+
+
+        @Override
+        public void Mark(Boolean p1, int x, int y) {
+            // kiri atas searah jarum jam
+            int[] movx = {-1,+1,+2,+2,+1,-1,-2,-2};
+            int[] movy = {-2,-2,-1,+1,+2,+2,+1,-1};
+            for(int i=0;i<8;i++){
+                if(x+movx[i]>=0 && x+movx[i]<4 && y+movy[i]>=0 && y+movy[i]<8 ){
+                    if(p1){
+                        MainActivity.markCheck[y+movy[i]][x + movx[i]] = true;
+                    }else{
+                        MainActivity.markCheck2[y+movy[i]][x + movx[i]] = true;
+
+                    }
+                }
+            }
+
+        }
+    }
+
+
+
 }

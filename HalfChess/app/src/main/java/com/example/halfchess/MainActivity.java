@@ -44,6 +44,16 @@ public class MainActivity extends AppCompatActivity {
         turnP1 = true;
 
     }
+    public void markArea(){
+        for(int i=0;i<8;i++){
+            if(bidakP1[i]!=null){
+                bidakP1[i].mark.Mark(true,bidakP1[i].getX(),bidakP1[i].getY());
+            }
+            if(bidakP2[i]!=null){
+                bidakP2[i].mark.Mark(false,bidakP2[i].getX(),bidakP2[i].getY());
+            }
+        }
+    }
 
     public void resetMarkedArea(){
         for(int i=0;i<8;i++){
@@ -87,8 +97,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        Bishop b = new Bishop(papan[7][3],true);
-        Bishop b2 = new Bishop(papan[0][3],false);
+        Bishop b = new Bishop(papan[7][2],true);
+        Bishop b2 = new Bishop(papan[0][2],false);
         bidakP1[2] = b;
         bidakP2[2] = b2;
         papan[7][2].setBidak(bidakP1[2]);
@@ -181,8 +191,7 @@ public class MainActivity extends AppCompatActivity {
 
             // iki harus e ngefor semua bidak sg gak null ,just fine still testing
             resetMarkedArea();
-            bidakP1[1].mark.Mark(true,bidakP1[1].getX(),bidakP1[1].getY());
-            bidakP2[1].mark.Mark(false,bidakP2[1].getX(),bidakP2[1].getY());
+            markArea();
 
             // untuk gerak checked e dikasih nde bahaviour
             if(isP1 && turnP1){ //player 1 turn
@@ -256,8 +265,7 @@ public class MainActivity extends AppCompatActivity {
             // di class e bidak kasih void isCheck() ???
 
             resetMarkedArea();
-            bidakP1[1].mark.Mark(true,bidakP1[1].getX(),bidakP1[1].getY());
-            bidakP2[1].mark.Mark(false,bidakP2[1].getX(),bidakP2[1].getY());
+            markArea();
             resetMap();
 
         }else if(temp!=null && colorId!=Color.GREEN){ // batal
