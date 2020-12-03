@@ -5,6 +5,7 @@ import android.widget.Toast;
 
 public interface MarkArea { // panggil pas sebelum dan sesudah gerak
 
+
     public void Mark(Boolean p1, int x, int y);
 
     public class PawnArea implements MarkArea {
@@ -13,27 +14,28 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
         public void Mark(Boolean p1, int x, int y) {
             if (p1) { // move to up
                 if (y - 1 >= 0) {
-                    if (MainActivity.papan[y - 1][x].getBidak() == null) {
-                        MainActivity.markCheck[y - 1][x] = true;
-                    }
+//                    if (MainActivity.papan[y - 1][x].getBidak() == null) {
+//                        MainActivity.markCheck[y - 1][x] = true;
+//                    }
                     if (x - 1 >= 0 ) { // kan dee isa njaga sg ngiri atao kanan
                         MainActivity.markCheck[y - 1][x - 1] = true;
+                        MainActivity.cekCheck(p1,x-1,y-1);
                     }
                     if (x + 1 <= 3 ) {
                         MainActivity.markCheck[y - 1][x + 1] = true;
+                        MainActivity.cekCheck(p1,x+1,y-1);
                     }
                 }
 
             } else { // black moves down
                 if (y + 1 <= 7) {
-                    if (MainActivity.papan[y + 1][x].getBidak() == null) {
-                        MainActivity.markCheck2[y + 1][x] = true;
-                    }
                     if (x - 1 >= 0 ) {
                         MainActivity.markCheck2[y + 1][x - 1] = true;
+                        MainActivity.cekCheck(p1,x-1,y+1);
                     }
                     if (x + 1 <= 3 ) {
                         MainActivity.markCheck2[y + 1][x + 1] = true;
+                        MainActivity.cekCheck(p1,x+1,y+1);
                     }
                 }
             }
@@ -63,22 +65,15 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
             Boolean kananatas = true; /// x+ y-
             Boolean kiriatas = true; // x- y-
 
-            System.out.println("X = " + x + " || Y = " + y + "||" + player1);
+//            System.out.println("X = " + x + " || Y = " + y + "||" + player1);
             for (int i = 1; i <= 7; i++) {
                 if (x - i >= 0 && kiri) { // harus e kan berdasar dee dewe , yaampun tolol e cu
                     if (MainActivity.papan[y][x - i].getBidak() == null || MainActivity.papan[y][x - i].getBidak().isP1() != player1) {
-                        System.out.println("tes kiri");
+//                        System.out.println("tes kiri");
                         setMark(player1, y, x - i);
                         if (MainActivity.papan[y][x - i].getBidak() != null) {
                             kiri = false;
-                            if (MainActivity.papan[y][x - i].getBidak().getClass().getSimpleName().equalsIgnoreCase("King")) {
-                                if (player1) {
-                                    MainActivity.p2.setChecked(true);
-                                } else {
-                                    MainActivity.p2.setChecked(true);
-                                }
-                                System.out.println("checkkkkk");
-                            }
+                            MainActivity.cekCheck(player1,x-i,y);
                         }
                     } else if (MainActivity.papan[y][x - i].getBidak().isP1() == player1) {
                         setMark(player1, y, x - i);
@@ -88,18 +83,12 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
 
                 if (x + i <= 3 && kanan) {
                     if (MainActivity.papan[y][x + i].getBidak() == null || MainActivity.papan[y][x + i].getBidak().isP1() != player1) {
-                        System.out.println("tes kanan");
+//                        System.out.println("tes kanan");
                         setMark(player1, y, x + i);
                         if (MainActivity.papan[y][x + i].getBidak() != null) {
                             kanan = false;
-                            if (MainActivity.papan[y][x + i].getBidak().getClass().getSimpleName().equalsIgnoreCase("King")) {
-                                if (player1) {
-                                    MainActivity.p2.setChecked(true);
-                                } else {
-                                    MainActivity.p1.setChecked(true);
-                                }
-                                System.out.println("checkkkkk");
-                            }
+                            MainActivity.cekCheck(player1,x+i,y);
+
                         }
                     } else if (MainActivity.papan[y][x + i].getBidak().isP1() == player1) {
                         setMark(player1, y, x + i);
@@ -109,18 +98,12 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
 
                 if (atas && y - i >= 0) {
                     if (MainActivity.papan[y - i][x].getBidak() == null || MainActivity.papan[y - i][x].getBidak().isP1() != player1) {
-                        System.out.println("tes atas");
+//                        System.out.println("tes atas");
                         setMark(player1, y - i, x);
                         if (MainActivity.papan[y - i][x].getBidak() != null) {
                             atas = false;
-                            if (MainActivity.papan[y - i][x].getBidak().getClass().getSimpleName().equalsIgnoreCase("King")) {
-                                if (player1) {
-                                    MainActivity.p2.setChecked(true);
-                                } else {
-                                    MainActivity.p1.setChecked(true);
-                                }
-                                System.out.println("checkkkkk");
-                            }
+                            MainActivity.cekCheck(player1,x,y-i);
+
                         }
                     } else if (MainActivity.papan[y - i][x].getBidak().isP1() == player1) {
                         setMark(player1, y - i, x);
@@ -130,18 +113,11 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
 
                 if (bawah && y + i <= 7) {
                     if (MainActivity.papan[y + i][x].getBidak() == null || MainActivity.papan[y + i][x].getBidak().isP1() != player1) {
-                        System.out.println("tes bawah");
+//                        System.out.println("tes bawah");
                         setMark(player1, y + i, x);
                         if (MainActivity.papan[y + i][x].getBidak() != null) {
                             bawah = false;
-                            if (MainActivity.papan[y + i][x].getBidak().getClass().getSimpleName().equalsIgnoreCase("King")) {
-                                if (player1) {
-                                    MainActivity.p2.setChecked(true);
-                                } else {
-                                    MainActivity.p1.setChecked(true);
-                                }
-                                System.out.println("checkkkkk");
-                            }
+                            MainActivity.cekCheck(player1,x,y+i);
                         }
                     } else if (MainActivity.papan[y + i][x].getBidak().isP1() == player1) {
                         setMark(player1, y + i, x);
@@ -151,18 +127,12 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
 
                 if (kananbawah && y + i <= 7 && x + i <= 3) {
                     if (MainActivity.papan[y + i][x + i].getBidak() == null || MainActivity.papan[y + i][x + i].getBidak().isP1() != player1) {
-                        System.out.println("tes kanan bawah");
+//                        System.out.println("tes kanan bawah");
                         setMark(player1, y + i, x + i);
                         if (MainActivity.papan[y + i][x + i].getBidak() != null) {
                             kananbawah = false;
-                            if (MainActivity.papan[y + i][x + i].getBidak().getClass().getSimpleName().equalsIgnoreCase("King")) {
-                                if (player1) {
-                                    MainActivity.p2.setChecked(true);
-                                } else {
-                                    MainActivity.p1.setChecked(true);
-                                }
-                                System.out.println("checkkkkk");
-                            }
+                            MainActivity.cekCheck(player1,x+i,y+i);
+
                         }
                     } else if (MainActivity.papan[y + i][x + i].getBidak().isP1() == player1) {
                         setMark(player1, y + i, x + i);
@@ -172,18 +142,12 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
 
                 if (kiribawah && y + i <= 7 && x - i >= 0) {
                     if (MainActivity.papan[y + i][x - i].getBidak() == null || MainActivity.papan[y + i][x - i].getBidak().isP1() != player1) {
-                        System.out.println("tes kiri bawah");
+//                        System.out.println("tes kiri bawah");
                         setMark(player1, y + i, x - i);
                         if (MainActivity.papan[y + i][x - i].getBidak() != null) {
                             kiribawah = false;
-                            if (MainActivity.papan[y + i][x - i].getBidak().getClass().getSimpleName().equalsIgnoreCase("King")) {
-                                if (player1) {
-                                    MainActivity.p2.setChecked(true);
-                                } else {
-                                    MainActivity.p1.setChecked(true);
-                                }
-                                System.out.println("checkkkkk");
-                            }
+                            MainActivity.cekCheck(player1,x-i,y+i);
+
                         }
                     } else if (MainActivity.papan[y + i][x - i].getBidak().isP1() == player1) {
                         setMark(player1, y + i, x - i);
@@ -193,18 +157,12 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
 
                 if (kananatas && y - i >= 0 && x + i <= 3) {
                     if (MainActivity.papan[y - i][x + i].getBidak() == null || MainActivity.papan[y - i][x + i].getBidak().isP1() != player1) {
-                        System.out.println("tes kanan atas");
+//                        System.out.println("tes kanan atas");
                         setMark(player1, y - i, x + i);
                         if (MainActivity.papan[y - i][x + i].getBidak() != null) {
                             kananatas = false;
-                            if (MainActivity.papan[y - i][x + i].getBidak().getClass().getSimpleName().equalsIgnoreCase("King")) {
-                                if (player1) {
-                                    MainActivity.p2.setChecked(true);
-                                } else {
-                                    MainActivity.p1.setChecked(true);
-                                }
-                                System.out.println("checkkkkk");
-                            }
+                            MainActivity.cekCheck(player1,x+i,y-i);
+
                         }
                     } else if (MainActivity.papan[y - i][x + i].getBidak().isP1() == player1) {
                         setMark(player1, y - i, x + i);
@@ -214,18 +172,12 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
 
                 if (kiriatas && y - i >= 0 && x - i >= 0) {
                     if (MainActivity.papan[y - i][x - i].getBidak() == null || MainActivity.papan[y - i][x - i].getBidak().isP1() != player1) {
-                        System.out.println("tes kiri atasa");
+//                        System.out.println("tes kiri atasa");
                         setMark(player1, y - i, x - i);
                         if (MainActivity.papan[y - i][x - i].getBidak() != null) {
                             kiriatas = false;
-                            if (MainActivity.papan[y - i][x - i].getBidak().getClass().getSimpleName().equalsIgnoreCase("King")) {
-                                if (player1) {
-                                    MainActivity.p2.setChecked(true);
-                                } else {
-                                    MainActivity.p1.setChecked(true);
-                                }
-                                System.out.println("checkkkkk");
-                            }
+                            MainActivity.cekCheck(player1,x-i,y-i);
+
                         }
                     } else if (MainActivity.papan[y - i][x - i].getBidak().isP1() == player1) {
                         setMark(player1, y - i, x - i);
@@ -257,19 +209,13 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
             Boolean kiriatas = true; // x- y-
 
             for (int i = 1; i <= 7; i++) {
-                System.out.println(i + "Bishop");
+//                System.out.println(i + "Bishop");
                 if (kananbawah && y + i <= 7 && x + i <= 3) {
                         setMark(player1, y + i, x + i);
                         if (MainActivity.papan[y + i][x + i].getBidak() != null) {
                             kananbawah = false;
-                            if (MainActivity.papan[y + i][x + i].getBidak().getClass().getSimpleName().equalsIgnoreCase("King")) {
-                                if (player1) {
-                                    MainActivity.p2.setChecked(true);
-                                } else {
-                                    MainActivity.p1.setChecked(true);
-                                }
-                                System.out.println("checkkkkk");
-                            }
+                            MainActivity.cekCheck(player1,x+i,y+i);
+
                         }
 
                 }
@@ -278,33 +224,21 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
                         setMark(player1, y + i, x - i);
                         if (MainActivity.papan[y + i][x - i].getBidak() != null) {
                             kiribawah = false;
-                            if (MainActivity.papan[y + i][x - i].getBidak().getClass().getSimpleName().equalsIgnoreCase("King")) {
-                                if (player1) {
-                                    MainActivity.p2.setChecked(true);
-                                } else {
-                                    MainActivity.p1.setChecked(true);
-                                }
-                                System.out.println("checkkkkk");
-                            }
+                            MainActivity.cekCheck(player1,x-i,y+i);
+
                         }
 
                 }
 
-                System.out.println();
-                System.out.println(player1+"Bishop X:"+(x+i) +"  Y:"+(y-i));
-                if ( y - i >= 0 && x + i < 4) {
-                    System.out.println("masuk bis");
+//                System.out.println();
+//                System.out.println(player1+"Bishop X:"+(x+i) +"  Y:"+(y-i));
+                if (kananatas &&  y - i >= 0 && x + i < 4) {
+//                    System.out.println("masuk bis");
                         setMark(player1, y - i, x + i);
                         if (MainActivity.papan[y - i][x + i].getBidak() != null) {
                             kananatas = false;
-                            if (MainActivity.papan[y - i][x + i].getBidak().getClass().getSimpleName().equalsIgnoreCase("King")) {
-                                if (player1) {
-                                    MainActivity.p2.setChecked(true);
-                                } else {
-                                    MainActivity.p1.setChecked(true);
-                                }
-                                System.out.println("checkkkkk");
-                            }
+                            MainActivity.cekCheck(player1,x+i,y-i);
+
                         }
 
                 }
@@ -314,16 +248,9 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
                         setMark(player1, y - i, x - i);
                         if (MainActivity.papan[y - i][x - i].getBidak() != null) {
                             kiriatas = false;
-                            if (MainActivity.papan[y - i][x - i].getBidak().getClass().getSimpleName().equalsIgnoreCase("King")) {
-                                if (player1) {
-                                    MainActivity.p2.setChecked(true);
-                                } else {
-                                    MainActivity.p1.setChecked(true);
-                                }
-                                System.out.println("checkkkkk");
-                            }
+                            MainActivity.cekCheck(player1,x-i,y-i);
                         }
-                                    }
+                }
             }
         }
 
@@ -401,6 +328,7 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
             int[] movy = {-2,-2,-1,+1,+2,+2,+1,-1};
             for(int i=0;i<8;i++){
                 if(x+movx[i]>=0 && x+movx[i]<4 && y+movy[i]>=0 && y+movy[i]<8 ){
+                    MainActivity.cekCheck(p1,x+i,y+i);
                     if(p1){
                         MainActivity.markCheck[y+movy[i]][x + movx[i]] = true;
                     }else{

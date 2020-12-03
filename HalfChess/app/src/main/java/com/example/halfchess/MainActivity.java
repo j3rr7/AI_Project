@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         turnP1 = true;
 
     }
-    public void markArea(){
+    public static void markArea(){
         for(int i=0;i<8;i++){
             if(bidakP1[i]!=null){
                 bidakP1[i].mark.Mark(true,bidakP1[i].getX(),bidakP1[i].getY());
@@ -63,18 +63,20 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-    public Boolean cekCheck(){
-        for(int i=4;i<=7;i++){
-            bidakP1[i].mark.Mark(bidakP1[i].isP1(),bidakP1[i].getX(),bidakP1[i].getY());
-            bidakP2[i].mark.Mark(bidakP2[i].isP1(),bidakP2[i].getX(),bidakP2[i].getY());
-        }
-        for(int i=0;i<8;i++){
-            for(int j=0;j<4;j++){
-                if(markCheck[i][j] == true){
-                    System.out.println("J: "+j+"- I: "+i);
+    public static Boolean cekCheck(Boolean p1, int x ,int y){
+
+        if(y>=0 && x>=0 && y<8 && x<4){
+            if(MainActivity.papan[y][x].getBidak() != null
+                    && MainActivity.papan[y][x].getBidak().isP1()!=p1
+                        && MainActivity.papan[y][x].getBidak().getClass().getSimpleName().equalsIgnoreCase("King")){
+                if(p1){
+                    System.out.println("Check P2");
+                    return true;
+                }else{
+                    System.out.println("Check P1");
+                    return true;
                 }
             }
-
         }
         return false;
     }
@@ -97,49 +99,49 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        Bishop b = new Bishop(papan[7][2],true);
-        Bishop b2 = new Bishop(papan[0][2],false);
-        bidakP1[2] = b;
-        bidakP2[2] = b2;
-        papan[7][2].setBidak(bidakP1[2]);
-        papan[0][2].setBidak(bidakP2[2]);
-
-
-        Knight kuda = new Knight(papan[7][2],true);
-        Knight kuda2 = new Knight(papan[0][2],false);
-        bidakP1[3] = kuda;
-        bidakP2[3] = kuda2;
-        papan[7][3].setBidak(bidakP1[3]);
-        papan[0][3].setBidak(bidakP2[3]);
-
-        //white move up
-        Pawn p1 = new Pawn(papan[1][0],false);
-        Pawn p2 = new Pawn(papan[1][1],false);
-        Pawn p3 = new Pawn(papan[1][2],false);
-        Pawn p4 = new Pawn(papan[1][3],false);
-        bidakP2[4] = p1;
-        bidakP2[5] = p2;
-        bidakP2[6] = p3;
-        bidakP2[7] = p4;
-        papan[1][0].setBidak(bidakP2[4]);
-        papan[1][1].setBidak(bidakP2[5]);
-        papan[1][2].setBidak(bidakP2[6]);
-        papan[1][3].setBidak(bidakP2[7]);
-
-
-         p1 = new Pawn(papan[6][0],true);
-         p2 = new Pawn(papan[6][1],true);
-         p3 = new Pawn(papan[6][2],true);
-         p4 = new Pawn(papan[6][3],true);
-        bidakP1[4] = p1;
-        bidakP1[5] = p2;
-        bidakP1[6] = p3;
-        bidakP1[7] = p4;
-
-        papan[6][0].setBidak(bidakP1[4]);
-        papan[6][1].setBidak(bidakP1[5]);
-        papan[6][2].setBidak(bidakP1[6]);
-        papan[6][3].setBidak(bidakP1[7]);
+//        Bishop b = new Bishop(papan[7][2],true);
+//        Bishop b2 = new Bishop(papan[0][2],false);
+//        bidakP1[2] = b;
+//        bidakP2[2] = b2;
+//        papan[7][2].setBidak(bidakP1[2]);
+//        papan[0][2].setBidak(bidakP2[2]);
+//
+//
+//        Knight kuda = new Knight(papan[7][2],true);
+//        Knight kuda2 = new Knight(papan[0][2],false);
+//        bidakP1[3] = kuda;
+//        bidakP2[3] = kuda2;
+//        papan[7][3].setBidak(bidakP1[3]);
+//        papan[0][3].setBidak(bidakP2[3]);
+//
+//        //white move up
+//        Pawn p1 = new Pawn(papan[1][0],false);
+//        Pawn p2 = new Pawn(papan[1][1],false);
+//        Pawn p3 = new Pawn(papan[1][2],false);
+//        Pawn p4 = new Pawn(papan[1][3],false);
+//        bidakP2[4] = p1;
+//        bidakP2[5] = p2;
+//        bidakP2[6] = p3;
+//        bidakP2[7] = p4;
+//        papan[1][0].setBidak(bidakP2[4]);
+//        papan[1][1].setBidak(bidakP2[5]);
+//        papan[1][2].setBidak(bidakP2[6]);
+//        papan[1][3].setBidak(bidakP2[7]);
+//
+//
+//         p1 = new Pawn(papan[6][0],true);
+//         p2 = new Pawn(papan[6][1],true);
+//         p3 = new Pawn(papan[6][2],true);
+//         p4 = new Pawn(papan[6][3],true);
+//        bidakP1[4] = p1;
+//        bidakP1[5] = p2;
+//        bidakP1[6] = p3;
+//        bidakP1[7] = p4;
+//
+//        papan[6][0].setBidak(bidakP1[4]);
+//        papan[6][1].setBidak(bidakP1[5]);
+//        papan[6][2].setBidak(bidakP1[6]);
+//        papan[6][3].setBidak(bidakP1[7]);
 
 
         for(int i=0;i<8;i++){
@@ -186,9 +188,8 @@ public class MainActivity extends AppCompatActivity {
 
         if(papan[y][x].getBidak()!=null && temp==null){ // ada bidak e
             Boolean isP1 = papan[y][x].getBidak().isP1();
-
+            System.out.println(papan[y][x].getBidak().getClass().getSimpleName()+"");
 //            Toast.makeText(this,  papan[y][x].getBidak().getClass().getSimpleName()+"", Toast.LENGTH_SHORT).show();
-
             // iki harus e ngefor semua bidak sg gak null ,just fine still testing
             resetMarkedArea();
             markArea();

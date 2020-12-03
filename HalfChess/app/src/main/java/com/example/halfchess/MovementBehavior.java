@@ -63,34 +63,41 @@ public interface MovementBehavior {
         }
     }
     public class KingMovement implements MovementBehavior{
+            Boolean canMove = false;
+
+        private void movement(Boolean p1,int y,int x){
+            MainActivity.markArea();
+            if(p1){
+                if(MainActivity.markCheck2[y][x] == false) {  // raja gaisa gerak ke kotak sg isa dijalanin lawan
+                    MainActivity.tiles[y][x].setBackgroundColor(Color.GREEN);
+                    canMove = true;
+                }
+            }else{
+                if(MainActivity.markCheck[y][x] == false){  // raja gaisa gerak ke kotak sg isa dijalanin lawan
+                    MainActivity.tiles[y][x].setBackgroundColor(Color.GREEN);
+                    canMove = true;
+                }
+
+            }
+        }
         @Override
         public Boolean Pickup(Boolean player1, int x, int y) {
-            Boolean canMove = false;
             //gerak ke horizontal e tak gabung ambe gerak serong
             // cuma kopas dari koding sg gerak vertikal tak gabung nde if e horizontal
-
+            System.out.println("King Movement");
             if(x-1>=0){
                 if(MainActivity.papan[y][x-1].getBidak() == null || MainActivity.papan[y][x-1].getBidak().isP1() != player1 ){
-                    if(MainActivity.markCheck[y][x-1] == false){  // raja gaisa gerak ke kotak sg isa dijalanin lawan
-                        MainActivity.tiles[y][x-1].setBackgroundColor(Color.GREEN);
-                        canMove = true;
-                    }
+                    movement(player1,y,x-1);
                 }
                 //serong
                 if(y+1 <=7){
                     if(MainActivity.papan[y+1][x-1].getBidak() == null || MainActivity.papan[y+1][x-1].getBidak().isP1() != player1 ){
-                        if(MainActivity.markCheck[y+1][x-1] == false){
-                            MainActivity.tiles[y+1][x-1].setBackgroundColor(Color.GREEN);
-                            canMove = true;
-                        }
+                        movement(player1,y+1,x-1);
                     }
                 }
                 if(y-1>=0){
                     if(MainActivity.papan[y-1][x-1].getBidak() == null || MainActivity.papan[y-1][x-1].getBidak().isP1() != player1 ){
-                        if(MainActivity.markCheck[y-1][x-1] == false){
-                            MainActivity.tiles[y-1][x-1].setBackgroundColor(Color.GREEN);
-                            canMove = true;
-                        }
+                        movement(player1,y-1,x-1);
                     }
                 }
                 //end serong
@@ -98,27 +105,18 @@ public interface MovementBehavior {
 
             if(x+1 <=3){
                 if(MainActivity.papan[y][x+1].getBidak() == null || MainActivity.papan[y][x+1].getBidak().isP1() != player1 ){
-                    if(MainActivity.markCheck[y][x+1] == false){
-                        MainActivity.tiles[y][x+1].setBackgroundColor(Color.GREEN);
-                        canMove = true;
-                    }
+                    movement(player1,y,x+1);
                 }
 
                 //serong
                 if(y+1 <=7){
                     if(MainActivity.papan[y+1][x+1].getBidak() == null || MainActivity.papan[y+1][x+1].getBidak().isP1() != player1 ){
-                        if(MainActivity.markCheck[y+1][x+1] == false){
-                            MainActivity.tiles[y+1][x+1].setBackgroundColor(Color.GREEN);
-                            canMove = true;
-                        }
+                        movement(player1,y+1,x+1);
                     }
                 }
                 if(y-1>=0){
                     if(MainActivity.papan[y-1][x+1].getBidak() == null || MainActivity.papan[y-1][x+1].getBidak().isP1() != player1 ){
-                        if(MainActivity.markCheck[y-1][x+1] == false){
-                            MainActivity.tiles[y-1][x+1].setBackgroundColor(Color.GREEN);
-                            canMove = true;
-                        }
+                        movement(player1,y-1,x+1);
                     }
                 }
                 //end serong
@@ -127,19 +125,13 @@ public interface MovementBehavior {
             // vertikal
             if(y+1 <=7){
                 if(MainActivity.papan[y+1][x].getBidak() == null || MainActivity.papan[y+1][x].getBidak().isP1() != player1 ){
-                    if(MainActivity.markCheck[y+1][x] == false){
-                        MainActivity.tiles[y+1][x].setBackgroundColor(Color.GREEN);
-                        canMove = true;
-                    }
+                        movement(player1,y+1,x);
                 }
             }
 
             if(y-1>=0){
                 if(MainActivity.papan[y-1][x].getBidak() == null || MainActivity.papan[y-1][x].getBidak().isP1() != player1 ){
-                    if(MainActivity.markCheck[y-1][x] == false){
-                        MainActivity.tiles[y-1][x].setBackgroundColor(Color.GREEN);
-                        canMove = true;
-                    }
+                        movement(player1,y-1,x);
                 }
             }
 
