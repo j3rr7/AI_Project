@@ -9,5 +9,8 @@ public class Bishop extends Bidak {
         }else{
             img = R.mipmap.bishop_new_2;
         }
+
+        // Value bidak
+        super.setValue(3);
     }
 }

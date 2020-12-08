@@ -9,5 +9,8 @@ public class King extends Bidak {
         }else{
             img = R.mipmap.king_1;
         }
+
+        // Value bidak
+        super.setValue(99);
     }
 }

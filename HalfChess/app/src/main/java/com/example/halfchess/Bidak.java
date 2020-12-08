@@ -10,6 +10,13 @@ public abstract class Bidak {
 
     // PS (JERE) : setiap jenis bidak diberi value ToDo Add value to every bidak
     int value;
+    public int getValue() {
+        return value;
+    }
+    public void setValue(int value) {
+        this.value = value;
+    }
+    // ==========================================================================
 
     public MovementBehavior getMove() {
         return move;

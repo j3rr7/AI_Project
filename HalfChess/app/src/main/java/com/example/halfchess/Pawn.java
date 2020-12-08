@@ -11,7 +11,8 @@ public class Pawn extends Bidak {
         }else{
             img = R.mipmap.pawn_new;
         }
+
+        // Value bidak
+        super.setValue(1);
     }
-
-
 }

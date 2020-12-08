@@ -9,5 +9,8 @@ public class Knight extends Bidak {
         }else{
             img = R.mipmap.knight_2;
         }
+
+        // Value bidak
+        super.setValue(3);
     }
 }
