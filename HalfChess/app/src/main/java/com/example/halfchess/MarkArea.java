@@ -7,6 +7,7 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
 
 
     public void Mark(Boolean p1, int x, int y);
+    public void SimulationMark(Boolean p1,int x,int y);
 
     public class PawnArea implements MarkArea {
 
@@ -40,6 +41,35 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
                 }
             }
         }
+
+        @Override
+        public void SimulationMark(Boolean p1, int x, int y) {
+            if (p1) { // move to up
+                if (y - 1 >= 0) {
+//
+                    if (x - 1 >= 0 ) { // kan dee isa njaga sg ngiri atao kanan
+                        MainActivity.markSimulation[y - 1][x - 1] = true;
+                        MainActivity.cekCheck(p1,x-1,y-1);
+                    }
+                    if (x + 1 <= 3 ) {
+                        MainActivity.markSimulation[y - 1][x + 1] = true;
+                        MainActivity.cekCheck(p1,x+1,y-1);
+                    }
+                }
+
+            } else { // black moves down
+                if (y + 1 <= 7) {
+                    if (x - 1 >= 0 ) {
+                        MainActivity.markSimulation[y + 1][x - 1] = true;
+                        MainActivity.cekCheck(p1,x-1,y+1);
+                    }
+                    if (x + 1 <= 3 ) {
+                        MainActivity.markSimulation[y + 1][x + 1] = true;
+                        MainActivity.cekCheck(p1,x+1,y+1);
+                    }
+                }
+            }
+        }
     }
 
     public class QueenArea implements MarkArea {
@@ -49,6 +79,14 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
                 MainActivity.markCheck[y][x] = true;
             } else {
                 MainActivity.markCheck2[y][x] = true;
+            }
+
+        }
+        public void setMarkSimulation(Boolean player1, int y, int x) {
+            if (player1) { //area e player 1
+                MainActivity.markSimulation[y][x] = true;
+            } else {
+                MainActivity.markSimulation[y][x] = true;
             }
 
         }
@@ -189,6 +227,11 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
             }
         }
 
+        @Override
+        public void SimulationMark(Boolean p1, int x, int y) {
+
+        }
+
     }
 
     public class BishopArea implements MarkArea {
@@ -254,6 +297,11 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
             }
         }
 
+        @Override
+        public void SimulationMark(Boolean p1, int x, int y) {
+
+        }
+
     }
 
     public class KingArea implements MarkArea{
@@ -316,6 +364,11 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
 
 
         }
+
+        @Override
+        public void SimulationMark(Boolean p1, int x, int y) {
+
+        }
     }
 
     public class KnightArea implements  MarkArea{
@@ -337,6 +390,11 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
                     }
                 }
             }
+
+        }
+
+        @Override
+        public void SimulationMark(Boolean p1, int x, int y) {
 
         }
     }

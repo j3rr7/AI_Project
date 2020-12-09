@@ -13,6 +13,9 @@ public class Papan {
         this.bidak = bidak;
     }
 
+    public void setBidakNull(){
+        this.bidak = null;
+    }
     public int getX() {
         return x;
     }

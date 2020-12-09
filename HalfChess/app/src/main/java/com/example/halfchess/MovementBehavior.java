@@ -156,6 +156,9 @@ public interface MovementBehavior {
                 //serong kiri atas
                 if(x - i >=0 && y - i >=0 && kiriAtas){
                     if(MainActivity.papan[y-i][x-i].getBidak() == null || MainActivity.papan[y-i][x-i].getBidak().isP1() != player1 ){
+                        // dikasih checksimulation , sebelum ngijo no
+                        // jadi misal dee ditaruh nde situ apakah skak
+
                         MainActivity.tiles[y-i][x-i].setBackgroundColor(Color.GREEN);
                         canMove = true;
                         if(MainActivity.papan[y-i][x-i].getBidak() != null){
