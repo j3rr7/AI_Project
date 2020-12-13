@@ -8,6 +8,7 @@ public class Pawn extends Bidak {
         mark = new MarkArea.PawnArea();
         if(p1){
             img = R.mipmap.pawn_newg;
+
         }else{
             img = R.mipmap.pawn_new;
         }
