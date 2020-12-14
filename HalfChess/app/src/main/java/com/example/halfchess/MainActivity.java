@@ -14,14 +14,23 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.util.GregorianCalendar;
+
 public class MainActivity extends AppCompatActivity {
 
 
     public static ImageView[][] tiles = new ImageView[8][4];
     public static Boolean[][] markCheck = new Boolean[8][4];
     public static Boolean[][] markCheck2 = new Boolean[8][4];
-    public static Boolean[][] markSimulation = new Boolean[8][4];
     public static Papan[][] papan = new Papan[8][4];
+
+    public static Boolean[][] markSimulation = new Boolean[8][4];
+    public static Boolean[][] markSimulation2 = new Boolean[8][4];
+    public static Papan[][] papanSimulation = new Papan[8][4];
+    public static Bidak[] bidakP1Simulation = new Bidak[8]; //
+    public static Bidak[] bidakP2Simulation = new Bidak[8]; //
+    //lets pray for our simulation
+
 //    public static Boolean[][] markedArea = new Boolean[8][4]; // semua jalan sg iso dilewati musuh
                                                             // king gabole lewat sini soal e skak
     public static Bidak[] bidakP1 = new Bidak[8]; //0 King , 1 Queen , 2 Bishop , 3 Kuda , sisa e pawn dari kiri
@@ -45,6 +54,61 @@ public class MainActivity extends AppCompatActivity {
         turnP1 = true;
 
     }
+
+
+    public static void setSimulationArea(){
+        MainActivity.markSimulation = new Boolean[8][4];
+        MainActivity.markSimulation2 = new Boolean[8][4];
+        MainActivity.papanSimulation = new Papan[8][4];
+        MainActivity.bidakP1Simulation = new Bidak[8]; //
+        MainActivity.bidakP2Simulation = new Bidak[8]; //
+
+
+        for(int i=0;i<8;i++){
+            for(int j=0;j<4;j++){
+                markSimulation[i][j]=false;
+                markSimulation2[i][j]=false;
+            }
+        }
+//        MainActivity.markSimulation = MainActivity.markCheck;
+//        MainActivity.markSimulation2 = MainActivity.markCheck2;
+        MainActivity.papanSimulation = MainActivity.papan;
+        MainActivity.bidakP1Simulation = MainActivity.bidakP1;
+        MainActivity.bidakP2Simulation = MainActivity.bidakP2;
+    }
+
+    public static Boolean markSimulationArea(Boolean isTurnP1){
+
+        for(int i=0;i<8;i++){
+            if(isTurnP1){ // nde mark simulation cek daerah sendiri ae
+//                System.out.println("Turn P1 Simulation Area");
+                if(bidakP2Simulation[i] != null){
+//                    Bidak temp = bidakP2Simulation[i];
+
+                    Boolean check = bidakP2Simulation[i].markSimulation.Mark(bidakP2Simulation[i].isP1(),bidakP2Simulation[i].getX(),bidakP2Simulation[i].getY());
+                    System.out.println(i+ " - Loop Bidak P2 Simulaation : "+check);
+                    if (check){
+                        System.out.println("P1 got check");
+                        return check;
+                    }
+                }
+            }else{
+                if(bidakP1Simulation[i] != null){
+                    Bidak temp = bidakP1Simulation[i];
+                    Boolean check = bidakP1Simulation[i].markSimulation.Mark(temp.isP1(),temp.getX(),temp.getY());
+                    if(check){
+                        System.out.println("P2 got check");
+                        return check;
+                    }
+                }
+            }
+
+        }
+
+        return false;
+    }
+
+
     public static void markArea(){
         for(int i=0;i<8;i++){
             if(bidakP1[i]!=null){
@@ -64,6 +128,25 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+    public static Boolean cekCheckSimulation(Boolean p1, int x ,int y){
+
+        if(y>=0 && x>=0 && y<8 && x<4){
+            if(MainActivity.papanSimulation[y][x].getBidak() != null
+                    && MainActivity.papanSimulation[y][x].getBidak().isP1()!=p1
+                    && MainActivity.papanSimulation[y][x].getBidak().getClass().getSimpleName().equalsIgnoreCase("King")){
+                if(p1){
+                    System.out.println("Check P2");
+                    return true;
+                }else{
+                    System.out.println("Check P1");
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+
     public static Boolean cekCheck(Boolean p1, int x ,int y){
 
         if(y>=0 && x>=0 && y<8 && x<4){
@@ -100,49 +183,49 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        Bishop b = new Bishop(papan[7][2],true);
-        Bishop b2 = new Bishop(papan[0][2],false);
-        bidakP1[2] = b;
-        bidakP2[2] = b2;
-        papan[7][2].setBidak(bidakP1[2]);
-        papan[0][2].setBidak(bidakP2[2]);
-
-
-        Knight kuda = new Knight(papan[7][2],true);
-        Knight kuda2 = new Knight(papan[0][2],false);
-        bidakP1[3] = kuda;
-        bidakP2[3] = kuda2;
-        papan[7][3].setBidak(bidakP1[3]);
-        papan[0][3].setBidak(bidakP2[3]);
-
-        //white move up
-        Pawn p1 = new Pawn(papan[1][0],false);
-        Pawn p2 = new Pawn(papan[1][1],false);
-        Pawn p3 = new Pawn(papan[1][2],false);
-        Pawn p4 = new Pawn(papan[1][3],false);
-        bidakP2[4] = p1;
-        bidakP2[5] = p2;
-        bidakP2[6] = p3;
-        bidakP2[7] = p4;
-        papan[1][0].setBidak(bidakP2[4]);
-        papan[1][1].setBidak(bidakP2[5]);
-        papan[1][2].setBidak(bidakP2[6]);
-        papan[1][3].setBidak(bidakP2[7]);
-
-
-         p1 = new Pawn(papan[6][0],true);
-         p2 = new Pawn(papan[6][1],true);
-         p3 = new Pawn(papan[6][2],true);
-         p4 = new Pawn(papan[6][3],true);
-        bidakP1[4] = p1;
-        bidakP1[5] = p2;
-        bidakP1[6] = p3;
-        bidakP1[7] = p4;
-
-        papan[6][0].setBidak(bidakP1[4]);
-        papan[6][1].setBidak(bidakP1[5]);
-        papan[6][2].setBidak(bidakP1[6]);
-        papan[6][3].setBidak(bidakP1[7]);
+//        Bishop b = new Bishop(papan[7][2],true);
+//        Bishop b2 = new Bishop(papan[0][2],false);
+//        bidakP1[2] = b;
+//        bidakP2[2] = b2;
+//        papan[7][2].setBidak(bidakP1[2]);
+//        papan[0][2].setBidak(bidakP2[2]);
+//
+//
+//        Knight kuda = new Knight(papan[7][2],true);
+//        Knight kuda2 = new Knight(papan[0][2],false);
+//        bidakP1[3] = kuda;
+//        bidakP2[3] = kuda2;
+//        papan[7][3].setBidak(bidakP1[3]);
+//        papan[0][3].setBidak(bidakP2[3]);
+//
+//        //white move up
+//        Pawn p1 = new Pawn(papan[1][0],false);
+//        Pawn p2 = new Pawn(papan[1][1],false);
+//        Pawn p3 = new Pawn(papan[1][2],false);
+//        Pawn p4 = new Pawn(papan[1][3],false);
+//        bidakP2[4] = p1;
+//        bidakP2[5] = p2;
+//        bidakP2[6] = p3;
+//        bidakP2[7] = p4;
+//        papan[1][0].setBidak(bidakP2[4]);
+//        papan[1][1].setBidak(bidakP2[5]);
+//        papan[1][2].setBidak(bidakP2[6]);
+//        papan[1][3].setBidak(bidakP2[7]);
+//
+//
+//         p1 = new Pawn(papan[6][0],true);
+//         p2 = new Pawn(papan[6][1],true);
+//         p3 = new Pawn(papan[6][2],true);
+//         p4 = new Pawn(papan[6][3],true);
+//        bidakP1[4] = p1;
+//        bidakP1[5] = p2;
+//        bidakP1[6] = p3;
+//        bidakP1[7] = p4;
+//
+//        papan[6][0].setBidak(bidakP1[4]);
+//        papan[6][1].setBidak(bidakP1[5]);
+//        papan[6][2].setBidak(bidakP1[6]);
+//        papan[6][3].setBidak(bidakP1[7]);
 
 
         for(int i=0;i<8;i++){
@@ -235,6 +318,8 @@ public class MainActivity extends AppCompatActivity {
             System.out.println("X : "+x);
             System.out.println("TempY : "+temp.getY());
             System.out.println("TempX : "+temp.getX());
+
+
             papan[y][x].setBidak(temp.getBidak());
             tiles[y][x].setImageResource(papan[y][x].getBidak().getImg());
 
@@ -242,9 +327,7 @@ public class MainActivity extends AppCompatActivity {
             papan[temp.getY()][temp.getX()] = new Papan(temp.getX(),temp.getY(),tiles[temp.getY()][temp.getX()].getId());
             tiles[temp.getY()][temp.getX()].setImageResource(0);
 
-            if(papan[temp.getY()][temp.getX()].getBidak()!=null){
-                System.out.println("Msih ada");
-            }
+
 
             // pindah lokasi e bidak sg di array , soal e kalo ga dipindah error nde pengecekan error nanti
             for (int i=0;i<8;i++){

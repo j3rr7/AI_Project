@@ -5,6 +5,7 @@ public class King extends Bidak {
         super(papan, p1);
         move = new MovementBehavior.KingMovement();
         mark = new MarkArea.KingArea();
+        markSimulation = new MarkSimulation.KingSimulation();
         if(p1){
             img = R.mipmap.king_1g;
         }else{

@@ -5,6 +5,7 @@ public class Queen extends Bidak {
         super(papan, p1);
         move = new MovementBehavior.QueenMovement();
         mark = new MarkArea.QueenArea();
+        markSimulation = new MarkSimulation.QueenSimulation();
         if(p1){
             img = R.mipmap.queeng;
         }else{

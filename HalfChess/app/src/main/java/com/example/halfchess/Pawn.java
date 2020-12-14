@@ -6,6 +6,7 @@ public class Pawn extends Bidak {
         super(papan, p1);
         move = new MovementBehavior.PawnMovement();
         mark = new MarkArea.PawnArea();
+        markSimulation = new MarkSimulation.PawnSimulation();
         if(p1){
             img = R.mipmap.pawn_newg;
         }else{
