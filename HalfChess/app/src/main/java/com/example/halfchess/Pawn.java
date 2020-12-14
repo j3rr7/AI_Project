@@ -9,6 +9,7 @@ public class Pawn extends Bidak {
         markSimulation = new MarkSimulation.PawnSimulation();
         if(p1){
             img = R.mipmap.pawn_newg;
+
         }else{
             img = R.mipmap.pawn_new;
         }

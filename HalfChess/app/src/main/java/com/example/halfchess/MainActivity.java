@@ -7,11 +7,16 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.media.Image;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.os.SystemClock;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.GregorianCalendar;
@@ -39,10 +44,20 @@ public class MainActivity extends AppCompatActivity {
     public static Player p2 ;
     Boolean turnP1;
     Papan temp = null;
+    TextView tvTurn;
+    Chronometer cmTimer;
+    Chronometer cmTimer2;
+    Boolean resume = false;
+    Boolean resume2 = false;
+    long elapsedTime;
+    long elapsedTime2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        tvTurn = findViewById(R.id.tvTurn);
+        cmTimer = (Chronometer) findViewById(R.id.cmTimer);
+        cmTimer2 = (Chronometer) findViewById(R.id.cmTimer2);
         setImageView();
         setPapan();
         setBidak();
@@ -52,7 +67,26 @@ public class MainActivity extends AppCompatActivity {
         p2 = new Player(bidakP2);
 
         turnP1 = true;
-
+        cmTimer.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
+            public void onChronometerTick(Chronometer arg0) {
+               if (!resume) {
+                    long minutes = ((SystemClock.elapsedRealtime() - cmTimer.getBase())/1000) / 60;
+                    long seconds = ((SystemClock.elapsedRealtime() - cmTimer.getBase())/1000) % 60;
+                    elapsedTime = elapsedTime+1000;
+               }
+            }
+        });
+        cmTimer2.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
+            public void onChronometerTick(Chronometer arg0) {
+                if (!resume2) {
+                    long minutes = ((SystemClock.elapsedRealtime() - cmTimer2.getBase())/1000) / 60;
+                    long seconds = ((SystemClock.elapsedRealtime() - cmTimer2.getBase())/1000) % 60;
+                    elapsedTime2 = elapsedTime2+1000;
+                }
+            }
+        });
+        cmTimer.setBase(SystemClock.elapsedRealtime());
+        cmTimer.start();
     }
 
 
@@ -230,6 +264,10 @@ public class MainActivity extends AppCompatActivity {
 
         for(int i=0;i<8;i++){
             for(int j=0;j<4;j++){
+                if(papan[i][j].getBidak() != bidakP1[0] && papan[i][j].getBidak() != bidakP1[1] && papan[i][j].getBidak() != bidakP1[2] && papan[i][j].getBidak() != bidakP1[3]
+                        && papan[i][j].getBidak() != bidakP1[4] && papan[i][j].getBidak() != bidakP1[5] && papan[i][j].getBidak() != bidakP1[6] && papan[i][j].getBidak() != bidakP1[7]){
+                    tiles[i][j].setRotationX(180);
+                }
                 if(papan[i][j].getBidak()!=null){
                     tiles[i][j].setImageResource(papan[i][j].getBidak().getImg());
                 }
@@ -355,9 +393,64 @@ public class MainActivity extends AppCompatActivity {
 
 
             temp = null;
+            //main.setRotationX(180);
+            if(turnP1){
+                for(int i = 0 ; i < 8 ; i++ ) {
+                    for(int j = 0 ; j < 4 ; j++) {
+                        if(papan[i][j].getBidak() != bidakP1[0] && papan[i][j].getBidak() != bidakP1[1] && papan[i][j].getBidak() != bidakP1[2] && papan[i][j].getBidak() != bidakP1[3]
+                                && papan[i][j].getBidak() != bidakP1[4] && papan[i][j].getBidak() != bidakP1[5] && papan[i][j].getBidak() != bidakP1[6] && papan[i][j].getBidak() != bidakP1[7]){
+                            tiles[i][j].animate().setDuration(500).rotationX(0);
+                        }
+                        else{
+                            tiles[i][j].animate().setDuration(500).rotationX(180);
+                        }
+                    }
+                }
+
+            }else{
+                for(int i = 0 ; i < 8 ; i++ ) {
+                    for(int j = 0 ; j < 4 ; j++) {
+                        if(papan[i][j].getBidak() != bidakP1[0] && papan[i][j].getBidak() != bidakP1[1] && papan[i][j].getBidak() != bidakP1[2] && papan[i][j].getBidak() != bidakP1[3]
+                                && papan[i][j].getBidak() != bidakP1[4] && papan[i][j].getBidak() != bidakP1[5] && papan[i][j].getBidak() != bidakP1[6] && papan[i][j].getBidak() != bidakP1[7]){
+                            tiles[i][j].animate().setDuration(500).rotationX(180);
+                        }
+                        else{
+                            tiles[i][j].animate().setDuration(500).rotationX(0);
+                        }
+                    }
+                }
+            }
+            //v.animate().rotationX(0);
             turnP1 = !turnP1; // buat ganti player sg maenno
+            if(turnP1){
+                tvTurn.setText("Player 1");
+                cmTimer2.stop();
+                //cmTimer2.setText("");
+                resume2 = true;
+                if(!resume) {
+                    cmTimer.setBase(SystemClock.elapsedRealtime());
+                    cmTimer.start();
+                }
+                else{
+                    cmTimer.start();
+                }
+            }
+            else{
+                tvTurn.setText("Player 2");
+                cmTimer.stop();
+                //cmTimer.setText("");
+                resume = true;
+                if (!resume2) {
+                    cmTimer2.setBase(SystemClock.elapsedRealtime());
+                    cmTimer2.start();
+                }
+                else{
+                    cmTimer2.start();
+                }
+            }
             //abis aku pindah apakah king itu terancam ??
             // di class e bidak kasih void isCheck() ???
+
 
             resetMarkedArea();
             markArea();
