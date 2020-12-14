@@ -114,6 +114,11 @@ public abstract class Bidak {
 //        System.out.println("Simulation X :"+x +" - Y:"+y); // ini x y tujuan
 
         Bidak temp = findBidakSimulation();
+        if(MainActivity.papan[7][1].getBidak() == null){
+            System.out.println("Bidak is  Null");
+        }else{
+            System.out.println("Bidak Masih Ada");
+        }
         int indexBidakSimulation = findBidakSimulationIndex();
         System.out.println("Posisi Awal Bidak Simulation X : "+temp.getX() +" - Y:"+temp.getY());
         //  Gae makan
@@ -149,16 +154,36 @@ public abstract class Bidak {
             MainActivity.papanSimulation[y][x].setBidak(MainActivity.bidakP2Simulation[indexBidakSimulation]);
         }
 
+
+        if(MainActivity.papan[7][1].getBidak() == null){
+            System.out.println("Bidak is  Null in class Bidak");
+        }else{
+            System.out.println("Bidak Masih Ada in class Bidak");
+        }
+
+
+        // gara" method iki , dee refrence pisan ke papan 
         MainActivity.papanSimulation[this.getY()][this.getX()] = new Papan(this.getX(),this.getY(),MainActivity.tiles[this.getY()][this.getX()].getId());
         if(MainActivity.papanSimulation[this.getY()][this.getX()].getBidak() == null){
             System.out.println("Set Papan lokasi awal bidak jadi null");
         }
         //        // pindah lokasi e bidak sg di array , soal e kalo ga dipindah error nde pengecekan error nanti
 
+        if(MainActivity.papan[7][1].getBidak() == null){
+            System.out.println("Bidak is  Null in class Bidak");
+        }else{
+            System.out.println("Bidak Masih Ada in Class  Bidak");
+        }
+
         if(this.p1 == true){
             MainActivity.bidakP1Simulation[indexBidakSimulation].setY(y);
             MainActivity.bidakP1Simulation[indexBidakSimulation].setY(x);
             System.out.println("Set Posisi Simulasi Bidak ke X + "+x+" - Y :"+y );
+            if(MainActivity.papan[7][1].getBidak() == null){
+                System.out.println("Bidak is  Null in class Bidak");
+            }else{
+                System.out.println("Bidak Masih Ada in Class  Bidak");
+            }
         }else{
             MainActivity.bidakP2Simulation[indexBidakSimulation].setY(y);
             MainActivity.bidakP2Simulation[indexBidakSimulation].setY(x);
@@ -166,6 +191,7 @@ public abstract class Bidak {
         }
 
         //end of pindah posisi
+
         return MainActivity.markSimulationArea(this.p1);
 
     }

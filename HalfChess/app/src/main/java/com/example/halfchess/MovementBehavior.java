@@ -266,12 +266,19 @@ public interface MovementBehavior {
             Boolean kananBawah = true;
             //buat ngecek dee sudah nambrak 1 apa belom
 
-            for(int i=1;i<=4;i++){
+            for(int i=1;i<=7;i++){
                 //serong kiri atas
+
+                if(MainActivity.papan[y][x].getBidak() == null){
+                    System.out.println("Bidak is  Null");
+                }else{
+                    System.out.println("Bidak Masih Ada");
+                }
                 if(x - i >=0 && y - i >=0 && kiriAtas){
                     if(MainActivity.papan[y-i][x-i].getBidak() == null || MainActivity.papan[y-i][x-i].getBidak().isP1() != player1  ){
                         System.out.println("Kiri Atas" + MainActivity.papan[y][x].getBidak().getX() + MainActivity.papan[y][x].getBidak().getY());
                         if(MainActivity.papan[y][x].getBidak().MoveSimulation(x-i,y-i)){
+                            System.out.println("bisa ke kiri Atas");
                             MainActivity.tiles[y-i][x-i].setBackgroundColor(Color.GREEN);
                             canMove = true;
                             if(MainActivity.papan[y-i][x-i].getBidak() != null){
@@ -279,9 +286,20 @@ public interface MovementBehavior {
                                 // ben kalo nabrak dee berhenti
                             }
                         }
+                        if(MainActivity.papan[y][x].getBidak() == null){
+                            System.out.println("Bidak is  Null");
+                        }else{
+                            System.out.println("Bidak Masih Ada");
+                        }
                     }else if(MainActivity.papan[y-i][x-i].getBidak().isP1() == player1 ){
                         kiriAtas = false;
                     }
+                }
+
+                if(MainActivity.papan[y][x].getBidak() == null){
+                    System.out.println("Bidak is  Null");
+                }else{
+                    System.out.println("Bidak Masih Ada");
                 }
 
                 //serong kanan bawah

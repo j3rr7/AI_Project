@@ -140,6 +140,8 @@ public interface MarkSimulation {
             Boolean kiriatas = true; // x- y-
 
 //            System.out.println("X = " + x + " || Y = " + y + "||" + player1);
+            System.out.println(MainActivity.papan[y][x].getBidak().getClass().getSimpleName());
+
             for (int i = 1; i <= 7; i++) {
                 System.out.println("Simulation Mark QUeen");
                 if (x - i >= 0 && kiri) { // harus e kan berdasar dee dewe , yaampun tolol e cu
@@ -262,7 +264,7 @@ public interface MarkSimulation {
 
 
             }
-
+            System.out.println(MainActivity.papan[y][x].getBidak().getClass().getSimpleName());
             return false;
         }
     }
@@ -271,6 +273,7 @@ public interface MarkSimulation {
         @Override
         public Boolean Mark(Boolean p1, int x, int y) { // gamungkin se raja ngeskak raja
             // nde main mark iku raja gabakal iso ndeketin raja e lwan
+            System.out.println("King Simulation : "+p1);
             return false;
         }
 

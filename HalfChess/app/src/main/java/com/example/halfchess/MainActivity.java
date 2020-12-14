@@ -113,12 +113,16 @@ public class MainActivity extends AppCompatActivity {
 
     public static Boolean markSimulationArea(Boolean isTurnP1){
 
-        for(int i=0;i<8;i++){
+        if(MainActivity.papan[7][1].getBidak() == null){
+            System.out.println("Bidak is  Null in Simulation Area");
+        }else{
+            System.out.println("Bidak Masih Ada in Simualation Area");
+        }
+        for(int i=0;i<8;i++){ // kalo turn e P1 simulasikan semua bidak lawan marknya, kalo dia makan king artinya check dan gaoleh gerak ke sana
             if(isTurnP1){ // nde mark simulation cek daerah sendiri ae
 //                System.out.println("Turn P1 Simulation Area");
                 if(bidakP2Simulation[i] != null){
 //                    Bidak temp = bidakP2Simulation[i];
-
                     Boolean check = bidakP2Simulation[i].markSimulation.Mark(bidakP2Simulation[i].isP1(),bidakP2Simulation[i].getX(),bidakP2Simulation[i].getY());
                     System.out.println(i+ " - Loop Bidak P2 Simulaation : "+check);
                     if (check){
@@ -138,7 +142,11 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }
-
+        if(MainActivity.papan[7][1].getBidak() == null){
+            System.out.println("Bidak is  Null in Mark Simulation Area");
+        }else{
+            System.out.println("Bidak Masih Ada");
+        }
         return false;
     }
 
