@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface MovementBehavior {
     public Boolean Pickup(Boolean player1,int x,int y);
-    public List<Papan[][]> getAllPossibleMove(Bidak currentBidak);
+    public ArrayList<Papan[][]> getAllPossibleMove(Bidak currentBidak);
 
     public class PawnMovement implements MovementBehavior{
         @Override
@@ -91,7 +91,7 @@ public interface MovementBehavior {
         }
 
         @Override
-        public List<Papan[][]> getAllPossibleMove(Bidak current) {
+        public ArrayList<Papan[][]> getAllPossibleMove(Bidak current) {
             return null;
         }
     }
@@ -172,7 +172,7 @@ public interface MovementBehavior {
         }
 
         @Override
-        public List<Papan[][]> getAllPossibleMove(Bidak current) {
+        public ArrayList<Papan[][]> getAllPossibleMove(Bidak current) {
             return null;
         }
     }
@@ -262,8 +262,109 @@ public interface MovementBehavior {
         }
 
         @Override
-        public List<Papan[][]> getAllPossibleMove(Bidak current) {
-            return null;
+        public ArrayList<Papan[][]> getAllPossibleMove(Bidak current) {
+            ArrayList<Papan[][]> all_moves = new ArrayList<>();
+            int[][] temp = new int[8][4];
+            for(int i=0;i<8;i++) { for(int j=0;j<4;j++) { temp[i][j] = 0; } }
+
+            int x = current.getX(), y = current.getY();
+            int tx = x, ty = y;
+
+            Boolean kiriAtas = true;
+            Boolean kananAtas = true;
+            Boolean kiriBawah = true;
+            Boolean kananBawah = true;
+            //buat ngecek dee sudah nambrak 1 apa belom
+
+            for(int i=1;i<=4;i++){
+                //serong kiri atas
+                if(x - i >=0 && y - i >=0 && kiriAtas){
+                    if(MainActivity.papan[y-i][x-i].getBidak() == null || MainActivity.papan[y-i][x-i].getBidak().isP1() != current.isP1() ){
+                        // dikasih checksimulation , sebelum ngijo no
+                        // jadi misal dee ditaruh nde situ apakah skak
+                        //if(MainActivity.papan[y][x].getBidak().MoveSimulation(x-i,y-i)){
+                        MainActivity.tiles[y-i][x-i].setBackgroundColor(Color.YELLOW);
+                        temp[y-i][x-i] = 1;
+                        if(MainActivity.papan[y-i][x-i].getBidak() != null){
+                            kiriAtas = false;
+                            // ben kalo nabrak dee berhenti
+                        }
+                        //}
+
+                    }else if(MainActivity.papan[y-i][x-i].getBidak().isP1() == current.isP1() ){
+                        kiriAtas = false;
+                    }
+                }
+
+                //serong kanan bawah
+                if(x + i <=3 && y + i <=7 && kananBawah){
+                    if(MainActivity.papan[y+i][x+i].getBidak() == null || MainActivity.papan[y+i][x+i].getBidak().isP1() != current.isP1() ){
+                        if(MainActivity.papan[y][x].getBidak().MoveSimulation(x+i,y+i)){
+                            MainActivity.tiles[y+i][x+i].setBackgroundColor(Color.YELLOW);
+                            temp[y+i][x+i] = 1;
+                            if(MainActivity.papan[y+i][x+i].getBidak() != null){
+                                kananBawah = false;
+                            }
+
+                        }
+                    }else if(MainActivity.papan[y+i][x+i].getBidak().isP1() == current.isP1()){
+                        kananBawah = false;
+                    }
+                }
+
+                //serong Kiri Bawh
+                if(x - i >=0 && y + i <=7 && kiriBawah){
+                    if(MainActivity.papan[y+i][x-i].getBidak() == null || MainActivity.papan[y+i][x-i].getBidak().isP1() != current.isP1() ){
+                        if(MainActivity.papan[y][x].getBidak().MoveSimulation(x-i,y+i)){
+                            MainActivity.tiles[y+i][x-i].setBackgroundColor(Color.YELLOW);
+                            temp[y+i][x-i] = 1;
+                            if(MainActivity.papan[y+i][x-i].getBidak() != null){
+                                kiriBawah = false;
+                            }
+
+                        }
+                    }else if(MainActivity.papan[y+i][x-i].getBidak().isP1() == current.isP1() ){
+                        kiriBawah = false;
+                    }
+                }
+
+                // kanan atas
+                if(x + i <=3 && y - i >=0 && kananAtas){
+                    if(MainActivity.papan[y-i][x+i].getBidak() == null || MainActivity.papan[y-i][x+i].getBidak().isP1() != current.isP1() ){
+                        if(MainActivity.papan[y][x].getBidak().MoveSimulation(x+i,y-i)){
+                            MainActivity.tiles[y-i][x+i].setBackgroundColor(Color.YELLOW);
+                            temp[y-i][x+i] = 1;
+                            if(MainActivity.papan[y-i][x+i].getBidak() != null){
+                                kananAtas = false;
+                            }
+                        }
+                    }else if(MainActivity.papan[y-i][x+i].getBidak().isP1() == current.isP1()){
+                        kananAtas = false;
+                    }
+                }
+            }
+
+            Papan[][] tempBoard = new Papan[8][4];
+            for(int i=0;i<8;i++){
+                for(int j=0;j<4;j++){
+                    tempBoard[i][j] = MainActivity.papan[i][j];
+                }
+            }
+            tempBoard[x][y].setBidak( null );
+            tempBoard[x][y] = new Papan(x, y, tempBoard[x][y].getIdPapan());
+            for(int i=0;i<8;i++){
+                for(int j=0;j<4;j++){
+                    if (temp[i][j] != 0)
+                    {
+                        tempBoard[i][j].setBidak( MainActivity.papan[x][y].getBidak() );
+                        all_moves.add(tempBoard);
+                        tempBoard[i][j].setBidak( null );
+                        tempBoard[i][j] = new Papan(i, j, tempBoard[x][y].getIdPapan());
+                    }
+                }
+            }
+
+            return all_moves;
         }
     }
     public class QueenMovement implements  MovementBehavior{
@@ -430,7 +531,7 @@ public interface MovementBehavior {
         }
 
         @Override
-        public List<Papan[][]> getAllPossibleMove(Bidak current) {
+        public ArrayList<Papan[][]> getAllPossibleMove(Bidak current) {
             return null;
         }
     }
@@ -456,33 +557,44 @@ public interface MovementBehavior {
 
 
         @Override
-        public List<Papan[][]> getAllPossibleMove(Bidak currentBidak) {
+        public ArrayList<Papan[][]> getAllPossibleMove(Bidak currentBidak) {
             ArrayList<Papan[][]> all_moves = new ArrayList<>();
-            // ToDo Check move currentBidak
             int[][] temp = new int[8][4];
-
             for(int i=0;i<8;i++) { for(int j=0;j<4;j++) { temp[i][j] = 0; } }
 
             // check move
-            int x=currentBidak.getX(), y=currentBidak.getY();
+            int x=currentBidak.getX()+1, y=currentBidak.getY();
+
             int[] moveX = new int[]{-1,1,2,2,1,-1,-2,-2};
             int[] moveY = new int[]{-2,-2,-1,1,2,2,1,-1};
             for(int i=0;i<8;i++){
                 if(x+moveX[i]>=0 && y+moveY[i]>=0 && x+moveX[i]<=3 && y+moveY[i]<=7){
                     if(MainActivity.papan[y+moveY[i]][x+moveX[i]].getBidak() == null || MainActivity.papan[y+moveY[i]][x+moveX[i]].getBidak().isP1() != currentBidak.isP1() ){
-                        if(MainActivity.papan[y][x].getBidak().MoveSimulation(x+moveX[i],y+moveY[i])){
-                            temp[y+moveY[i]][x+moveX[i]] = 1;
-                        }
+                        MainActivity.tiles[y+moveY[i]][x+moveX[i]].setBackgroundColor(Color.YELLOW);
+                        temp[y+moveY[i]][x+moveX[i]] = 1;
                     }
                 }
             }
-            for(int i=0;i<8;i++) {
-                for(int j=0;j<4;j++) {
-                    System.out.print(temp[i][j]);
+
+            Papan[][] tempBoard = new Papan[8][4];
+            for(int i=0;i<8;i++){
+                for(int j=0;j<4;j++){
+                    tempBoard[i][j] = MainActivity.papan[i][j];
                 }
-                System.out.println("");
             }
-            return null;
+            tempBoard[x][y] = new Papan(x, y, tempBoard[x][y].getIdPapan());
+            for(int i=0;i<8;i++){
+                for(int j=0;j<4;j++){
+                    if (temp[i][j] != 0)
+                    {
+                        tempBoard[i][j].setBidak( MainActivity.papan[x][y].getBidak() );
+                        all_moves.add(tempBoard);
+                        //tempBoard[i][j].setBidak( null );
+                        tempBoard[i][j] = new Papan(i, j, tempBoard[i][j].getIdPapan());
+                    }
+                }
+            }
+            return all_moves;
         }
     }
 }

@@ -19,7 +19,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -396,7 +398,6 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         AI.Node rootNode = new AI.Node(MainActivity.papan, null);
                         // To Do add ai
-
                     }
                 }
             }
@@ -475,6 +476,22 @@ public class MainActivity extends AppCompatActivity {
             resetMarkedArea();
         }
     }
+
+    public void refreshTampilan()
+    {
+        for(int i = 0 ; i < 8 ; i++ ) {
+            for(int j = 0 ; j < 4 ; j++) {
+                tiles[i][j].setImageResource(0);
+            }
+        }
+        for(int i = 0 ; i < 8 ; i++ ) {
+            for(int j = 0 ; j < 4 ; j++) {
+                if (MainActivity.papan[i][j].getBidak() != null)
+                    tiles[i][j].setImageResource(MainActivity.papan[i][j].getBidak().getImg());
+            }
+        }
+    }
+
     public void setPapan(){
         for(int i=0 ;i<8;i++){
             for(int j=0;j<4;j++){
@@ -578,8 +595,15 @@ public class MainActivity extends AppCompatActivity {
                 AI.Node startAi = new AI.Node(MainActivity.papan, null);
                 for(int i=0;i<8;i++) {
                     for(int j=0;j<4;j++) {
-                        if ( MainActivity.papan[i][j].getBidak() != null ) {
-                            MainActivity.papan[i][j].getBidak().getMove().getAllPossibleMove( MainActivity.papan[i][j].getBidak() );
+//                        if ( MainActivity.papan[i][j].getBidak() != null && MainActivity.papan[i][j].getBidak() instanceof Knight && !MainActivity.papan[i][j].getBidak().isP1()) {
+//                            ArrayList<Papan[][]> allMoves = MainActivity.papan[i][j].getBidak().getMove().getAllPossibleMove( MainActivity.papan[i][j].getBidak() );
+//                            MainActivity.papan = allMoves.get(0);
+//                            refreshTampilan();
+//                        }
+                        if (MainActivity.papan[i][j].getBidak() != null && MainActivity.papan[i][j].getBidak() instanceof Bishop && !MainActivity.papan[i][j].getBidak().isP1()){
+                            ArrayList<Papan[][]> allMoves = MainActivity.papan[i][j].getBidak().getMove().getAllPossibleMove( MainActivity.papan[i][j].getBidak() );
+                            MainActivity.papan = allMoves.get(0);
+                            refreshTampilan();
                         }
                     }
                 }
