@@ -1,10 +1,7 @@
 package com.example.halfchess;
 
 public interface MarkSimulation {
-
-
     public Boolean Mark(Boolean p1, int x, int y);
-
 
     public class PawnSimulation implements MarkSimulation {
         @Override
@@ -301,6 +298,4 @@ public interface MarkSimulation {
             return check;
         }
     }
-
-
 }

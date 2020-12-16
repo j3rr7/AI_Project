@@ -11,5 +11,6 @@ public class King extends Bidak {
         }else{
             img = R.mipmap.king_1;
         }
+        super.setValue(99);
     }
 }

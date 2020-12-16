@@ -6,12 +6,11 @@ public class Knight extends Bidak {
         move = new MovementBehavior.HorseMovement();
         mark =  new MarkArea.KnightArea();
         markSimulation = new MarkSimulation.KnightSimulation();
-
-
         if(p1){
             img = R.mipmap.knight_1g;
         }else{
             img = R.mipmap.knight_2;
         }
+        super.setValue(3);
     }
 }

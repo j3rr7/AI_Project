@@ -4,10 +4,13 @@ import android.graphics.Color;
 import android.hardware.camera2.params.MandatoryStreamCombination;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public interface MovementBehavior {
     public Boolean Pickup(Boolean player1,int x,int y);
+    public List<Papan[][]> getAllPossibleMove(Bidak currentBidak);
 
-    
     public class PawnMovement implements MovementBehavior{
         @Override
         public Boolean Pickup(Boolean player1, int x, int y) {
@@ -86,9 +89,12 @@ public interface MovementBehavior {
             }
             return canMove;
         }
+
+        @Override
+        public List<Papan[][]> getAllPossibleMove(Bidak current) {
+            return null;
+        }
     }
-
-
     public class KingMovement implements MovementBehavior{
             Boolean canMove = false;
 
@@ -164,6 +170,11 @@ public interface MovementBehavior {
 
             return canMove;
         }
+
+        @Override
+        public List<Papan[][]> getAllPossibleMove(Bidak current) {
+            return null;
+        }
     }
     public class BishopMovement implements MovementBehavior{
 
@@ -185,15 +196,14 @@ public interface MovementBehavior {
                     if(MainActivity.papan[y-i][x-i].getBidak() == null || MainActivity.papan[y-i][x-i].getBidak().isP1() != player1 ){
                         // dikasih checksimulation , sebelum ngijo no
                         // jadi misal dee ditaruh nde situ apakah skak
-                        if(MainActivity.papan[y][x].getBidak().MoveSimulation(x-i,y-i)){
+                        //if(MainActivity.papan[y][x].getBidak().MoveSimulation(x-i,y-i)){
                             MainActivity.tiles[y-i][x-i].setBackgroundColor(Color.GREEN);
                             canMove = true;
                             if(MainActivity.papan[y-i][x-i].getBidak() != null){
                                 kiriAtas = false;
                                 // ben kalo nabrak dee berhenti
                             }
-
-                        }
+                        //}
 
                     }else if(MainActivity.papan[y-i][x-i].getBidak().isP1() == player1 ){
                             kiriAtas = false;
@@ -250,10 +260,13 @@ public interface MovementBehavior {
             }
             return  canMove;
         }
+
+        @Override
+        public List<Papan[][]> getAllPossibleMove(Bidak current) {
+            return null;
+        }
     }
     public class QueenMovement implements  MovementBehavior{
-
-
         @Override
         public Boolean Pickup(Boolean player1, int x, int y) {
             Boolean canMove = false;
@@ -413,33 +426,63 @@ public interface MovementBehavior {
                 }
 
             }
-
             return  canMove;
+        }
 
-
+        @Override
+        public List<Papan[][]> getAllPossibleMove(Bidak current) {
+            return null;
         }
     }
     public class HorseMovement implements MovementBehavior{
 
-
-    @Override
-    public Boolean Pickup(Boolean player1, int x, int y) {
-        Boolean canMove=false;
-        int[] moveX = new int[]{-1,1,2,2,1,-1,-2,-2};
-        int[] moveY = new int[]{-2,-2,-1,1,2,2,1,-1};
-        for(int i=0;i<8;i++){
-            if(x+moveX[i]>=0 && y+moveY[i]>=0 && x+moveX[i]<=3 && y+moveY[i]<=7){
-                if(MainActivity.papan[y+moveY[i]][x+moveX[i]].getBidak() == null || MainActivity.papan[y+moveY[i]][x+moveX[i]].getBidak().isP1() != player1 ){
-                    if(MainActivity.papan[y][x].getBidak().MoveSimulation(x+moveX[i],y+moveY[i])){
-                        MainActivity.tiles[y+moveY[i]][x+moveX[i]].setBackgroundColor(Color.GREEN);
-                        canMove = true;
+        @Override
+        public Boolean Pickup(Boolean player1, int x, int y) {
+            Boolean canMove=false;
+            int[] moveX = new int[]{-1,1,2,2,1,-1,-2,-2};
+            int[] moveY = new int[]{-2,-2,-1,1,2,2,1,-1};
+            for(int i=0;i<8;i++){
+                if(x+moveX[i]>=0 && y+moveY[i]>=0 && x+moveX[i]<=3 && y+moveY[i]<=7){
+                    if(MainActivity.papan[y+moveY[i]][x+moveX[i]].getBidak() == null || MainActivity.papan[y+moveY[i]][x+moveX[i]].getBidak().isP1() != player1 ){
+                        if(MainActivity.papan[y][x].getBidak().MoveSimulation(x+moveX[i],y+moveY[i])){
+                            MainActivity.tiles[y+moveY[i]][x+moveX[i]].setBackgroundColor(Color.GREEN);
+                            canMove = true;
+                        }
                     }
                 }
             }
+            return canMove;
         }
 
-        return canMove;
-    }
-}
 
+        @Override
+        public List<Papan[][]> getAllPossibleMove(Bidak currentBidak) {
+            ArrayList<Papan[][]> all_moves = new ArrayList<>();
+            // ToDo Check move currentBidak
+            int[][] temp = new int[8][4];
+
+            for(int i=0;i<8;i++) { for(int j=0;j<4;j++) { temp[i][j] = 0; } }
+
+            // check move
+            int x=currentBidak.getX(), y=currentBidak.getY();
+            int[] moveX = new int[]{-1,1,2,2,1,-1,-2,-2};
+            int[] moveY = new int[]{-2,-2,-1,1,2,2,1,-1};
+            for(int i=0;i<8;i++){
+                if(x+moveX[i]>=0 && y+moveY[i]>=0 && x+moveX[i]<=3 && y+moveY[i]<=7){
+                    if(MainActivity.papan[y+moveY[i]][x+moveX[i]].getBidak() == null || MainActivity.papan[y+moveY[i]][x+moveX[i]].getBidak().isP1() != currentBidak.isP1() ){
+                        if(MainActivity.papan[y][x].getBidak().MoveSimulation(x+moveX[i],y+moveY[i])){
+                            temp[y+moveY[i]][x+moveX[i]] = 1;
+                        }
+                    }
+                }
+            }
+            for(int i=0;i<8;i++) {
+                for(int j=0;j<4;j++) {
+                    System.out.print(temp[i][j]);
+                }
+                System.out.println("");
+            }
+            return null;
+        }
+    }
 }

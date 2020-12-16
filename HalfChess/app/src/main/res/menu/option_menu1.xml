@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/item_reset"
         android:title="Reset">
@@ -7,4 +8,7 @@
     <item
         android:id="@+id/markArea"
         android:title="show marked area" />
+    <item
+        android:id="@+id/item_test"
+        android:title="Test" />
 </menu>

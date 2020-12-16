@@ -13,6 +13,7 @@ public class Pawn extends Bidak {
         }else{
             img = R.mipmap.pawn_new;
         }
+        super.setValue(1);
     }
 
 

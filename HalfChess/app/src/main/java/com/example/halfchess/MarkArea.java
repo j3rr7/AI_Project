@@ -4,8 +4,6 @@ import android.graphics.Color;
 import android.widget.Toast;
 
 public interface MarkArea { // panggil pas sebelum dan sesudah gerak
-
-
     public void Mark(Boolean p1, int x, int y);
     public void SimulationMark(Boolean p1,int x,int y);
 
@@ -71,7 +69,6 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
             }
         }
     }
-
     public class QueenArea implements MarkArea {
 
         public void setMark(Boolean player1, int y, int x) {
@@ -233,7 +230,6 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
         }
 
     }
-
     public class BishopArea implements MarkArea {
         public void setMark(Boolean player1, int y, int x) {
             if (player1) { //area e player 1
@@ -303,7 +299,6 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
         }
 
     }
-
     public class KingArea implements MarkArea{
 
         @Override
@@ -370,7 +365,6 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
 
         }
     }
-
     public class KnightArea implements  MarkArea{
 
 
@@ -398,7 +392,5 @@ public interface MarkArea { // panggil pas sebelum dan sesudah gerak
 
         }
     }
-
-
 
 }

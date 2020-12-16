@@ -11,5 +11,6 @@ public class Queen extends Bidak {
         }else{
             img = R.mipmap.queen1;
         }
+        super.setValue(9);
     }
 }
