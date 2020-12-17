@@ -51,11 +51,9 @@ public class MainActivity extends AppCompatActivity {
     TextView tvTurn;
     Chronometer cmTimer;
     Chronometer cmTimer2;
-    Boolean resume = false;
-    Boolean resume2 = false;
     long elapsedTime;
     long elapsedTime2;
-
+    int ctr = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,20 +72,16 @@ public class MainActivity extends AppCompatActivity {
         turnP1 = true;
         cmTimer.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
             public void onChronometerTick(Chronometer arg0) {
-               if (!resume) {
-                    long minutes = ((SystemClock.elapsedRealtime() - cmTimer.getBase())/1000) / 60;
-                    long seconds = ((SystemClock.elapsedRealtime() - cmTimer.getBase())/1000) % 60;
-                    elapsedTime = elapsedTime+1000;
-               }
+                long minutes = ((SystemClock.elapsedRealtime() - cmTimer.getBase())/1000) / 60;
+                long seconds = ((SystemClock.elapsedRealtime() - cmTimer.getBase())/1000) % 60;
+                elapsedTime = elapsedTime+1000;
             }
         });
         cmTimer2.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
             public void onChronometerTick(Chronometer arg0) {
-                if (!resume2) {
-                    long minutes = ((SystemClock.elapsedRealtime() - cmTimer2.getBase())/1000) / 60;
-                    long seconds = ((SystemClock.elapsedRealtime() - cmTimer2.getBase())/1000) % 60;
-                    elapsedTime2 = elapsedTime2+1000;
-                }
+                long minutes = ((SystemClock.elapsedRealtime() - cmTimer2.getBase())/1000) / 60;
+                long seconds = ((SystemClock.elapsedRealtime() - cmTimer2.getBase())/1000) % 60;
+                elapsedTime2 = elapsedTime2+1000;
             }
         });
         cmTimer.setBase(SystemClock.elapsedRealtime());
@@ -432,28 +426,22 @@ public class MainActivity extends AppCompatActivity {
             if(turnP1){
                 tvTurn.setText("Player 1");
                 cmTimer2.stop();
-                //cmTimer2.setText("");
-                resume2 = true;
-                if(!resume) {
-                    cmTimer.setBase(SystemClock.elapsedRealtime());
-                    cmTimer.start();
-                }
-                else{
-                    cmTimer.start();
-                }
+                //cmTimer.setBase(SystemClock.elapsedRealtime() - cmTimer2.getBase());
+                cmTimer.start();
             }
             else{
                 tvTurn.setText("Player 2");
                 cmTimer.stop();
                 //cmTimer.setText("");
-                resume = true;
-                if (!resume2) {
-                    cmTimer2.setBase(SystemClock.elapsedRealtime());
-                    cmTimer2.start();
-                }
-                else{
-                    cmTimer2.start();
-                }
+
+//                if(ctr == 0){
+//                    cmTimer2.setBase(SystemClock.elapsedRealtime());
+//                    ctr++;
+//                }
+//                else{
+//                   cmTimer2.setBase(SystemClock.elapsedRealtime() - cmTimer.getBase());
+//                }
+                cmTimer2.start();
             }
             //abis aku pindah apakah king itu terancam ??
             // di class e bidak kasih void isCheck() ???
@@ -553,6 +541,18 @@ public class MainActivity extends AppCompatActivity {
                 resetMap();
                 setPapan();
                 setBidak();
+                cmTimer.setBase(SystemClock.elapsedRealtime());
+                cmTimer.stop();
+                cmTimer2.setBase(SystemClock.elapsedRealtime());
+                cmTimer2.stop();
+                if(turnP1){
+                    cmTimer.setBase(SystemClock.elapsedRealtime());
+                    cmTimer.start();
+                }
+                else{
+                    cmTimer2.setBase(SystemClock.elapsedRealtime());
+                    cmTimer2.start();
+                }
                 break;
 
             case R.id.markArea:
