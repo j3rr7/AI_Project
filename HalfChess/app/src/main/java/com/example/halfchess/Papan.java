@@ -78,15 +78,18 @@ public class Papan {
         }
 
 
+//        papan[0][0] = new Papan(new Bidak(5,false),tiles[0][0], "#FFFFFF");
+//        papan[0][1] = new Papan(new Bidak(4,false),tiles[0][1], "#D9E1F6");
 
-//        if(status != 0){
-//            if(color.equals("#D9E1F6"))
-//                letak.setBackgroundColor(Color.parseColor("#5ca08e"));
-//            else
-//                letak.setBackgroundColor(Color.parseColor("#8abaae"));
-//        }else{
-//            letak.setBackgroundColor(Color.parseColor(color));
-//        }
+
+        if(status != 0){
+            if(color.equals("#D9E1F6"))
+                letak.setBackgroundColor(Color.parseColor("#5ca08e"));
+            else
+                letak.setBackgroundColor(Color.parseColor("#8abaae"));
+        }else{
+            letak.setBackgroundColor(Color.parseColor(color));
+        }
 
     }
 
@@ -109,8 +112,11 @@ public class Papan {
         return status;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setStatus(int Paramstatus) {
+        this.status = Paramstatus;
+//        if(Paramstatus==1){
+//            letak.setBackgroundColor(Color.GREEN);
+//        }
         updatePapan();
     }
 }

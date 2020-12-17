@@ -1,14 +1,14 @@
-package com.example.halfchess;
-
-import android.graphics.Color;
-import android.hardware.camera2.params.MandatoryStreamCombination;
-import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-public interface MovementBehavior {
+//package com.example.halfchess;
+//
+//import android.graphics.Color;
+//import android.hardware.camera2.params.MandatoryStreamCombination;
+//import android.widget.Toast;
+//
+//import java.util.ArrayList;
+//import java.util.Arrays;
+//import java.util.List;
+//
+//public interface MovementBehavior {
 //    public Boolean Pickup(Boolean player1,int x,int y);
 //    public ArrayList<Papan[][]> getAllPossibleMove(Bidak currentBidak, boolean isBot);
 //
@@ -848,4 +848,4 @@ public interface MovementBehavior {
 //            return all_moves;
 //        }
 //    }
-}
+//}

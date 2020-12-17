@@ -12,6 +12,7 @@ import android.os.SystemClock;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.ImageView;
@@ -46,9 +47,9 @@ public class MainActivity extends AppCompatActivity {
 
     private Papan[][] papan = new Papan[8][4];
     private boolean makan=false;
-    private int baris = -1,kolom = -1,status = -1;//-1 still play, draw = 0
+    private int status = -1;//-1 still play, draw = 0
     // , white win = 1, black win = 2
-    private ImageView virtualIV;
+    private ImageView virtualIV ;
     int selectY=-1,selectX=-1; //  buat nentukan posisi papan yang diselect
 
 
@@ -76,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         tvTurn = findViewById(R.id.tvTurn);
         cmTimer = (Chronometer) findViewById(R.id.cmTimer);
         cmTimer2 = (Chronometer) findViewById(R.id.cmTimer2);
-
+        virtualIV = findViewById(R.id.hiddenImg);
         setImageView();
         setPapan();
 
@@ -125,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
 //    }
 //    public static Boolean markSimulationArea(Boolean isTurnP1){
 //
-//        if(MainActivity.papan[7][1].getBidak() == null){
+//        if(MainActivity.papan[7][1].getBidak().getValue() == 0){
 //            System.out.println("Bidak is  Null in Simulation Area");
 //        }else{
 //            System.out.println("Bidak Masih Ada in Simualation Area");
@@ -135,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
 ////                System.out.println("Turn P1 Simulation Area");
 //                if(bidakP2Simulation[i] != null){
 ////                    Bidak temp = bidakP2Simulation[i];
-//                    Boolean check = bidakP2Simulation[i].markSimulation.Mark(bidakP2Simulation[i].isP1(),bidakP2Simulation[i].getX(),bidakP2Simulation[i].getY());
+//                    Boolean check = bidakP2Simulation[i].markSimulation.Mark(bidakP2Simulation[i].isWhite(),bidakP2Simulation[i].getX(),bidakP2Simulation[i].getY());
 //                    System.out.println(i+ " - Loop Bidak P2 Simulaation : "+check);
 //                    if (check){
 //                        System.out.println("P1 got check");
@@ -145,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
 //            }else{
 //                if(bidakP1Simulation[i] != null){
 //                    Bidak temp = bidakP1Simulation[i];
-//                    Boolean check = bidakP1Simulation[i].markSimulation.Mark(temp.isP1(),temp.getX(),temp.getY());
+//                    Boolean check = bidakP1Simulation[i].markSimulation.Mark(temp.isWhite(),temp.getX(),temp.getY());
 //                    if(check){
 //                        System.out.println("P2 got check");
 //                        return check;
@@ -178,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
 //    public static Boolean cekCheckSimulation(Boolean p1, int x ,int y){
 //        if(y>=0 && x>=0 && y<8 && x<4){
 //            if(MainActivity.papanSimulation[y][x].getBidak() != null
-//                    && MainActivity.papanSimulation[y][x].getBidak().isP1()!=p1
+//                    && MainActivity.papanSimulation[y][x].getBidak().isWhite()!=p1
 //                    && MainActivity.papanSimulation[y][x].getBidak().getClass().getSimpleName().equalsIgnoreCase("King")){
 //                if(p1){
 //                    System.out.println("Check P2");
@@ -195,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
 //
 //        if(y>=0 && x>=0 && y<8 && x<4){
 //            if(MainActivity.papan[y][x].getBidak() != null
-//                    && MainActivity.papan[y][x].getBidak().isP1()!=p1
+//                    && MainActivity.papan[y][x].getBidak().isWhite()!=p1
 //                        && MainActivity.papan[y][x].getBidak().getClass().getSimpleName().equalsIgnoreCase("King")){
 //                if(p1){
 //                    System.out.println("Check P2");
@@ -389,13 +390,517 @@ public class MainActivity extends AppCompatActivity {
         papan[7][3] = new Papan(new Bidak(2,true),tiles[7][3], "#FFFFFF");
     }
 
-    public void canMove(){
-        System.out.println("Can Move");
+    boolean isSave(int baris, int kolom,Papan[][] papan){
+        if(turnP1){
+            //pawn
+            if(baris - 1 >= 0 && kolom-1 >= 0 && papan[baris-1][kolom-1].getBidak().getValue() == 1 && papan[baris-1][kolom-1].getBidak().isWhite() != turnP1){
+                return false;
+            }
+            if(baris - 1 >= 0 && kolom+1 <= 3 && papan[baris-1][kolom+1].getBidak().getValue() == 1 && papan[baris-1][kolom+1].getBidak().isWhite() != turnP1){
+                return false;
+            }
+        }else{
+            if(baris + 1 <= 7 && kolom-1 >= 0 && papan[baris + 1][kolom - 1].getBidak().getValue() == 1 && papan[baris+1][kolom-1].getBidak().isWhite() != turnP1){
+                return false;
+            }
+            if(baris + 1 <= 7 && kolom+1 <= 3 && papan[baris + 1][kolom + 1].getBidak().getValue() == 1 && papan[baris+1][kolom+1].getBidak().isWhite() != turnP1){
+                return false;
+            }
+        }//bishop & queen(diagonal)
+        //kanan bawah
+        for (int i = baris + 1,j = kolom + 1; i < 8 && j < 4; i++, j++) {
+            if((papan[i][j].getBidak().getValue() == 2 || papan[i][j].getBidak().getValue() == 4) && papan[i][j].getBidak().isWhite() != turnP1){
+                return false;
+            }else if(papan[i][j].getBidak().getValue() != 0){
+                if(papan[i][j].getBidak().getValue() != 5)break;
+            }
+        }
+        //kanan atas
+        for (int i = baris - 1,j = kolom + 1; i >= 0 && j < 4; i--, j++) {
+            if((papan[i][j].getBidak().getValue() == 2 || papan[i][j].getBidak().getValue() == 4) && papan[i][j].getBidak().isWhite() != turnP1){
+                return false;
+            }else if(papan[i][j].getBidak().getValue() != 0){
+                if(papan[i][j].getBidak().getValue() != 5)break;
+            }
+        }
+        //kiri atas
+        for (int i = baris - 1,j = kolom - 1; i >= 0 && j >= 0; i--, j--) {
+            if((papan[i][j].getBidak().getValue() == 2 || papan[i][j].getBidak().getValue() == 4) && papan[i][j].getBidak().isWhite() != turnP1){
+                return false;
+            }else if(papan[i][j].getBidak().getValue() != 0) {
+                if(papan[i][j].getBidak().getValue() != 5)break;
+            }
+        }
+        //kiri bawah
+        for (int i = baris + 1,j = kolom - 1; i < 8 && j >= 0; i++, j--) {
+            if((papan[i][j].getBidak().getValue() == 2 || papan[i][j].getBidak().getValue() == 4) && papan[i][j].getBidak().isWhite() != turnP1){
+                return false;
+            }else if(papan[i][j].getBidak().getValue() != 0) {
+                if(papan[i][j].getBidak().getValue() != 5)break;
+            }
+        }
+        //knight
+        if(baris - 2 >= 0 && kolom - 1  >= 0){
+            if(papan[baris - 2][kolom - 1].getBidak().getValue() == 3 && papan[baris - 2][kolom - 1].getBidak().isWhite() != turnP1){
+                return false;
+            }
+        }if(baris - 2 >= 0 && kolom + 1  <= 3){
+            if(papan[baris - 2][kolom + 1].getBidak().getValue() == 3 && papan[baris - 2][kolom + 1].getBidak().isWhite() != turnP1){
+                return false;
+            }
+        }if(baris + 2 <= 7 && kolom - 1  >= 0){
+            if(papan[baris + 2][kolom - 1].getBidak().getValue() == 3 && papan[baris + 2][kolom - 1].getBidak().isWhite() != turnP1){
+                return false;
+            }
+        }if(baris + 2 <= 7 && kolom + 1  <= 3){
+            if(papan[baris + 2][kolom + 1].getBidak().getValue() == 3 && papan[baris + 2][kolom + 1].getBidak().isWhite() != turnP1){
+                return false;
+            }
+        }if(baris - 1 >= 0 && kolom + 2  <= 3){
+            if(papan[baris - 1][kolom + 2].getBidak().getValue() == 3 && papan[baris - 1][kolom + 2].getBidak().isWhite() != turnP1){
+                return false;
+            }
+        }if(baris - 1 >= 0 && kolom - 2  >= 0){
+            if(papan[baris - 1][kolom - 2].getBidak().getValue() == 3 && papan[baris - 1][kolom - 2].getBidak().isWhite() != turnP1){
+                return false;
+            }
+        }if(baris + 1 <= 7 && kolom - 2  >= 0){
+            if(papan[baris + 1][kolom - 2].getBidak().getValue() == 3 && papan[baris + 1][kolom - 2].getBidak().isWhite() != turnP1){
+                return false;
+            }
+        }if(baris + 1 <= 7 && kolom + 2  <= 3){
+            if(papan[baris + 1][kolom + 2].getBidak().getValue() == 3 && papan[baris + 1][kolom + 2].getBidak().isWhite() != turnP1){
+                return false;
+            }
+        }
+        //queen
+        for (int i = baris; i < 8; i++) {
+            if(papan[i][kolom].getBidak().getValue() == 4 && papan[i][kolom].getBidak().isWhite() !=  papan[baris][kolom].getBidak().isWhite()){
+                return false;
+            }
+            else if(papan[i][kolom].getBidak().getValue() != 0) {
+                if(papan[i][kolom].getBidak().getValue() != 5) break;
+            }
+        }
+        for (int i = baris; i >= 0; i--) {
+            if(papan[i][kolom].getBidak().getValue() == 4 && papan[i][kolom].getBidak().isWhite() !=  papan[baris][kolom].getBidak().isWhite()){
+                return false;
+            }
+            else if(papan[i][kolom].getBidak().getValue() != 0 ) {
+                if(papan[i][kolom].getBidak().getValue() != 5) break;
+            }
+        }
+        for (int i = kolom; i < 4; i++) {
+            if(papan[baris][i].getBidak().getValue() == 4 && papan[baris][i].getBidak().isWhite() != papan[baris][kolom].getBidak().isWhite()){
+                return false;
+            }
+            else if(papan[baris][i].getBidak().getValue() != 0) {
+                if(papan[baris][i].getBidak().getValue() != 5) break;
+            }
+        }
+
+        for (int i = kolom; i >= 0; i--) {
+            if(papan[baris][i].getBidak().getValue() == 4 && papan[baris][i].getBidak().isWhite() !=  papan[baris][kolom].getBidak().isWhite()){
+                return false;
+            }
+            else if(papan[baris][i].getBidak().getValue() != 0) {
+                if(papan[baris][i].getBidak().getValue() != 5) break;
+            }
+        }
+
+        //king
+        for (int i = baris-1; i < baris+2; i++) {
+            for (int j = kolom-1; j < kolom+2; j++) {
+                if(i <= 7 && i >= 0 && j <= 3 && j >= 0 && (baris != i || kolom != j)){
+                    if(papan[i][j].getBidak().getValue() == 5 && papan[i][j].getBidak().isWhite() != turnP1){
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
+
+    public Boolean isValid(int i, int j,Papan[][] papan, int baris, int kolom){
+        Papan[][] tempPapan = new Papan[8][4];
+        // Mbuat papan bersih baru
+        for (int k = 0; k < 8; k++) {
+            for (int l = 0; l < 4; l++) {
+                tempPapan[k][l] = new Papan(new Bidak(papan[k][l].getBidak().getValue(),papan[k][l].getBidak().isWhite()),virtualIV,"#FFFFFF");
+            }
+        }
+
+        tempPapan[i][j].enPassant = tempPapan[baris][kolom].enPassant;
+        tempPapan[i][j].setBidak(new Bidak(tempPapan[baris][kolom].getBidak().getValue(),tempPapan[baris][kolom].getBidak().isWhite()));
+        if(tempPapan[i][j].getBidak().getValue() == 1 && Math.abs(baris-i) == 2){
+            tempPapan[i][j].enPassant = true;
+        }
+        else {
+            tempPapan[i][j].enPassant = false;
+            for (int k = 0; k < 8; k++) {
+                for (int l = 0; l < 4; l++) {
+                    tempPapan[k][l].enPassant = false;
+                }
+            }
+        }
+        tempPapan[baris][kolom].setBidak(new Bidak(0,false));
+        tempPapan[i][j].untouched = false;
+        tempPapan[baris][kolom].untouched = false;
+        for (int k = 0; k < 8; k++) {
+            for (int l = 0; l < 4; l++) {
+                if(tempPapan[k][l].getBidak().getValue() == 5 && tempPapan[k][l].getBidak().isWhite() == turnP1){
+                    if(!isSave(k,l,tempPapan)){
+//                        Toast.makeText(this, "Invalid Move", Toast.LENGTH_SHORT).show();
+                        return false;
+                    }
+                    break;
+                }
+            }
+        }
+        return true;
+
+    }
+
+
+    // 1 : Pawn
+    // 2 : Bishop
+    // 3 : Knight
+    // 4 : Queen
+    // 5 : King
+    public void canMove(int x, int y){
+        System.out.println("Can Move" + x +" - "+y );
+        int baris = y;
+        int kolom =x;
+        //king
+        if(papan[baris][kolom].getBidak().getValue() == 5){
+            for (int i = baris-1; i < baris+2; i++) {
+                for (int j = kolom-1; j < kolom+2; j++) {
+                    if(i <= 7 && i >= 0 && j <= 3 && j >= 0 && (baris != i || kolom != j)){
+                        if(papan[i][j].getBidak().getValue() == 0){
+                            if(isValid(i,j,papan,baris,kolom)){
+                                papan[i][j].setStatus(1);
+                            }
+                        }else if((!turnP1 && papan[i][j].getBidak().isWhite()) || (turnP1 && !papan[i][j].getBidak().isWhite())){
+                            if(isValid(i,j,papan,baris,kolom)){
+                                papan[i][j].setStatus(1);
+                            }
+                        }
+                    }
+                }
+            }
+        } // King
+        else if(papan[baris][kolom].getBidak().getValue() == 4){
+            Boolean kiriAtas = true;
+            Boolean kananAtas = true;
+            Boolean kiriBawah = true;
+            Boolean kananBawah = true;
+            //buat ngecek dee sudah nambrak 1 apa belom
+
+            for(int i=1;i<=7;i++){
+                //serong kiri atas
+                // i pergerakan y  -> baris +- i
+                // j pergerakan x  -> kolom +- i
+                if(kolom - i >=0 && baris - i >=0 && kiriAtas){
+                    if(papan[baris-i][kolom-i].getBidak().getValue() == 0
+                    || papan[baris-i][kolom-i].getBidak().isWhite() != turnP1  ){
+                      
+                        if(isValid(baris-i,kolom-i,papan,baris,kolom)){
+                            papan[baris-i][kolom-i].setStatus(1);
+                            if(papan[baris-i][kolom-i].getBidak().getValue() != 0){
+                                kiriAtas = false;
+                                // ben kalo nabrak dee berhenti
+                            }
+                        }
+                        
+                    }else if(papan[baris-i][kolom-i].getBidak().isWhite() == turnP1 ){
+                        kiriAtas = false;
+                    }
+                }
+
+                //serong kanan bawah
+                if(kolom + i <=3 && baris + i <=7 && kananBawah){
+                    if(papan[baris+i][kolom+i].getBidak().getValue() == 0
+                    || papan[baris+i][kolom+i].getBidak().isWhite() != turnP1 ){
+                        if(isValid(baris+i,kolom+i,papan,baris,kolom)){
+                            papan[baris+i][kolom+i].setStatus(1);
+                            if(papan[baris+i][kolom+i].getBidak().getValue() != 0){
+                                kananBawah = false;
+                            }
+                        }
+                    }else if(papan[baris+i][kolom+i].getBidak().isWhite() == turnP1){
+                        kananBawah = false;
+                    }
+                }
+
+                //serong Kiri Bawh
+                if(kolom - i >=0 && baris + i <=7 && kiriBawah){
+                    if(papan[baris+i][kolom-i].getBidak().getValue() == 0
+                    || papan[baris+i][kolom-i].getBidak().isWhite() != turnP1 ){
+                        if(isValid(baris+i,kolom-i,papan,baris,kolom)){
+                            papan[baris+i][kolom-i].setStatus(1);
+                            if(papan[baris+i][kolom-i].getBidak().getValue() != 0){
+                                kiriBawah = false;
+                            }
+                        }
+                    }else if(papan[baris+i][kolom-i].getBidak().isWhite() == turnP1 ){
+                        kiriBawah = false;
+                    }
+                }
+
+                // kanan atas
+                if(kolom + i <=3 && baris - i >=0 && kananAtas){
+                    if(papan[baris-i][kolom+i].getBidak().getValue() == 0
+                    || papan[baris-i][kolom+i].getBidak().isWhite() != turnP1 ){
+
+                        if(isValid(baris-i,kolom+i,papan,baris,kolom)){
+                            papan[baris-i][kolom+i].setStatus(1);
+                            if(papan[baris-i][kolom+i].getBidak().getValue() != 0){
+                                kananAtas = false;
+                            }
+                        }
+                    }else if(papan[baris-i][kolom+i].getBidak().isWhite() == turnP1){
+                        kananAtas = false;
+                    }
+                }
+            }
+
+            Boolean kiri = true;
+            Boolean kanan = true;
+            Boolean atas = true;
+            Boolean bawah = true;
+            // vertikal horizontal
+            for (int i=1;i<=7;i++){
+                if(kolom-i >= 0 && kiri){
+                    if(papan[baris][kolom-i].getBidak().getValue() == 0 || papan[baris][kolom-i].getBidak().isWhite() != turnP1 ){
+                        if(isValid(baris,kolom-i,papan,baris,kolom)){
+                            papan[baris][kolom-i].setStatus(1);
+
+                            if(papan[baris][kolom-i].getBidak().getValue() != 0){
+                                kiri = false;
+                            }
+                        }
+                    }else if(papan[baris][kolom-i].getBidak().isWhite() ==turnP1){
+                        kiri = false;
+                    }
+                }
+
+                if(kolom+i <= 3 && kanan){
+                    if(papan[baris][kolom+i].getBidak().getValue() == 0 || papan[baris][kolom+i].getBidak().isWhite() != turnP1 ){
+                        if(isValid(baris,kolom+i,papan,baris,kolom)){
+                            papan[baris][kolom+i].setStatus(1);
+
+                            if(papan[baris][kolom+i].getBidak().getValue() != 0){
+                                kanan = false;
+                            }
+                        }
+                    }else if(papan[baris][kolom+i].getBidak().isWhite() == turnP1){
+                        kanan = false;
+                    }
+                }
+
+                if(baris-i >= 0 && atas){
+                    if(papan[baris-i][kolom].getBidak().getValue() == 0 || papan[baris-i][kolom].getBidak().isWhite() !=turnP1 ){
+                        if(isValid(baris-i,kolom,papan,baris,kolom)){
+                            papan[baris-i][kolom].setStatus(1);
+                            if(papan[baris-i][kolom].getBidak().getValue() != 0){
+                                atas = false;
+                            }
+                        }
+                    }else if(papan[baris-i][kolom].getBidak().isWhite() == turnP1){
+                        atas = false;
+                    }
+                }
+
+                if(baris+i <= 7 && bawah){
+                    if(papan[baris+i][kolom].getBidak().getValue() == 0 || papan[baris+i][kolom].getBidak().isWhite() != turnP1 ){
+                        if(isValid(baris+i,kolom,papan,baris,kolom)){
+                            papan[baris+i][kolom].setStatus(1);
+                            if(papan[baris+i][kolom].getBidak().getValue() != 0){
+                                bawah = false;
+                            }
+                        }
+                    }else if(papan[baris+i][kolom].getBidak().isWhite() == turnP1){
+                        bawah = false;
+                    }
+                }
+
+            }
+        } //Queen
+        else if(papan[baris][kolom].getBidak().getValue() == 3){
+            //knight
+            int[] moveX = new int[]{-1,1,2,2,1,-1,-2,-2};
+            int[] moveY = new int[]{-2,-2,-1,1,2,2,1,-1};
+            for(int i=0;i<8;i++){
+                if(x+moveX[i]>=0 && y+moveY[i]>=0 && x+moveX[i]<=3 && y+moveY[i]<=7){
+                    if(papan[y+moveY[i]][x+moveX[i]].getBidak().getValue()==0 || papan[y+moveY[i]][x+moveX[i]].getBidak().isWhite() != turnP1 ){
+                        if(isValid(y+moveY[i],x+moveX[i],papan,baris,kolom)){
+                            papan[y+moveY[i]][x+moveX[i]].setStatus(1);
+                        }
+                    }
+                }
+            }
+        } //Knight
+        else if(papan[baris][kolom].getBidak().getValue() == 2){
+            //bishop
+            Boolean kiriAtas = true;
+            Boolean kananAtas = true;
+            Boolean kiriBawah = true;
+            Boolean kananBawah = true;
+            //buat ngecek dee sudah nambrak 1 apa belom
+
+            for(int i=1;i<=7;i++){
+                //serong kiri atas
+                // i pergerakan y  -> baris +- i
+                // j pergerakan x  -> kolom +- i
+                if(kolom - i >=0 && baris - i >=0 && kiriAtas){
+                    if(papan[baris-i][kolom-i].getBidak().getValue() == 0
+                            || papan[baris-i][kolom-i].getBidak().isWhite() != turnP1  ){
+
+                        if(isValid(baris-i,kolom-i,papan,baris,kolom)){
+                            papan[baris-i][kolom-i].setStatus(1);
+                            if(papan[baris-i][kolom-i].getBidak().getValue() != 0){
+                                kiriAtas = false;
+                                // ben kalo nabrak dee berhenti
+                            }
+                        }
+
+                    }else if(papan[baris-i][kolom-i].getBidak().isWhite() == turnP1 ){
+                        kiriAtas = false;
+                    }
+                }
+
+                //serong kanan bawah
+                if(kolom + i <=3 && baris + i <=7 && kananBawah){
+                    if(papan[baris+i][kolom+i].getBidak().getValue() == 0
+                            || papan[baris+i][kolom+i].getBidak().isWhite() != turnP1 ){
+                        if(isValid(baris+i,kolom+i,papan,baris,kolom)){
+                            papan[baris+i][kolom+i].setStatus(1);
+                            if(papan[baris+i][kolom+i].getBidak().getValue() != 0){
+                                kananBawah = false;
+                            }
+                        }
+                    }else if(papan[baris+i][kolom+i].getBidak().isWhite() == turnP1){
+                        kananBawah = false;
+                    }
+                }
+
+                //serong Kiri Bawh
+                if(kolom - i >=0 && baris + i <=7 && kiriBawah){
+                    if(papan[baris+i][kolom-i].getBidak().getValue() == 0
+                            || papan[baris+i][kolom-i].getBidak().isWhite() != turnP1 ){
+                        if(isValid(baris+i,kolom-i,papan,baris,kolom)){
+                            papan[baris+i][kolom-i].setStatus(1);
+                            if(papan[baris+i][kolom-i].getBidak().getValue() != 0){
+                                kiriBawah = false;
+                            }
+                        }
+                    }else if(papan[baris+i][kolom-i].getBidak().isWhite() == turnP1 ){
+                        kiriBawah = false;
+                    }
+                }
+
+                // kanan atas
+                if(kolom + i <=3 && baris - i >=0 && kananAtas){
+                    if(papan[baris-i][kolom+i].getBidak().getValue() == 0
+                            || papan[baris-i][kolom+i].getBidak().isWhite() != turnP1 ){
+
+                        if(isValid(baris-i,kolom+i,papan,baris,kolom)){
+                            papan[baris-i][kolom+i].setStatus(1);
+                            if(papan[baris-i][kolom+i].getBidak().getValue() != 0){
+                                kananAtas = false;
+                            }
+                        }
+                    }else if(papan[baris-i][kolom+i].getBidak().isWhite() == turnP1){
+                        kananAtas = false;
+                    }
+                }
+            }
+
+        } //Bishop
+        else if(papan[baris][kolom].getBidak().getValue() == 1){
+//            Toast.makeText(this, "Pawn", Toast.LENGTH_SHORT).show();
+            //pawn
+            if(turnP1 && y-1>=0){ //white move up
+                if(papan[y-1][x].getBidak().getValue()==0){
+//                    isValid(baris-1,kolom,papan,baris,kolom)
+                    if (isValid(y-1,kolom,papan,baris,kolom)){
+                        papan[y-1][x].setStatus(1);
+                        //;
+                    }
+
+                }
+                //langka awal
+                if(y==6 && papan[y-1][x].getBidak().getValue()==0){
+//                    isValid(y-1,kolom,papan,baris,kolom)
+                    if(isValid(y-1,x,papan,baris,kolom)){
+                        papan[y-1][x].setStatus(1);
+                        //;
+                    }
+                    if(papan[y-2][x].getBidak().getValue()==0){
+                        if(isValid(y-2,x,papan,baris,kolom)){
+                            papan[y-2][x].setStatus(1);
+                            //;
+
+                        }
+                    }
+                }
+                //Makan
+                if(x-1 >= 0 && papan[y-1][x-1].getBidak().getValue()!=0 && !papan[y-1][x-1].getBidak().isWhite()){
+                    if(isValid(y-1,x-1,papan,baris,kolom)){
+                        papan[y-1][x-1].setStatus(1);
+                        //;
+                    }
+                }
+                if(x+1 <= 3 && papan[y-1][x+1].getBidak().getValue()!=0 && !papan[y-1][x+1].getBidak().isWhite() ){
+                    if(isValid(y-1,x+1,papan,baris,kolom)){
+                        papan[y-1][x+1].setStatus(1);
+                        //;
+                    }
+                }
+
+            }
+            if(!turnP1 && y+1<=7){ // black move down
+                if(papan[y+1][x].getBidak().getValue() == 0){
+                    if(isValid(y+1,x,papan,baris,kolom)){
+                        papan[y+1][x].setStatus(1);
+                        //;
+                    }
+                }
+
+                if(y==1 && papan[y+1][x].getBidak().getValue()==0){
+                    if(isValid(y+1,x,papan,baris,kolom)){
+                        papan[y+1][x].setStatus(1);
+                        //;
+                    }
+                    if(papan[y+2][x].getBidak().getValue()==0){
+                        if(isValid(y+2,x,papan,baris,kolom)){
+                            papan[y+2][x].setStatus(1);
+                            //;
+                        }
+                    }
+                }
+
+                //Makan
+                if(x-1 >= 0 && papan[y+1][x-1].getBidak().getValue()!=0 && papan[y+1][x-1].getBidak().isWhite() ){
+                    if(isValid(y+1,x-1,papan,baris,kolom)){
+                        papan[y+1][x-1].setStatus(1);
+                        //;
+                    }
+                }
+                if(x+1 <= 3 && papan[y+1][x+1].getBidak().getValue()!=0 && papan[y+1][x+1].getBidak().isWhite() ){
+                    if(isValid(y+1,x+1,papan,baris,kolom)){
+                        papan[y+1][x+1].setStatus(1);
+                        //;
+                    }
+                }
+            }
+        } // Pawn
     }
 
     public void clickImg(View v){
 
-        int y,x;
+        int y=0,x=0;
         if(status== -1 ){ // masih main
             for(int i=0;i<8;i++){
                 for(int j=0;j<4;j++){
@@ -407,9 +912,46 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
+<<<<<<< Updated upstream
 //            if(papan[y][x].getBidak().isWhite() == turnP1){
 //
 //            }
+=======
+            if(selectY == -1 && selectX == -1){
+                if(papan[y][x].getBidak().getValue()!=0){ // nde papan e ono bidak e
+                    if(papan[y][x].getBidak().isWhite() == turnP1){ // bidak e punya e dee
+                        selectX = x;
+                        selectY = y;
+                        canMove(x,y); // y , x
+                    }else{
+                        Toast.makeText(this, "Not Your Turn ", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }else{ // player lagi nyelek papan
+                if(papan[y][x].getStatus() == 1){ //Move
+                    papan[y][x].setBidak(new Bidak(papan[selectY][selectX].getBidak().getValue(), papan[selectY][selectX].getBidak().isWhite()));
+                    papan[selectY][selectX].setBidak(new Bidak(0, false));
+                    for (int i = 0; i < 8; i++) {
+                        for (int j = 0; j < 4; j++) {
+                            papan[i][j].setStatus(0);
+                        }
+                    }
+                    turnP1 = !turnP1;
+                }else { // Salah Klik
+                    for (int i = 0; i < 8; i++) {
+                        for (int j = 0; j < 4; j++) {
+                            papan[i][j].setStatus(0);
+                        }
+                    }
+                }
+                    selectX = -1; selectY=-1;
+
+
+
+
+            }
+>>>>>>> Stashed changes
+
 
 
 
