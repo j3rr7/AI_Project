@@ -842,7 +842,7 @@ public interface MovementBehavior {
                     {
                         tempBoard[i][j].setBidak( currentBidak );
                         all_moves.add(tempBoard);
-                        tempBoard[i][j].setBidak( null );
+                        //tempBoard[i][j].setBidak( null );
                     }
                 }
             }
