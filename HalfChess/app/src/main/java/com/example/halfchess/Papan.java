@@ -9,10 +9,9 @@ import android.widget.ImageView;
 public class Papan {
     private Bidak bidak;
     ImageView letak;
+    private int status;
     boolean untouched;
     boolean enPassant;
-
-    private int status;
     private boolean pressed;
     private String color;
 

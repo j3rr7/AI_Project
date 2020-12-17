@@ -1,4 +1,4 @@
-#Thu Dec 17 20:31:23 ICT 2020
-base.0=C\:\\Users\\JeremyF\\Documents\\GitHub\\AI_Project\\HalfChess\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+#Thu Dec 17 13:00:12 ICT 2020
+base.0=D\:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

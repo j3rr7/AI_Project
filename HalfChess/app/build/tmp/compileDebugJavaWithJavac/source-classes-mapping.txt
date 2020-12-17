@@ -1,22 +1,22 @@
-com/example/halfchess/SelectDifficultyActivity.java
- com.example.halfchess.SelectDifficultyActivity
-com/example/halfchess/Computer.java
- com.example.halfchess.Computer
+com/example/halfchess/Papan.java
+ com.example.halfchess.Papan
+com/example/halfchess/Player.java
+ com.example.halfchess.Player
 com/example/halfchess/BuildConfig.java
  com.example.halfchess.BuildConfig
 com/example/halfchess/Bidak.java
  com.example.halfchess.Bidak
+com/example/halfchess/BidakCom.java
+ com.example.halfchess.BidakCom
+com/example/halfchess/Computer.java
+ com.example.halfchess.Computer
+com/example/halfchess/SelectDifficultyActivity.java
+ com.example.halfchess.SelectDifficultyActivity
 com/example/halfchess/GameActivity.java
  com.example.halfchess.GameActivity
  com.example.halfchess.GameActivity$1
  com.example.halfchess.GameActivity$2
  com.example.halfchess.GameActivity$3
  com.example.halfchess.GameActivity$4
-com/example/halfchess/Player.java
- com.example.halfchess.Player
-com/example/halfchess/BidakCom.java
- com.example.halfchess.BidakCom
 com/example/halfchess/MainActivity.java
  com.example.halfchess.MainActivity
-com/example/halfchess/Papan.java
- com.example.halfchess.Papan
