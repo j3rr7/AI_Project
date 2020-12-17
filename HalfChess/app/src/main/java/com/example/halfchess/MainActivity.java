@@ -407,9 +407,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
-            if(papan[y][x].getBidak().isWhite() == turnP1){
-
-            }
+//            if(papan[y][x].getBidak().isWhite() == turnP1){
+//
+//            }
 
 
 
