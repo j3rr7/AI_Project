@@ -912,11 +912,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
-<<<<<<< Updated upstream
-//            if(papan[y][x].getBidak().isWhite() == turnP1){
-//
-//            }
-=======
+
             if(selectY == -1 && selectX == -1){
                 if(papan[y][x].getBidak().getValue()!=0){ // nde papan e ono bidak e
                     if(papan[y][x].getBidak().isWhite() == turnP1){ // bidak e punya e dee
@@ -950,7 +946,6 @@ public class MainActivity extends AppCompatActivity {
 
 
             }
->>>>>>> Stashed changes
 
 
 
