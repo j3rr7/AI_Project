@@ -4,6 +4,11 @@ import android.graphics.Color;
 import android.widget.ImageView;
 
 public class Papan {
+    // 1 : Pawn
+    // 2 : Bishop
+    // 3 : Knight
+    // 4 : Queen
+    // 5 : King
     private Bidak bidak;
     ImageView letak;
     private int status; // 0 1 // ben tau lek dee dipencet
@@ -36,56 +41,52 @@ public class Papan {
     }
 
     public void updatePapan(){
-        if(bidak.getValue()!=0){
-            letak.setImageResource(R.mipmap.bishop_new_2);
-        }
-//        if(!pressed){ // kalo papan ini not selected
-//            if(bidak.getValue() == 1) {
-//                if(bidak.isWhite()) letak.setImageResource(R.drawable.ic_white_pawn);
-//                else letak.setImageResource(R.drawable.ic_black_pawn);
-//            }else if(bidak.getValue() == 2) {
-//                if(bidak.isWhite()) letak.setImageResource(R.drawable.ic_white_bishop);
-//                else letak.setImageResource(R.drawable.ic_black_bishop);
-//            }else if(bidak.getValue() == 3) {
-//                if(bidak.isWhite()) letak.setImageResource(R.drawable.ic_white_knight);
-//                else letak.setImageResource(R.drawable.ic_black_knight);
-//            }else if(bidak.getValue() == 4) {
-//                if(bidak.isWhite()) letak.setImageResource(R.drawable.ic_white_queen);
-//                else letak.setImageResource(R.drawable.ic_black_queen);
-//            }else if(bidak.getValue() == 5) {
-//                if(bidak.isWhite()) letak.setImageResource(R.drawable.ic_white_king);
-//                else letak.setImageResource(R.drawable.ic_black_king);
-//            }else{
-//                letak.setImageResource(0);
-//            }
-//        }else{
-//            if(bidak.getValue() == 1) {
-//                if(bidak.isWhite()) letak.setImageResource(R.drawable.ic_white_pawn_selected);
-//                else letak.setImageResource(R.drawable.ic_black_pawn_selected);
-//            }else if(bidak.getValue() == 2) {
-//                if(bidak.isWhite()) letak.setImageResource(R.drawable.ic_white_bishop_selected);
-//                else letak.setImageResource(R.drawable.ic_black_bishop_selected);
-//            }else if(bidak.getValue() == 3) {
-//                if(bidak.isWhite()) letak.setImageResource(R.drawable.ic_white_knight_selected);
-//                else letak.setImageResource(R.drawable.ic_black_knight_selected);
-//            }else if(bidak.getValue() == 4) {
-//                if(bidak.isWhite()) letak.setImageResource(R.drawable.ic_white_queen_selected);
-//                else letak.setImageResource(R.drawable.ic_black_queen_selected);
-//            }else if(bidak.getValue() == 5) {
-//                if(bidak.isWhite()) letak.setImageResource(R.drawable.ic_white_king_selected);
-//                else letak.setImageResource(R.drawable.ic_black_king_selected);
-//            }else{
-//                letak.setImageResource(0);
-//            }
-//        }
-        if(status != 0){
-            if(color.equals("#D9E1F6"))
-                letak.setBackgroundColor(Color.parseColor("#5ca08e"));
-            else
-                letak.setBackgroundColor(Color.parseColor("#8abaae"));
+        // 1 : Pawn
+        // 2 : Bishop
+        // 3 : Knight
+        // 4 : Queen
+        // 5 : King
+
+        if(bidak.isWhite()){
+            if(bidak.getValue() == 1){
+                letak.setImageResource(R.mipmap.pawn_newg);
+            }else if(bidak.getValue() == 2){
+                letak.setImageResource(R.mipmap.bishop_new_2g);
+            }else if(bidak.getValue() == 3){
+                letak.setImageResource(R.mipmap.knight_1g);
+            }else if(bidak.getValue() == 4){
+                letak.setImageResource(R.mipmap.queeng);
+            }else if(bidak.getValue() == 5){
+                letak.setImageResource(R.mipmap.king_1g);
+            }else{
+                letak.setImageResource(0);
+            }
         }else{
-            letak.setBackgroundColor(Color.parseColor(color));
+            if(bidak.getValue() == 1){
+                letak.setImageResource(R.mipmap.pawn_new);
+            }else if(bidak.getValue() == 2){
+                letak.setImageResource(R.mipmap.bishop_new_2);
+            }else if(bidak.getValue() == 3){
+                letak.setImageResource(R.mipmap.knight_2);
+            }else if(bidak.getValue() == 4){
+                letak.setImageResource(R.mipmap.queen1);
+            }else if(bidak.getValue() == 5){
+                letak.setImageResource(R.mipmap.king_1);
+            }else{
+                letak.setImageResource(0);
+            }
         }
+
+
+
+//        if(status != 0){
+//            if(color.equals("#D9E1F6"))
+//                letak.setBackgroundColor(Color.parseColor("#5ca08e"));
+//            else
+//                letak.setBackgroundColor(Color.parseColor("#8abaae"));
+//        }else{
+//            letak.setBackgroundColor(Color.parseColor(color));
+//        }
 
     }
 

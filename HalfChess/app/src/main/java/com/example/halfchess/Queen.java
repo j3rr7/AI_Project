@@ -1,16 +1,7 @@
 package com.example.halfchess;
 
 public class Queen extends Bidak {
-    public Queen(Papan papan, boolean p1) {
-        super(papan, p1);
-        move = new MovementBehavior.QueenMovement();
-        mark = new MarkArea.QueenArea();
-        markSimulation = new MarkSimulation.QueenSimulation();
-        if(p1){
-            img = R.mipmap.queeng;
-        }else{
-            img = R.mipmap.queen1;
-        }
-        super.setValue(9);
+    public Queen(int value, boolean white) {
+        super(value, white);
     }
 }

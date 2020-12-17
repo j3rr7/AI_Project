@@ -1,16 +1,7 @@
 package com.example.halfchess;
 
 public class King extends Bidak {
-    public King(Papan papan, boolean p1) {
-        super(papan, p1);
-        move = new MovementBehavior.KingMovement();
-        mark = new MarkArea.KingArea();
-        markSimulation = new MarkSimulation.KingSimulation();
-        if(p1){
-            img = R.mipmap.king_1g;
-        }else{
-            img = R.mipmap.king_1;
-        }
-        super.setValue(99);
+    public King(int value, boolean white) {
+        super(value, white);
     }
 }

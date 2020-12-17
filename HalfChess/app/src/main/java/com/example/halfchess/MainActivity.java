@@ -45,23 +45,30 @@ public class MainActivity extends AppCompatActivity {
 //    public static Player p2 ;
 
     private Papan[][] papan = new Papan[8][4];
-    private boolean turn,makan=false;
-    private boolean[] check = new boolean[2];
+    private boolean makan=false;
+    private int baris = -1,kolom = -1,status = -1;//-1 still play, draw = 0
+    // , white win = 1, black win = 2
     private ImageView virtualIV;
-    private int baris = -1,kolom = -1,gamestate = -1;//draw = 0, white win = 1, black win = 2
-    TextView whiteTurn,blackTurn;
+    int selectY=-1,selectX=-1; //  buat nentukan posisi papan yang diselect
+
+
     private int[][] repetition = new int[4][4];
+    private boolean[] check = new boolean[2];
+    TextView whiteTurn,blackTurn;
 //    Computer com;
+
 
     Boolean turnP1;
     boolean vsAI = false;
-    Papan temp = null;
     TextView tvTurn;
-    Chronometer cmTimer;
     Chronometer cmTimer2;
-    long elapsedTime;
+    Chronometer cmTimer;
     long elapsedTime2;
+    long elapsedTime;
     int ctr = 0;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -344,7 +351,7 @@ public class MainActivity extends AppCompatActivity {
         papan[0][0] = new Papan(new Bidak(5,false),tiles[0][0], "#FFFFFF");
         papan[0][1] = new Papan(new Bidak(4,false),tiles[0][1], "#D9E1F6");
         papan[0][2] = new Papan(new Bidak(3,false),tiles[0][2], "#FFFFFF");
-        papan[0][3] = new Papan(new Bidak(2,false),tiles[0][4], "#D9E1F6");
+        papan[0][3] = new Papan(new Bidak(2,false),tiles[0][3], "#D9E1F6");
 
         papan[1][0] = new Papan(new Bidak(1,false),tiles[1][0], "#D9E1F6");
         papan[1][1] = new Papan(new Bidak(1,false),tiles[1][1], "#FFFFFF");
@@ -382,8 +389,36 @@ public class MainActivity extends AppCompatActivity {
         papan[7][3] = new Papan(new Bidak(2,true),tiles[7][3], "#FFFFFF");
     }
 
+    public void canMove(){
+        System.out.println("Can Move");
+    }
 
     public void clickImg(View v){
+
+        int y,x;
+        if(status== -1 ){ // masih main
+            for(int i=0;i<8;i++){
+                for(int j=0;j<4;j++){
+                    if(v.getId() == papan[i][j].letak.getId()){
+                        y = i;
+                        x = j;
+                        break;
+                    }
+                }
+            }
+
+            if(papan[y][x].getBidak().isWhite() == turnP1){
+
+            }
+
+
+
+
+
+
+
+
+        }
 
     }
 
