@@ -1,0 +1,766 @@
+[
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_white_king_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_white_king_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_logochessround.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_logochessround.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_white_king.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_white_king.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_black_bishop_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_black_bishop_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_black_bishop_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_black_bishop_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_white_queen_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_white_queen_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_launcher_background.xml.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_black_bishop.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_black_bishop.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_black_king_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_black_king_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_white_bishop_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_white_bishop_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_white_pawn.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_white_pawn.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_black_king.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_black_king.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_white_queen_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_white_queen_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_white_bishop_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_white_bishop_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_black_pawn_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_black_pawn_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\font_minionpro_boldcn.otf.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\src\\main\\res\\font\\minionpro_boldcn.otf"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_black_knight.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_black_knight.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_white_bishop.xml.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_white_bishop.xml"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\raw_skak.mp3.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\src\\main\\res\\raw\\skak.mp3"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_white_queen.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_white_queen.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_black_pawn.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_black_pawn.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_logochessround.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_logochessround.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_select_difficulty.xml.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\src\\main\\res\\layout\\activity_select_difficulty.xml"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_black_knight.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_black_knight.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_white_knight_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_white_knight_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\raw_gerak.mp3.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\src\\main\\res\\raw\\gerak.mp3"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\raw_makan.mp3.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\src\\main\\res\\raw\\makan.mp3"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_logochess.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_logochess.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_black_king.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_black_king.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_black_queen.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_black_queen.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\font_bahnschrift_regular.ttf.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\src\\main\\res\\font\\bahnschrift_regular.ttf"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_white_pawn_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_white_pawn_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_logochess.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_logochess.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_black_knight_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_black_knight_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_white_bishop_selected.xml.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_white_bishop_selected.xml"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_black_queen_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_black_queen_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_black_king_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_black_king_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\font_bahnschrift_bold.ttf.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\src\\main\\res\\font\\bahnschrift_bold.ttf"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_black_bishop_selected.xml.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_black_bishop_selected.xml"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_white_queen_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_white_queen_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_logochessround.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_logochessround.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_white_queen_selected.xml.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_white_queen_selected.xml"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_black_queen.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_black_queen.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_white_bishop_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_white_bishop_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_black_bishop.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_black_bishop.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_black_queen_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_black_queen_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_black_pawn.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_black_pawn.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_logochess.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_logochess.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_launcher_background.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_black_pawn_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_black_pawn_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_launcher_background.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_white_king_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_white_king_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_black_knight.xml.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_black_knight.xml"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_white_bishop.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_white_bishop.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_game.xml.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\src\\main\\res\\layout\\activity_game.xml"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_black_bishop_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_black_bishop_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_white_pawn_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_white_pawn_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_black_pawn.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_black_pawn.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_black_queen_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_black_queen_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_white_knight.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_white_knight.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_white_king.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_white_king.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\font_minionpro_regular.otf.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\src\\main\\res\\font\\minionpro_regular.otf"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_logochess.xml.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_logochess.xml"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_black_pawn_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_black_pawn_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_black_bishop.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_black_bishop.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_white_queen.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_white_queen.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_white_queen.xml.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_white_queen.xml"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_black_king.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_black_king.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_white_pawn.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_white_pawn.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_black_knight.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_black_knight.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_launcher_background.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_white_pawn.xml.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_white_pawn.xml"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_white_king_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_white_king_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_black_queen.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_black_queen.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\font_bahnschrift_semibold.ttf.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\src\\main\\res\\font\\bahnschrift_semibold.ttf"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_white_bishop.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_white_bishop.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_white_queen_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_white_queen_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_black_king_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_black_king_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_logochessround.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_logochessround.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_white_king.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_white_king.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_black_pawn.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_black_pawn.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_black_queen.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_black_queen.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_white_knight_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_white_knight_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_white_knight_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_white_knight_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_black_knight.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_black_knight.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_black_queen_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_black_queen_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_white_king_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_white_king_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_black_pawn.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_black_pawn.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_white_knight.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_white_knight.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_black_king.xml.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_black_king.xml"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_launcher_background.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_white_queen.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_white_queen.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_white_knight_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_white_knight_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_white_bishop_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_white_bishop_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_white_king.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_white_king.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_white_pawn_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_white_pawn_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_logochess.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_logochess.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_white_bishop.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_white_bishop.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_white_king_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_white_king_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\raw_bg_play.mp3.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\src\\main\\res\\raw\\bg_play.mp3"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_black_queen.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_black_queen.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_white_pawn_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_white_pawn_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_white_queen_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_white_queen_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_white_knight_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_white_knight_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_black_queen_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_black_queen_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_logochess.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_logochess.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_launcher_background.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_black_queen.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_black_queen.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_white_bishop.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_white_bishop.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_black_knight.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_black_knight.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_black_bishop_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_black_bishop_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_black_queen_selected.xml.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_black_queen_selected.xml"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_white_queen.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_white_queen.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_white_knight_selected.xml.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_white_knight_selected.xml"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_black_pawn_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_black_pawn_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_white_pawn.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_white_pawn.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_black_queen.xml.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_black_queen.xml"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_black_pawn_selected.xml.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_black_pawn_selected.xml"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_white_knight_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_white_knight_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\font_minionpro_bold.otf.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\src\\main\\res\\font\\minionpro_bold.otf"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_white_king.xml.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_white_king.xml"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_white_queen.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_white_queen.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_black_king_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_black_king_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_white_king.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_white_king.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_white_knight.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_white_knight.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_launcher_background.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_black_king_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_black_king_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_black_bishop.xml.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_black_bishop.xml"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_white_bishop_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_white_bishop_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\raw_pilih.mp3.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\src\\main\\res\\raw\\pilih.mp3"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_logochessround.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_logochessround.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_white_pawn_selected.xml.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_white_pawn_selected.xml"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_black_pawn_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_black_pawn_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\font_minionpro_semibold.otf.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\src\\main\\res\\font\\minionpro_semibold.otf"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_black_pawn_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_black_pawn_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_white_pawn.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_white_pawn.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_black_knight_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_black_knight_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_logochess.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_logochess.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\font_bahnschrift.ttf.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\src\\main\\res\\font\\bahnschrift.ttf"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_white_knight.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_white_knight.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_black_bishop.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_black_bishop.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_white_pawn_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_white_pawn_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_white_bishop.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_white_bishop.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_black_bishop_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_black_bishop_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_logochessround.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_logochessround.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_white_king.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_white_king.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_black_king_selected.xml.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_black_king_selected.xml"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_white_queen.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_white_queen.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_black_bishop.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_black_bishop.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_white_bishop_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_white_bishop_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_white_king_selected.xml.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_white_king_selected.xml"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_black_king_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_black_king_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_white_knight.xml.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_white_knight.xml"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\font_minionpro_medium.otf.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\src\\main\\res\\font\\minionpro_medium.otf"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_black_knight_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_black_knight_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_black_bishop.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_black_bishop.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_white_knight.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_white_knight.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_white_pawn_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_white_pawn_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_white_pawn.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_white_pawn.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_white_knight.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_white_knight.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_black_bishop_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_black_bishop_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_black_knight_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_black_knight_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_logochessround.xml.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_logochessround.xml"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_white_bishop.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_white_bishop.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_white_king_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_white_king_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_black_king.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_black_king.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_black_knight.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_black_knight.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_black_knight_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_black_knight_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_black_knight_selected.xml.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_black_knight_selected.xml"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_black_king.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_black_king.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_black_king.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_black_king.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_white_queen_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_white_queen_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_black_knight_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_black_knight_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_black_queen_selected.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_black_queen_selected.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_black_pawn.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_black_pawn.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_white_pawn.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_white_pawn.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_black_pawn.xml.flat",
+        "source": "D:\\Kuliah\\AI\\HalfChess\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_black_pawn.xml"
+    }
+]
