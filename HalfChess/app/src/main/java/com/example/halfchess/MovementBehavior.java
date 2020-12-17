@@ -5,11 +5,12 @@ import android.hardware.camera2.params.MandatoryStreamCombination;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public interface MovementBehavior {
     public Boolean Pickup(Boolean player1,int x,int y);
-    public ArrayList<Papan[][]> getAllPossibleMove(Bidak currentBidak);
+    public ArrayList<Papan[][]> getAllPossibleMove(Bidak currentBidak, boolean isBot);
 
     public class PawnMovement implements MovementBehavior{
         @Override
@@ -91,8 +92,84 @@ public interface MovementBehavior {
         }
 
         @Override
-        public ArrayList<Papan[][]> getAllPossibleMove(Bidak current) {
-            return null;
+        public ArrayList<Papan[][]> getAllPossibleMove(Bidak current, boolean isBot) {
+            ArrayList<Papan[][]> all_moves = new ArrayList<>();
+            int[][] temp = new int[8][4];
+            for(int i=0;i<8;i++) { for(int j=0;j<4;j++) { temp[i][j] = 0; } }
+
+            int x = current.getX(), y = current.getY();
+
+            if(isBot && y-1>=0){ //white move up
+                if(MainActivity.papan[y-1][x].getBidak()==null){
+                    if (MainActivity.papan[y][x].getBidak().MoveSimulation(x,y-1)){
+                        MainActivity.tiles[y-1][x].setBackgroundColor(Color.YELLOW);
+                        temp[y-1][x] = 1;
+                    }
+
+                }
+                //langka awal
+                if(y==6 && MainActivity.papan[y-1][x].getBidak()==null){
+                    if(MainActivity.papan[y][x].getBidak().MoveSimulation(x,y-1)){
+                        MainActivity.tiles[y-1][x].setBackgroundColor(Color.YELLOW);
+                        temp[y-1][x] = 1;
+                    }
+                    if(MainActivity.papan[y-2][x].getBidak()==null){
+                        if(MainActivity.papan[y][x].getBidak().MoveSimulation(x,y-2)){
+                            MainActivity.tiles[y-2][x].setBackgroundColor(Color.YELLOW);
+                            temp[y-2][x] = 1;
+                        }
+                    }
+                }
+                //Makan
+                if(x-1 >= 0 && MainActivity.papan[y-1][x-1].getBidak()!=null && !MainActivity.papan[y-1][x-1].getBidak().isP1()){
+                    if(MainActivity.papan[y][x].getBidak().MoveSimulation(x-1,y-1)){
+                        MainActivity.tiles[y-1][x-1].setBackgroundColor(Color.YELLOW);
+                        temp[y-1][x-1] = 1;
+                    }
+                }
+                if(x+1 <= 3 && MainActivity.papan[y-1][x+1].getBidak()!=null && !MainActivity.papan[y-1][x+1].getBidak().isP1() ){
+                    if(MainActivity.papan[y][x].getBidak().MoveSimulation(x+1,y-1)){
+                        MainActivity.tiles[y-1][x+1].setBackgroundColor(Color.YELLOW);
+                        temp[y-1][x+1] = 1;
+                    }
+                }
+
+            }
+            if(!isBot && y+1<=7){ // black move down
+                if(MainActivity.papan[y+1][x].getBidak() == null){
+                    if(MainActivity.papan[y][x].getBidak().MoveSimulation(x,y+1)){
+                        MainActivity.tiles[y+1][x].setBackgroundColor(Color.YELLOW);
+                        temp[y+1][x] = 1;
+                    }
+                }
+                if(y==1 && MainActivity.papan[y+1][x].getBidak()==null){
+                    if(MainActivity.papan[y][x].getBidak().MoveSimulation(x,y+1)){
+                        MainActivity.tiles[y+1][x].setBackgroundColor(Color.YELLOW);
+                        temp[y+1][x] = 1;
+                    }
+                    if(MainActivity.papan[y+2][x].getBidak()==null){
+                        if(MainActivity.papan[y][x].getBidak().MoveSimulation(x,y+1)){
+                            MainActivity.tiles[y+2][x].setBackgroundColor(Color.YELLOW);
+                            temp[y+2][x] = 1;
+                        }
+                    }
+                }
+                //Makan
+                if(x-1 >= 0 && MainActivity.papan[y+1][x-1].getBidak()!=null && MainActivity.papan[y+1][x-1].getBidak().isP1() ){
+                    if(MainActivity.papan[y][x].getBidak().MoveSimulation(x-1,y+1)){
+                        MainActivity.tiles[y+1][x-1].setBackgroundColor(Color.YELLOW);
+                        temp[y+1][x-1] = 1;
+                    }
+                }
+                if(x+1 <= 3 && MainActivity.papan[y+1][x+1].getBidak()!=null && MainActivity.papan[y+1][x+1].getBidak().isP1() ){
+                    if(MainActivity.papan[y][x].getBidak().MoveSimulation(x+1,y+1)){
+                        MainActivity.tiles[y+1][x+1].setBackgroundColor(Color.YELLOW);
+                        temp[y+1][x+1] = 1;
+                    }
+                }
+            }
+
+            return all_moves;
         }
     }
     public class KingMovement implements MovementBehavior{
@@ -172,8 +249,69 @@ public interface MovementBehavior {
         }
 
         @Override
-        public ArrayList<Papan[][]> getAllPossibleMove(Bidak current) {
-            return null;
+        public ArrayList<Papan[][]> getAllPossibleMove(Bidak current, boolean isBot) {
+            ArrayList<Papan[][]> all_moves = new ArrayList<>();
+            int[][] temp = new int[8][4];
+            for(int i=0;i<8;i++) { for(int j=0;j<4;j++) { temp[i][j] = 0; } }
+
+            int x = current.getX(), y = current.getY();
+            if(x-1>=0){
+                if(MainActivity.papan[y][x-1].getBidak() == null || MainActivity.papan[y][x-1].getBidak().isP1() != isBot ){
+                    movement(isBot,y,x-1);
+                    MainActivity.tiles[y][x-1].setBackgroundColor(Color.YELLOW);
+                    temp[y][x-1] = 1;
+                }
+                if(y+1 <=7){
+                    if(MainActivity.papan[y+1][x-1].getBidak() == null || MainActivity.papan[y+1][x-1].getBidak().isP1() != isBot ){
+                        movement(isBot,y+1,x-1);
+                        MainActivity.tiles[y+1][x-1].setBackgroundColor(Color.YELLOW);
+                        temp[y+1][x-1] = 1;
+                    }
+                }
+                if(y-1>=0){
+                    if(MainActivity.papan[y-1][x-1].getBidak() == null || MainActivity.papan[y-1][x-1].getBidak().isP1() != isBot ){
+                        movement(isBot,y-1,x-1);
+                        MainActivity.tiles[y-1][x-1].setBackgroundColor(Color.YELLOW);
+                        temp[y-1][x-1] = 1;
+                    }
+                }
+            }
+            if(x+1 <=3){
+                if(MainActivity.papan[y][x+1].getBidak() == null || MainActivity.papan[y][x+1].getBidak().isP1() != isBot ){
+                    movement(isBot,y,x+1);
+                    MainActivity.tiles[y][x+1].setBackgroundColor(Color.YELLOW);
+                    temp[y][x+1] = 1;
+                }
+                if(y+1 <=7){
+                    if(MainActivity.papan[y+1][x+1].getBidak() == null || MainActivity.papan[y+1][x+1].getBidak().isP1() != isBot ){
+                        movement(isBot,y+1,x+1);
+                        MainActivity.tiles[y+1][x+1].setBackgroundColor(Color.YELLOW);
+                        temp[y+1][x+1] = 1;
+                    }
+                }
+                if(y-1>=0){
+                    if(MainActivity.papan[y-1][x+1].getBidak() == null || MainActivity.papan[y-1][x+1].getBidak().isP1() != isBot ){
+                        movement(isBot,y-1,x+1);
+                        MainActivity.tiles[y-1][x+1].setBackgroundColor(Color.YELLOW);
+                        temp[y-1][x+1] = 1;
+                    }
+                }
+            }
+            if(y+1 <=7){
+                if(MainActivity.papan[y+1][x].getBidak() == null || MainActivity.papan[y+1][x].getBidak().isP1() != isBot ){
+                    movement(isBot,y+1,x);
+                    MainActivity.tiles[y+1][x].setBackgroundColor(Color.YELLOW);
+                    temp[y+1][x] = 1;
+                }
+            }
+            if(y-1>=0){
+                if(MainActivity.papan[y-1][x].getBidak() == null || MainActivity.papan[y-1][x].getBidak().isP1() != isBot ){
+                    movement(isBot,y-1,x);
+                    MainActivity.tiles[y-1][x].setBackgroundColor(Color.YELLOW);
+                    temp[y-1][x] = 1;
+                }
+            }
+            return all_moves;
         }
     }
     public class BishopMovement implements MovementBehavior{
@@ -262,7 +400,7 @@ public interface MovementBehavior {
         }
 
         @Override
-        public ArrayList<Papan[][]> getAllPossibleMove(Bidak current) {
+        public ArrayList<Papan[][]> getAllPossibleMove(Bidak current, boolean isBot) {
             ArrayList<Papan[][]> all_moves = new ArrayList<>();
             int[][] temp = new int[8][4];
             for(int i=0;i<8;i++) { for(int j=0;j<4;j++) { temp[i][j] = 0; } }
@@ -279,7 +417,7 @@ public interface MovementBehavior {
             for(int i=1;i<=4;i++){
                 //serong kiri atas
                 if(x - i >=0 && y - i >=0 && kiriAtas){
-                    if(MainActivity.papan[y-i][x-i].getBidak() == null || MainActivity.papan[y-i][x-i].getBidak().isP1() != current.isP1() ){
+                    if(MainActivity.papan[y-i][x-i].getBidak() == null || MainActivity.papan[y-i][x-i].getBidak().isP1() != isBot ){
                         // dikasih checksimulation , sebelum ngijo no
                         // jadi misal dee ditaruh nde situ apakah skak
                         //if(MainActivity.papan[y][x].getBidak().MoveSimulation(x-i,y-i)){
@@ -291,14 +429,14 @@ public interface MovementBehavior {
                         }
                         //}
 
-                    }else if(MainActivity.papan[y-i][x-i].getBidak().isP1() == current.isP1() ){
+                    }else if(MainActivity.papan[y-i][x-i].getBidak().isP1() == isBot ){
                         kiriAtas = false;
                     }
                 }
 
                 //serong kanan bawah
                 if(x + i <=3 && y + i <=7 && kananBawah){
-                    if(MainActivity.papan[y+i][x+i].getBidak() == null || MainActivity.papan[y+i][x+i].getBidak().isP1() != current.isP1() ){
+                    if(MainActivity.papan[y+i][x+i].getBidak() == null || MainActivity.papan[y+i][x+i].getBidak().isP1() != isBot ){
                         if(MainActivity.papan[y][x].getBidak().MoveSimulation(x+i,y+i)){
                             MainActivity.tiles[y+i][x+i].setBackgroundColor(Color.YELLOW);
                             temp[y+i][x+i] = 1;
@@ -307,14 +445,14 @@ public interface MovementBehavior {
                             }
 
                         }
-                    }else if(MainActivity.papan[y+i][x+i].getBidak().isP1() == current.isP1()){
+                    }else if(MainActivity.papan[y+i][x+i].getBidak().isP1() == isBot){
                         kananBawah = false;
                     }
                 }
 
                 //serong Kiri Bawh
                 if(x - i >=0 && y + i <=7 && kiriBawah){
-                    if(MainActivity.papan[y+i][x-i].getBidak() == null || MainActivity.papan[y+i][x-i].getBidak().isP1() != current.isP1() ){
+                    if(MainActivity.papan[y+i][x-i].getBidak() == null || MainActivity.papan[y+i][x-i].getBidak().isP1() != isBot ){
                         if(MainActivity.papan[y][x].getBidak().MoveSimulation(x-i,y+i)){
                             MainActivity.tiles[y+i][x-i].setBackgroundColor(Color.YELLOW);
                             temp[y+i][x-i] = 1;
@@ -323,14 +461,14 @@ public interface MovementBehavior {
                             }
 
                         }
-                    }else if(MainActivity.papan[y+i][x-i].getBidak().isP1() == current.isP1() ){
+                    }else if(MainActivity.papan[y+i][x-i].getBidak().isP1() == isBot ){
                         kiriBawah = false;
                     }
                 }
 
                 // kanan atas
                 if(x + i <=3 && y - i >=0 && kananAtas){
-                    if(MainActivity.papan[y-i][x+i].getBidak() == null || MainActivity.papan[y-i][x+i].getBidak().isP1() != current.isP1() ){
+                    if(MainActivity.papan[y-i][x+i].getBidak() == null || MainActivity.papan[y-i][x+i].getBidak().isP1() != isBot ){
                         if(MainActivity.papan[y][x].getBidak().MoveSimulation(x+i,y-i)){
                             MainActivity.tiles[y-i][x+i].setBackgroundColor(Color.YELLOW);
                             temp[y-i][x+i] = 1;
@@ -338,7 +476,7 @@ public interface MovementBehavior {
                                 kananAtas = false;
                             }
                         }
-                    }else if(MainActivity.papan[y-i][x+i].getBidak().isP1() == current.isP1()){
+                    }else if(MainActivity.papan[y-i][x+i].getBidak().isP1() == isBot){
                         kananAtas = false;
                     }
                 }
@@ -350,21 +488,8 @@ public interface MovementBehavior {
                     tempBoard[i][j] = MainActivity.papan[i][j];
                 }
             }
-            tempBoard[x][y].setBidak( null );
-            tempBoard[x][y] = new Papan(x, y, tempBoard[x][y].getIdPapan());
-            for(int i=0;i<8;i++){
-                for(int j=0;j<4;j++){
-                    if (temp[i][j] != 0)
-                    {
-                        tempBoard[i][j].setBidak( MainActivity.papan[x][y].getBidak() );
-                        all_moves.add(tempBoard);
-                        tempBoard[i][j].setBidak( null );
-                        tempBoard[i][j] = new Papan(i, j, tempBoard[x][y].getIdPapan());
-                    }
-                }
-            }
-
             return all_moves;
+
         }
     }
     public class QueenMovement implements  MovementBehavior{
@@ -531,8 +656,131 @@ public interface MovementBehavior {
         }
 
         @Override
-        public ArrayList<Papan[][]> getAllPossibleMove(Bidak current) {
-            return null;
+        public ArrayList<Papan[][]> getAllPossibleMove(Bidak current, boolean isBot) {
+            ArrayList<Papan[][]> all_moves = new ArrayList<>();
+            int[][] temp = new int[8][4];
+            for(int i=0;i<8;i++) { for(int j=0;j<4;j++) { temp[i][j] = 0; } }
+
+            int x = current.getX(), y = current.getY();
+            int tx = x, ty = y;
+            boolean kiriAtas = true, kananAtas = true, kiriBawah = true, kananBawah = true;
+
+            for(int i=1;i<=7;i++){
+                if(x - i >=0 && y - i >=0 && kiriAtas){
+                    if(MainActivity.papan[y-i][x-i].getBidak() == null || MainActivity.papan[y-i][x-i].getBidak().isP1() != isBot ){
+                        if(MainActivity.papan[y][x].getBidak().MoveSimulation(x-i,y-i)){
+                            MainActivity.tiles[y-i][x-i].setBackgroundColor(Color.YELLOW);
+                            temp[y-i][x-i] = 1;
+                            if(MainActivity.papan[y-i][x-i].getBidak() != null){
+                                kiriAtas = false;
+                            }
+                        }
+                    }else if(MainActivity.papan[y-i][x-i].getBidak().isP1() == isBot ){
+                        kiriAtas = false;
+                    }
+                }
+                if(x + i <=3 && y + i <=7 && kananBawah){
+                    if(MainActivity.papan[y+i][x+i].getBidak() == null || MainActivity.papan[y+i][x+i].getBidak().isP1() != isBot ){
+                        if(MainActivity.papan[y][x].getBidak().MoveSimulation(x+i,y+i)){
+                            MainActivity.tiles[y+i][x+i].setBackgroundColor(Color.YELLOW);
+                            temp[y+i][x+i] = 1;
+                            if(MainActivity.papan[y+i][x+i].getBidak() != null){
+                                kananBawah = false;
+                            }
+                        }
+                    }else if(MainActivity.papan[y+i][x+i].getBidak().isP1() == isBot){
+                        kananBawah = false;
+                    }
+                }
+                //serong Kiri Bawh
+                if(x - i >=0 && y + i <=7 && kiriBawah){
+                    if(MainActivity.papan[y+i][x-i].getBidak() == null || MainActivity.papan[y+i][x-i].getBidak().isP1() != isBot ){
+                        if(MainActivity.papan[y][x].getBidak().MoveSimulation(x-i,y+i)){
+                            MainActivity.tiles[y+i][x-i].setBackgroundColor(Color.YELLOW);
+                            temp[y+i][x-i] = 1;
+                            if(MainActivity.papan[y+i][x-i].getBidak() != null){
+                                kiriBawah = false;
+                            }
+                        }
+                    }else if(MainActivity.papan[y+i][x-i].getBidak().isP1() == isBot ){
+                        kiriBawah = false;
+                    }
+                }
+                // kanan atas
+                if(x + i <=3 && y - i >=0 && kananAtas){
+                    if(MainActivity.papan[y-i][x+i].getBidak() == null || MainActivity.papan[y-i][x+i].getBidak().isP1() != isBot ){
+
+                        if(MainActivity.papan[y][x].getBidak().MoveSimulation(x+i,y-i)){
+                            MainActivity.tiles[y-i][x+i].setBackgroundColor(Color.YELLOW);
+                            temp[y-i][x+i] = 1;
+                            if(MainActivity.papan[y-i][x+i].getBidak() != null){
+                                kananAtas = false;
+                            }
+                        }
+                    }else if(MainActivity.papan[y-i][x+i].getBidak().isP1() == isBot){
+                        kananAtas = false;
+                    }
+                }
+
+            }
+
+            boolean kiri = true, kanan = true, atas = true, bawah = true;
+            // vertikal horizontal
+            for (int i=1;i<=7;i++){
+                if(x-i >= 0 && kiri){
+                    if(MainActivity.papan[y][x-i].getBidak() == null || MainActivity.papan[y][x-i].getBidak().isP1() != isBot ){
+                        if(MainActivity.papan[y][x].getBidak().MoveSimulation(x-i,y)){
+                            MainActivity.tiles[y][x-i].setBackgroundColor(Color.YELLOW);
+                            temp[y][x-i] = 1;
+                            if(MainActivity.papan[y][x-i].getBidak() != null){
+                                kiri = false;
+                            }
+                        }
+                    }else if(MainActivity.papan[y][x-i].getBidak().isP1() == isBot){
+                        kiri = false;
+                    }
+                }
+                if(x+i <= 3 && kanan){
+                    if(MainActivity.papan[y][x+i].getBidak() == null || MainActivity.papan[y][x+i].getBidak().isP1() != isBot ){
+                        if(MainActivity.papan[y][x].getBidak().MoveSimulation(x+i,y)){
+                            MainActivity.tiles[y][x+i].setBackgroundColor(Color.YELLOW);
+                            temp[y][x+i] = 1;
+                            if(MainActivity.papan[y][x+i].getBidak() != null){
+                                kanan = false;
+                            }
+                        }
+                    }else if(MainActivity.papan[y][x+i].getBidak().isP1() == isBot){
+                        kanan = false;
+                    }
+                }
+                if(y-i >= 0 && atas){
+                    if(MainActivity.papan[y-i][x].getBidak() == null || MainActivity.papan[y-i][x].getBidak().isP1() != isBot ){
+                        if(MainActivity.papan[y][x].getBidak().MoveSimulation(x,y-i)){
+                            MainActivity.tiles[y-i][x].setBackgroundColor(Color.YELLOW);
+                            temp[y-i][x] = 1;
+                            if(MainActivity.papan[y-i][x].getBidak() != null){
+                                atas = false;
+                            }
+                        }
+                    }else if(MainActivity.papan[y-i][x].getBidak().isP1() == isBot){
+                        atas = false;
+                    }
+                }
+                if(y+i <= 7 && bawah){
+                    if(MainActivity.papan[y+i][x].getBidak() == null || MainActivity.papan[y+i][x].getBidak().isP1() != isBot ){
+                        if(MainActivity.papan[y][x].getBidak().MoveSimulation(x,y+i)){
+                            MainActivity.tiles[y+i][x].setBackgroundColor(Color.YELLOW);
+                            temp[y+i][x] = 1;
+                            if(MainActivity.papan[y+i][x].getBidak() != null){
+                                bawah = false;
+                            }
+                        }
+                    }else if(MainActivity.papan[y+i][x].getBidak().isP1() == isBot){
+                        bawah = false;
+                    }
+                }
+            }
+            return all_moves;
         }
     }
     public class HorseMovement implements MovementBehavior{
@@ -555,9 +803,8 @@ public interface MovementBehavior {
             return canMove;
         }
 
-
         @Override
-        public ArrayList<Papan[][]> getAllPossibleMove(Bidak currentBidak) {
+        public ArrayList<Papan[][]> getAllPossibleMove(Bidak currentBidak, boolean isBot) {
             ArrayList<Papan[][]> all_moves = new ArrayList<>();
             int[][] temp = new int[8][4];
             for(int i=0;i<8;i++) { for(int j=0;j<4;j++) { temp[i][j] = 0; } }
@@ -569,7 +816,7 @@ public interface MovementBehavior {
             int[] moveY = new int[]{-2,-2,-1,1,2,2,1,-1};
             for(int i=0;i<8;i++){
                 if(x+moveX[i]>=0 && y+moveY[i]>=0 && x+moveX[i]<=3 && y+moveY[i]<=7){
-                    if(MainActivity.papan[y+moveY[i]][x+moveX[i]].getBidak() == null || MainActivity.papan[y+moveY[i]][x+moveX[i]].getBidak().isP1() != currentBidak.isP1() ){
+                    if(MainActivity.papan[y+moveY[i]][x+moveX[i]].getBidak() == null || MainActivity.papan[y+moveY[i]][x+moveX[i]].getBidak().isP1() != isBot ){
                         MainActivity.tiles[y+moveY[i]][x+moveX[i]].setBackgroundColor(Color.YELLOW);
                         temp[y+moveY[i]][x+moveX[i]] = 1;
                     }
@@ -579,18 +826,23 @@ public interface MovementBehavior {
             Papan[][] tempBoard = new Papan[8][4];
             for(int i=0;i<8;i++){
                 for(int j=0;j<4;j++){
-                    tempBoard[i][j] = MainActivity.papan[i][j];
+                    tempBoard[i][j] = new Papan(i,j,MainActivity.papan[i][j].getIdPapan());
+                    if (!(i == y && j == x))
+                    {
+                        if (temp[i][j] == 0)
+                        {
+                            tempBoard[i][j].setBidak( MainActivity.papan[i][j].getBidak() );
+                        }
+                    }
                 }
             }
-            tempBoard[x][y] = new Papan(x, y, tempBoard[x][y].getIdPapan());
-            for(int i=0;i<8;i++){
-                for(int j=0;j<4;j++){
-                    if (temp[i][j] != 0)
+            for(int i=0; i<8; i++) {
+                for (int j=0; j<4; j++) {
+                    if (temp[i][j] == 1)
                     {
-                        tempBoard[i][j].setBidak( MainActivity.papan[x][y].getBidak() );
+                        tempBoard[i][j].setBidak( currentBidak );
                         all_moves.add(tempBoard);
-                        //tempBoard[i][j].setBidak( null );
-                        tempBoard[i][j] = new Papan(i, j, tempBoard[i][j].getIdPapan());
+                        tempBoard[i][j].setBidak( null );
                     }
                 }
             }

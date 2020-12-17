@@ -93,8 +93,6 @@ public class MainActivity extends AppCompatActivity {
         cmTimer.setBase(SystemClock.elapsedRealtime());
         cmTimer.start();
     }
-
-
     public static void setSimulationArea(){
         MainActivity.markSimulation = new Boolean[8][4];
         MainActivity.markSimulation2 = new Boolean[8][4];
@@ -302,7 +300,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-
         if(papan[y][x].getBidak()!=null && temp==null){ // ada bidak e
             Boolean isP1 = papan[y][x].getBidak().isP1();
             System.out.println(papan[y][x].getBidak().getClass().getSimpleName()+"");
@@ -476,9 +473,7 @@ public class MainActivity extends AppCompatActivity {
             resetMarkedArea();
         }
     }
-
-    public void refreshTampilan()
-    {
+    public void refreshTampilan() {
         for(int i = 0 ; i < 8 ; i++ ) {
             for(int j = 0 ; j < 4 ; j++) {
                 tiles[i][j].setImageResource(0);
@@ -491,7 +486,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
     public void setPapan(){
         for(int i=0 ;i<8;i++){
             for(int j=0;j<4;j++){
@@ -593,19 +587,31 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.item_test:
                 AI.Node startAi = new AI.Node(MainActivity.papan, null);
+                AI.Node BestMove = null;
+                int boardValue = -99999;
                 for(int i=0;i<8;i++) {
                     for(int j=0;j<4;j++) {
-//                        if ( MainActivity.papan[i][j].getBidak() != null && MainActivity.papan[i][j].getBidak() instanceof Knight && !MainActivity.papan[i][j].getBidak().isP1()) {
-//                            ArrayList<Papan[][]> allMoves = MainActivity.papan[i][j].getBidak().getMove().getAllPossibleMove( MainActivity.papan[i][j].getBidak() );
-//                            MainActivity.papan = allMoves.get(0);
-//                            refreshTampilan();
-//                        }
-                        if (MainActivity.papan[i][j].getBidak() != null && MainActivity.papan[i][j].getBidak() instanceof Bishop && !MainActivity.papan[i][j].getBidak().isP1()){
-                            ArrayList<Papan[][]> allMoves = MainActivity.papan[i][j].getBidak().getMove().getAllPossibleMove( MainActivity.papan[i][j].getBidak() );
-                            MainActivity.papan = allMoves.get(0);
+                        if ( MainActivity.papan[i][j].getBidak() != null && !MainActivity.papan[i][j].getBidak().isP1() && MainActivity.papan[i][j].getBidak() instanceof Knight) {
+                            ArrayList<Papan[][]> allMoves = MainActivity.papan[i][j].getBidak().getMove().getAllPossibleMove( MainActivity.papan[i][j].getBidak() , turnP1);
+                            //MainActivity.papan = allMoves.get(0);
                             refreshTampilan();
+//                            while(!allMoves.isEmpty())
+//                            {
+//                                //proses
+//                                int current_boardValue = AI.AIBehaviour.boardEvaluation(allMoves.get(allMoves.size()-1));
+//                                if (current_boardValue > boardValue)
+//                                {
+//                                    boardValue = current_boardValue;
+//                                    BestMove = new AI.Node(allMoves.get(allMoves.size()-1), startAi);
+//                                }
+//                                allMoves.remove(allMoves.size()-1);
+//                            }
                         }
                     }
+                }
+                if (BestMove != null)
+                {
+                    MainActivity.papan = BestMove.papan;
                 }
                 break;
         }
