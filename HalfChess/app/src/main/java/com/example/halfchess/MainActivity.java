@@ -28,22 +28,6 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     public static ImageView[][] tiles = new ImageView[8][4];
-//    public static Boolean[][] markCheck = new Boolean[8][4];
-//    public static Boolean[][] markCheck2 = new Boolean[8][4];
-//
-//    // Posisi Papan yang sekarang
-//    public static Papan[][] papan = new Papan[8][4];
-//
-//    public static Boolean[][] markSimulation = new Boolean[8][4];
-//    public static Boolean[][] markSimulation2 = new Boolean[8][4];
-//    public static Papan[][] papanSimulation = new Papan[8][4];
-//    public static Bidak[] bidakP1Simulation = new Bidak[8]; //
-//    public static Bidak[] bidakP2Simulation = new Bidak[8]; //
-    // lets pray for our simulation
-//    public static Bidak[] bidakP1 = new Bidak[8]; //0 King , 1 Queen , 2 Bishop , 3 Kuda , sisa e pawn dari kiri
-//    public static Bidak[] bidakP2 = new Bidak[8]; // podo
-//    public static Player p1 ;
-//    public static Player p2 ;
 
     private Papan[][] papan = new Papan[8][4];
     private boolean makan=false;
@@ -56,8 +40,6 @@ public class MainActivity extends AppCompatActivity {
     private int[][] repetition = new int[4][4];
     private boolean[] check = new boolean[2];
     TextView whiteTurn,blackTurn;
-//    Computer com;
-
 
     Boolean turnP1;
     boolean vsAI = false;
@@ -67,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
     long elapsedTime2;
     long elapsedTime;
     int ctr = 0;
-
 
 
     @Override
@@ -100,211 +81,6 @@ public class MainActivity extends AppCompatActivity {
         cmTimer.start();
         turnP1 = true;
     }
-
-
-//    public static void setSimulationArea(){
-//        MainActivity.markSimulation = new Boolean[8][4];
-//        MainActivity.markSimulation2 = new Boolean[8][4];
-//        MainActivity.papanSimulation = new Papan[8][4];
-//        MainActivity.bidakP1Simulation = new Bidak[8]; //
-//        MainActivity.bidakP2Simulation = new Bidak[8]; //
-//
-//
-//        for(int i=0;i<8;i++){
-//            for(int j=0;j<4;j++){
-//                markSimulation[i][j]=false;
-//                markSimulation2[i][j]=false;
-//            }
-//        }
-////        MainActivity.markSimulation = MainActivity.markCheck;
-////        MainActivity.markSimulation2 = MainActivity.markCheck2;
-//        for(int i=0;i<8;i++){
-//            MainActivity.papanSimulation[i] = Arrays.copyOf(MainActivity.papan[i] , MainActivity.papan[i].length);
-//            MainActivity.bidakP1Simulation = Arrays.copyOf(MainActivity.bidakP1,  MainActivity.bidakP1.length);
-//            MainActivity.bidakP2Simulation = Arrays.copyOf(MainActivity.bidakP2,  MainActivity.bidakP2.length);
-//        }
-//    }
-//    public static Boolean markSimulationArea(Boolean isTurnP1){
-//
-//        if(MainActivity.papan[7][1].getBidak().getValue() == 0){
-//            System.out.println("Bidak is  Null in Simulation Area");
-//        }else{
-//            System.out.println("Bidak Masih Ada in Simualation Area");
-//        }
-//        for(int i=0;i<8;i++){ // kalo turn e P1 simulasikan semua bidak lawan marknya, kalo dia makan king artinya check dan gaoleh gerak ke sana
-//            if(isTurnP1){ // nde mark simulation cek daerah sendiri ae
-////                System.out.println("Turn P1 Simulation Area");
-//                if(bidakP2Simulation[i] != null){
-////                    Bidak temp = bidakP2Simulation[i];
-//                    Boolean check = bidakP2Simulation[i].markSimulation.Mark(bidakP2Simulation[i].isWhite(),bidakP2Simulation[i].getX(),bidakP2Simulation[i].getY());
-//                    System.out.println(i+ " - Loop Bidak P2 Simulaation : "+check);
-//                    if (check){
-//                        System.out.println("P1 got check");
-//                        return check;
-//                    }
-//                }
-//            }else{
-//                if(bidakP1Simulation[i] != null){
-//                    Bidak temp = bidakP1Simulation[i];
-//                    Boolean check = bidakP1Simulation[i].markSimulation.Mark(temp.isWhite(),temp.getX(),temp.getY());
-//                    if(check){
-//                        System.out.println("P2 got check");
-//                        return check;
-//                    }
-//                }
-//            }
-//
-//        }
-//
-//        return false;
-//    }
-//    public static void markArea(){
-//        for(int i=0;i<8;i++){
-//            if(bidakP1[i]!=null){
-//                bidakP1[i].mark.Mark(true,bidakP1[i].getX(),bidakP1[i].getY());
-//            }
-//            if(bidakP2[i]!=null){
-//                bidakP2[i].mark.Mark(false,bidakP2[i].getX(),bidakP2[i].getY());
-//            }
-//        }
-//    }
-//    public void resetMarkedArea(){
-//        for(int i=0;i<8;i++){
-//            for(int j=0;j<4;j++){
-//               markCheck[i][j]=false;
-//               markCheck2[i][j]=false;
-//            }
-//        }
-//    }
-//    public static Boolean cekCheckSimulation(Boolean p1, int x ,int y){
-//        if(y>=0 && x>=0 && y<8 && x<4){
-//            if(MainActivity.papanSimulation[y][x].getBidak() != null
-//                    && MainActivity.papanSimulation[y][x].getBidak().isWhite()!=p1
-//                    && MainActivity.papanSimulation[y][x].getBidak().getClass().getSimpleName().equalsIgnoreCase("King")){
-//                if(p1){
-//                    System.out.println("Check P2");
-//                    return true;
-//                }else{
-//                    System.out.println("Check P1");
-//                    return true;
-//                }
-//            }
-//        }
-//        return false;
-//    }
-//    public static Boolean cekCheck(Boolean p1, int x ,int y){
-//
-//        if(y>=0 && x>=0 && y<8 && x<4){
-//            if(MainActivity.papan[y][x].getBidak() != null
-//                    && MainActivity.papan[y][x].getBidak().isWhite()!=p1
-//                        && MainActivity.papan[y][x].getBidak().getClass().getSimpleName().equalsIgnoreCase("King")){
-//                if(p1){
-//                    System.out.println("Check P2");
-//                    return true;
-//                }else{
-//                    System.out.println("Check P1");
-//                    return true;
-//                }
-//            }
-//        }
-//        return false;
-//    }
-//    public void setBidak(){
-//        King k = new King(papan[7][0],true);
-//        King k2 = new King(papan[0][0],false);
-//        bidakP1[0] = k;
-//        bidakP2[0] = k2;
-//        papan[7][0].setBidak(bidakP1[0]);
-//        papan[0][0].setBidak(bidakP2[0]);
-//
-//        Queen q = new Queen(papan[7][1],true);
-//        Queen q2 = new Queen(papan[0][1],false);
-//        bidakP1[1] = q;
-//        bidakP2[1] = q2;
-//        papan[7][1].setBidak(bidakP1[1]);
-//        papan[0][1].setBidak(bidakP2[1]);
-////
-////        Bishop b = new Bishop(papan[7][2],true);
-////        Bishop b2 = new Bishop(papan[0][2],false);
-////        bidakP1[2] = b;
-////        bidakP2[2] = b2;
-////        papan[7][2].setBidak(bidakP1[2]);
-////        papan[0][2].setBidak(bidakP2[2]);
-////
-////
-////        Knight kuda = new Knight(papan[7][2],true);
-////        Knight kuda2 = new Knight(papan[0][2],false);
-////        bidakP1[3] = kuda;
-////        bidakP2[3] = kuda2;
-////        papan[7][3].setBidak(bidakP1[3]);
-////        papan[0][3].setBidak(bidakP2[3]);
-////
-////        //white move up
-////        Pawn p1 = new Pawn(papan[1][0],false);
-////        Pawn p2 = new Pawn(papan[1][1],false);
-////        Pawn p3 = new Pawn(papan[1][2],false);
-////        Pawn p4 = new Pawn(papan[1][3],false);
-////        bidakP2[4] = p1;
-////        bidakP2[5] = p2;
-////        bidakP2[6] = p3;
-////        bidakP2[7] = p4;
-////        papan[1][0].setBidak(bidakP2[4]);
-////        papan[1][1].setBidak(bidakP2[5]);
-////        papan[1][2].setBidak(bidakP2[6]);
-////        papan[1][3].setBidak(bidakP2[7]);
-////
-////
-////         p1 = new Pawn(papan[6][0],true);
-////         p2 = new Pawn(papan[6][1],true);
-////         p3 = new Pawn(papan[6][2],true);
-////         p4 = new Pawn(papan[6][3],true);
-////        bidakP1[4] = p1;
-////        bidakP1[5] = p2;
-////        bidakP1[6] = p3;
-////        bidakP1[7] = p4;
-////
-////        papan[6][0].setBidak(bidakP1[4]);
-////        papan[6][1].setBidak(bidakP1[5]);
-////        papan[6][2].setBidak(bidakP1[6]);
-////        papan[6][3].setBidak(bidakP1[7]);
-//
-//        for(int i=0;i<8;i++){
-//            for(int j=0;j<4;j++){
-//                if(papan[i][j].getBidak() != bidakP1[0] && papan[i][j].getBidak() != bidakP1[1] && papan[i][j].getBidak() != bidakP1[2] && papan[i][j].getBidak() != bidakP1[3]
-//                        && papan[i][j].getBidak() != bidakP1[4] && papan[i][j].getBidak() != bidakP1[5] && papan[i][j].getBidak() != bidakP1[6] && papan[i][j].getBidak() != bidakP1[7]){
-//                    tiles[i][j].setRotationX(180);
-//                }
-//                if(papan[i][j].getBidak()!=null){
-//                    tiles[i][j].setImageResource(papan[i][j].getBidak().getImg());
-//                }
-//            }
-//        }
-//    }
-//    public void resetMap(){ // gambar Ulang papan mbe bidak e
-//        for(int i=0;i<8;i++){
-//            for(int j=0;j<4;j++){
-//
-//               if((i+j) % 2  == 0){
-//                   tiles[i][j].setBackgroundColor(Color.WHITE);
-//               }else{
-//                   tiles[i][j].setBackgroundColor(Color.BLACK);
-//               }
-//            }
-//        }
-//    }
-//    public void refreshTampilan() {
-//        for(int i = 0 ; i < 8 ; i++ ) {
-//            for(int j = 0 ; j < 4 ; j++) {
-//                tiles[i][j].setImageResource(0);
-//            }
-//        }
-//        for(int i = 0 ; i < 8 ; i++ ) {
-//            for(int j = 0 ; j < 4 ; j++) {
-//                if (MainActivity.papan[i][j].getBidak() != null)
-//                    tiles[i][j].setImageResource(MainActivity.papan[i][j].getBidak().getImg());
-//            }
-//        }
-//    }
 
     public void setImageView(){
         tiles[0][0] = findViewById(R.id.imageView2);
@@ -899,7 +675,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickImg(View v){
-
         int y=0,x=0;
         if(status== -1 ){ // masih main
             for(int i=0;i<8;i++){
@@ -911,58 +686,42 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
-
-
-            if(selectY == -1 && selectX == -1){
-                if(papan[y][x].getBidak().getValue()!=0){ // nde papan e ono bidak e
-                    if(papan[y][x].getBidak().isWhite() == turnP1){ // bidak e punya e dee
-                        selectX = x;
-                        selectY = y;
-                        canMove(x,y); // y , x
-                    }else{
-                        Toast.makeText(this, "Not Your Turn ", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }else{ // player lagi nyelek papan
-                if(papan[y][x].getStatus() == 1){ //Move
-                    papan[y][x].setBidak(new Bidak(papan[selectY][selectX].getBidak().getValue(), papan[selectY][selectX].getBidak().isWhite()));
-                    papan[selectY][selectX].setBidak(new Bidak(0, false));
-                    for (int i = 0; i < 8; i++) {
-                        for (int j = 0; j < 4; j++) {
-                            papan[i][j].setStatus(0);
-                        }
-                    }
-                    turnP1 = !turnP1;
-                }else { // Salah Klik
-                    for (int i = 0; i < 8; i++) {
-                        for (int j = 0; j < 4; j++) {
-                            papan[i][j].setStatus(0);
-                        }
-                    }
-                }
-                    selectX = -1; selectY=-1;
-
-
-
+            if (vsAI) {
 
             }
-
-
-
-
-
-
-
-
-
+            else {
+                if(selectY == -1 && selectX == -1){
+                    if(papan[y][x].getBidak().getValue()!=0){ // nde papan e ono bidak e
+                        if(papan[y][x].getBidak().isWhite() == turnP1){ // bidak e punya e dee
+                            selectX = x;
+                            selectY = y;
+                            canMove(x,y); // y , x
+                        }else{
+                            Toast.makeText(this, "Not Your Turn ", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }else{ // player lagi nyelek papan
+                    if(papan[y][x].getStatus() == 1){ //Move
+                        papan[y][x].setBidak(new Bidak(papan[selectY][selectX].getBidak().getValue(), papan[selectY][selectX].getBidak().isWhite()));
+                        papan[selectY][selectX].setBidak(new Bidak(0, false));
+                        for (int i = 0; i < 8; i++) {
+                            for (int j = 0; j < 4; j++) {
+                                papan[i][j].setStatus(0);
+                            }
+                        }
+                        turnP1 = !turnP1;
+                    }else { // Salah Klik
+                        for (int i = 0; i < 8; i++) {
+                            for (int j = 0; j < 4; j++) {
+                                papan[i][j].setStatus(0);
+                            }
+                        }
+                    }
+                    selectX = -1; selectY=-1;
+                }
+            }
         }
-
     }
-
-
-
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -972,6 +731,20 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
+            case R.id.item_test:
+                ArrayList<AI.Move> listMove = AI.AIBehaviour.getAllPossibleMove(papan, turnP1);
+                papan[listMove.get(0).getDestx()][listMove.get(0).getDesty()].getBidak().setValue(papan[listMove.get(0).getSrcx()][listMove.get(0).getSrcy()].getBidak().getValue());
+                papan[listMove.get(0).getSrcx()][listMove.get(0).getSrcy()].getBidak().setValue(0);
+                for(int i=0;i<8;i++)
+                {
+                    for (int j=0;j<4;j++)
+                    {
+                        papan[i][j].setStatus(0);
+                    }
+                }
+                turnP1 = !turnP1;
+                System.out.println();
+                break;
             case R.id.item_reset:
                 turnP1 = true;
                 for(int i = 0 ; i < 8 ; i++ ) {
@@ -995,8 +768,6 @@ public class MainActivity extends AppCompatActivity {
                     cmTimer2.start();
                 }
                 break;
-
-
         }
         return super.onOptionsItemSelected(item);
     }
