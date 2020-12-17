@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     long elapsedTime2;
     long elapsedTime;
     int ctr = 0;
+    int canMoveCounter=0;
 
 
     @Override
@@ -356,10 +357,14 @@ public class MainActivity extends AppCompatActivity {
                         if(papan[i][j].getBidak().getValue() == 0){
                             if(isValid(i,j,papan,baris,kolom)){
                                 papan[i][j].setStatus(1);
+                                canMoveCounter++;
+
                             }
                         }else if((!turnP1 && papan[i][j].getBidak().isWhite()) || (turnP1 && !papan[i][j].getBidak().isWhite())){
                             if(isValid(i,j,papan,baris,kolom)){
                                 papan[i][j].setStatus(1);
+                                canMoveCounter++;
+
                             }
                         }
                     }
@@ -383,6 +388,8 @@ public class MainActivity extends AppCompatActivity {
                       
                         if(isValid(baris-i,kolom-i,papan,baris,kolom)){
                             papan[baris-i][kolom-i].setStatus(1);
+                            canMoveCounter++;
+
                             if(papan[baris-i][kolom-i].getBidak().getValue() != 0){
                                 kiriAtas = false;
                                 // ben kalo nabrak dee berhenti
@@ -400,6 +407,8 @@ public class MainActivity extends AppCompatActivity {
                     || papan[baris+i][kolom+i].getBidak().isWhite() != turnP1 ){
                         if(isValid(baris+i,kolom+i,papan,baris,kolom)){
                             papan[baris+i][kolom+i].setStatus(1);
+                            canMoveCounter++;
+
                             if(papan[baris+i][kolom+i].getBidak().getValue() != 0){
                                 kananBawah = false;
                             }
@@ -415,6 +424,8 @@ public class MainActivity extends AppCompatActivity {
                     || papan[baris+i][kolom-i].getBidak().isWhite() != turnP1 ){
                         if(isValid(baris+i,kolom-i,papan,baris,kolom)){
                             papan[baris+i][kolom-i].setStatus(1);
+                            canMoveCounter++;
+
                             if(papan[baris+i][kolom-i].getBidak().getValue() != 0){
                                 kiriBawah = false;
                             }
@@ -431,6 +442,8 @@ public class MainActivity extends AppCompatActivity {
 
                         if(isValid(baris-i,kolom+i,papan,baris,kolom)){
                             papan[baris-i][kolom+i].setStatus(1);
+                            canMoveCounter++;
+
                             if(papan[baris-i][kolom+i].getBidak().getValue() != 0){
                                 kananAtas = false;
                             }
@@ -451,6 +464,8 @@ public class MainActivity extends AppCompatActivity {
                     if(papan[baris][kolom-i].getBidak().getValue() == 0 || papan[baris][kolom-i].getBidak().isWhite() != turnP1 ){
                         if(isValid(baris,kolom-i,papan,baris,kolom)){
                             papan[baris][kolom-i].setStatus(1);
+                            canMoveCounter++;
+
 
                             if(papan[baris][kolom-i].getBidak().getValue() != 0){
                                 kiri = false;
@@ -465,6 +480,8 @@ public class MainActivity extends AppCompatActivity {
                     if(papan[baris][kolom+i].getBidak().getValue() == 0 || papan[baris][kolom+i].getBidak().isWhite() != turnP1 ){
                         if(isValid(baris,kolom+i,papan,baris,kolom)){
                             papan[baris][kolom+i].setStatus(1);
+                            canMoveCounter++;
+
 
                             if(papan[baris][kolom+i].getBidak().getValue() != 0){
                                 kanan = false;
@@ -479,6 +496,8 @@ public class MainActivity extends AppCompatActivity {
                     if(papan[baris-i][kolom].getBidak().getValue() == 0 || papan[baris-i][kolom].getBidak().isWhite() !=turnP1 ){
                         if(isValid(baris-i,kolom,papan,baris,kolom)){
                             papan[baris-i][kolom].setStatus(1);
+                            canMoveCounter++;
+
                             if(papan[baris-i][kolom].getBidak().getValue() != 0){
                                 atas = false;
                             }
@@ -492,6 +511,8 @@ public class MainActivity extends AppCompatActivity {
                     if(papan[baris+i][kolom].getBidak().getValue() == 0 || papan[baris+i][kolom].getBidak().isWhite() != turnP1 ){
                         if(isValid(baris+i,kolom,papan,baris,kolom)){
                             papan[baris+i][kolom].setStatus(1);
+                            canMoveCounter++;
+
                             if(papan[baris+i][kolom].getBidak().getValue() != 0){
                                 bawah = false;
                             }
@@ -512,6 +533,8 @@ public class MainActivity extends AppCompatActivity {
                     if(papan[y+moveY[i]][x+moveX[i]].getBidak().getValue()==0 || papan[y+moveY[i]][x+moveX[i]].getBidak().isWhite() != turnP1 ){
                         if(isValid(y+moveY[i],x+moveX[i],papan,baris,kolom)){
                             papan[y+moveY[i]][x+moveX[i]].setStatus(1);
+                            canMoveCounter++;
+
                         }
                     }
                 }
@@ -535,6 +558,8 @@ public class MainActivity extends AppCompatActivity {
 
                         if(isValid(baris-i,kolom-i,papan,baris,kolom)){
                             papan[baris-i][kolom-i].setStatus(1);
+                            canMoveCounter++;
+
                             if(papan[baris-i][kolom-i].getBidak().getValue() != 0){
                                 kiriAtas = false;
                                 // ben kalo nabrak dee berhenti
@@ -552,6 +577,8 @@ public class MainActivity extends AppCompatActivity {
                             || papan[baris+i][kolom+i].getBidak().isWhite() != turnP1 ){
                         if(isValid(baris+i,kolom+i,papan,baris,kolom)){
                             papan[baris+i][kolom+i].setStatus(1);
+                            canMoveCounter++;
+
                             if(papan[baris+i][kolom+i].getBidak().getValue() != 0){
                                 kananBawah = false;
                             }
@@ -567,6 +594,8 @@ public class MainActivity extends AppCompatActivity {
                             || papan[baris+i][kolom-i].getBidak().isWhite() != turnP1 ){
                         if(isValid(baris+i,kolom-i,papan,baris,kolom)){
                             papan[baris+i][kolom-i].setStatus(1);
+                            canMoveCounter++;
+
                             if(papan[baris+i][kolom-i].getBidak().getValue() != 0){
                                 kiriBawah = false;
                             }
@@ -583,6 +612,8 @@ public class MainActivity extends AppCompatActivity {
 
                         if(isValid(baris-i,kolom+i,papan,baris,kolom)){
                             papan[baris-i][kolom+i].setStatus(1);
+                            canMoveCounter++;
+
                             if(papan[baris-i][kolom+i].getBidak().getValue() != 0){
                                 kananAtas = false;
                             }
@@ -602,6 +633,8 @@ public class MainActivity extends AppCompatActivity {
 //                    isValid(baris-1,kolom,papan,baris,kolom)
                     if (isValid(y-1,kolom,papan,baris,kolom)){
                         papan[y-1][x].setStatus(1);
+                        canMoveCounter++;
+
                         //;
                     }
 
@@ -611,11 +644,15 @@ public class MainActivity extends AppCompatActivity {
 //                    isValid(y-1,kolom,papan,baris,kolom)
                     if(isValid(y-1,x,papan,baris,kolom)){
                         papan[y-1][x].setStatus(1);
+                        canMoveCounter++;
+
                         //;
                     }
                     if(papan[y-2][x].getBidak().getValue()==0){
                         if(isValid(y-2,x,papan,baris,kolom)){
                             papan[y-2][x].setStatus(1);
+                            canMoveCounter++;
+
                             //;
 
                         }
@@ -625,12 +662,16 @@ public class MainActivity extends AppCompatActivity {
                 if(x-1 >= 0 && papan[y-1][x-1].getBidak().getValue()!=0 && !papan[y-1][x-1].getBidak().isWhite()){
                     if(isValid(y-1,x-1,papan,baris,kolom)){
                         papan[y-1][x-1].setStatus(1);
+                        canMoveCounter++;
+
                         //;
                     }
                 }
                 if(x+1 <= 3 && papan[y-1][x+1].getBidak().getValue()!=0 && !papan[y-1][x+1].getBidak().isWhite() ){
                     if(isValid(y-1,x+1,papan,baris,kolom)){
                         papan[y-1][x+1].setStatus(1);
+                        canMoveCounter++;
+
                         //;
                     }
                 }
@@ -640,6 +681,8 @@ public class MainActivity extends AppCompatActivity {
                 if(papan[y+1][x].getBidak().getValue() == 0){
                     if(isValid(y+1,x,papan,baris,kolom)){
                         papan[y+1][x].setStatus(1);
+                        canMoveCounter++;
+
                         //;
                     }
                 }
@@ -647,11 +690,15 @@ public class MainActivity extends AppCompatActivity {
                 if(y==1 && papan[y+1][x].getBidak().getValue()==0){
                     if(isValid(y+1,x,papan,baris,kolom)){
                         papan[y+1][x].setStatus(1);
+                        canMoveCounter++;
+
                         //;
                     }
                     if(papan[y+2][x].getBidak().getValue()==0){
                         if(isValid(y+2,x,papan,baris,kolom)){
                             papan[y+2][x].setStatus(1);
+                            canMoveCounter++;
+
                             //;
                         }
                     }
@@ -661,17 +708,50 @@ public class MainActivity extends AppCompatActivity {
                 if(x-1 >= 0 && papan[y+1][x-1].getBidak().getValue()!=0 && papan[y+1][x-1].getBidak().isWhite() ){
                     if(isValid(y+1,x-1,papan,baris,kolom)){
                         papan[y+1][x-1].setStatus(1);
+                        canMoveCounter++;
+
                         //;
                     }
                 }
                 if(x+1 <= 3 && papan[y+1][x+1].getBidak().getValue()!=0 && papan[y+1][x+1].getBidak().isWhite() ){
                     if(isValid(y+1,x+1,papan,baris,kolom)){
                         papan[y+1][x+1].setStatus(1);
+                        canMoveCounter++;
+
                         //;
                     }
                 }
             }
         } // Pawn
+    }
+
+    // abis ganti player langsung cekWin
+    // abis p2 turn cekWin kalo P1 move e 0 dee kalah
+    public boolean cekWin(){
+        boolean win=false;
+        for(int i=0;i<8;i++){
+            for(int j=0;j<4;j++){
+                if(papan[i][j].getBidak().getValue()!=0 && papan[i][j].getBidak().isWhite() == turnP1){
+                    canMove(j,i);
+                }
+            }
+        }
+        for(int i=0;i<8;i++){
+            for(int j=0;j<4;j++){
+               papan[i][j].setStatus(0);
+            }
+        }
+        if(canMoveCounter==0){
+            win=true;
+            if(turnP1){
+                status = 2; // whiteWin
+            }else{
+                status = 1; // whiteWin
+
+            }
+        }
+        canMoveCounter=0;
+        return win;
     }
 
     public void clickImg(View v){
@@ -709,13 +789,26 @@ public class MainActivity extends AppCompatActivity {
                                 papan[i][j].setStatus(0);
                             }
                         }
+                        canMoveCounter=0;
                         turnP1 = !turnP1;
+                        if(cekWin()){
+                            if(status == 1){
+                                tvTurn.setText("Player 1 Win");
+                            }else if(status == 2){
+                                tvTurn.setText("Player 2 Win");
+
+                            }
+                        };
+                        // check win
+
+
                     }else { // Salah Klik
                         for (int i = 0; i < 8; i++) {
                             for (int j = 0; j < 4; j++) {
                                 papan[i][j].setStatus(0);
                             }
                         }
+                        canMoveCounter++;
                     }
                     selectX = -1; selectY=-1;
                 }
@@ -762,6 +855,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 //                resetMap();
                 setPapan();
+                status=-1;
 //                setBidak();
                 cmTimer.setBase(SystemClock.elapsedRealtime());
                 cmTimer.stop();
@@ -779,37 +873,5 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-//    public static Boolean checkSimulation(Boolean p1,int x,int y,int newX,int newY){
-//        Boolean check=false;
-////        Papan[][] tempPapan = new Papan[8][4];
-//        Bidak[] tempBidak1 =  new Bidak[8];
-//        Bidak[] tempBidak2 =  new Bidak[8];
-////        tempPapan = papan;
-//        tempBidak1 = bidakP1;
-//        tempBidak2 = bidakP2;
 //
-//        int index =0;
-//        for(int i=0;i<8;i++){
-//            if (p1){
-//                if(tempBidak1[i]!=null && tempBidak1[i].getX() ==x  && tempBidak1[i].getY() == y){
-//                    index = i;
-//            }else{
-//                }if(tempBidak2[i]!=null && tempBidak2[i].getX() == x  && tempBidak2[i].getY() == y){
-//                    index = i;
-//                }
-//            }
-//        }
-//
-//        //mindah bidak e
-//        if (p1){
-//            tempBidak1[index].setX(newX);
-//            tempBidak1[index].setY(newY);
-//        }else{
-//            tempBidak2[index].setX(newX);
-//            tempBidak2[index].setY(newY);
-//        }
-//
-//        //do marks
-//        return  check;
-//    }
 }
