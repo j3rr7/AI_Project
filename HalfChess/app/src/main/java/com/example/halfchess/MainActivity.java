@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -103,9 +104,11 @@ public class MainActivity extends AppCompatActivity {
         }
 //        MainActivity.markSimulation = MainActivity.markCheck;
 //        MainActivity.markSimulation2 = MainActivity.markCheck2;
-        MainActivity.papanSimulation = MainActivity.papan;
-        MainActivity.bidakP1Simulation = MainActivity.bidakP1;
-        MainActivity.bidakP2Simulation = MainActivity.bidakP2;
+        for(int i=0;i<8;i++){
+            MainActivity.papanSimulation[i] = Arrays.copyOf(MainActivity.papan[i] , MainActivity.papan[i].length);
+            MainActivity.bidakP1Simulation = Arrays.copyOf(MainActivity.bidakP1,  MainActivity.bidakP1.length);
+            MainActivity.bidakP2Simulation = Arrays.copyOf(MainActivity.bidakP2,  MainActivity.bidakP2.length);
+        }
     }
     public static Boolean markSimulationArea(Boolean isTurnP1){
 
@@ -138,11 +141,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }
-        if(MainActivity.papan[7][1].getBidak() == null){
-            System.out.println("Bidak is  Null in Mark Simulation Area");
-        }else{
-            System.out.println("Bidak Masih Ada");
-        }
+
         return false;
     }
     public static void markArea(){
@@ -210,50 +209,50 @@ public class MainActivity extends AppCompatActivity {
         bidakP2[1] = q2;
         papan[7][1].setBidak(bidakP1[1]);
         papan[0][1].setBidak(bidakP2[1]);
-
-        Bishop b = new Bishop(papan[7][2],true);
-        Bishop b2 = new Bishop(papan[0][2],false);
-        bidakP1[2] = b;
-        bidakP2[2] = b2;
-        papan[7][2].setBidak(bidakP1[2]);
-        papan[0][2].setBidak(bidakP2[2]);
-
-
-        Knight kuda = new Knight(papan[7][2],true);
-        Knight kuda2 = new Knight(papan[0][2],false);
-        bidakP1[3] = kuda;
-        bidakP2[3] = kuda2;
-        papan[7][3].setBidak(bidakP1[3]);
-        papan[0][3].setBidak(bidakP2[3]);
-
-        //white move up
-        Pawn p1 = new Pawn(papan[1][0],false);
-        Pawn p2 = new Pawn(papan[1][1],false);
-        Pawn p3 = new Pawn(papan[1][2],false);
-        Pawn p4 = new Pawn(papan[1][3],false);
-        bidakP2[4] = p1;
-        bidakP2[5] = p2;
-        bidakP2[6] = p3;
-        bidakP2[7] = p4;
-        papan[1][0].setBidak(bidakP2[4]);
-        papan[1][1].setBidak(bidakP2[5]);
-        papan[1][2].setBidak(bidakP2[6]);
-        papan[1][3].setBidak(bidakP2[7]);
-
-
-         p1 = new Pawn(papan[6][0],true);
-         p2 = new Pawn(papan[6][1],true);
-         p3 = new Pawn(papan[6][2],true);
-         p4 = new Pawn(papan[6][3],true);
-        bidakP1[4] = p1;
-        bidakP1[5] = p2;
-        bidakP1[6] = p3;
-        bidakP1[7] = p4;
-
-        papan[6][0].setBidak(bidakP1[4]);
-        papan[6][1].setBidak(bidakP1[5]);
-        papan[6][2].setBidak(bidakP1[6]);
-        papan[6][3].setBidak(bidakP1[7]);
+//
+//        Bishop b = new Bishop(papan[7][2],true);
+//        Bishop b2 = new Bishop(papan[0][2],false);
+//        bidakP1[2] = b;
+//        bidakP2[2] = b2;
+//        papan[7][2].setBidak(bidakP1[2]);
+//        papan[0][2].setBidak(bidakP2[2]);
+//
+//
+//        Knight kuda = new Knight(papan[7][2],true);
+//        Knight kuda2 = new Knight(papan[0][2],false);
+//        bidakP1[3] = kuda;
+//        bidakP2[3] = kuda2;
+//        papan[7][3].setBidak(bidakP1[3]);
+//        papan[0][3].setBidak(bidakP2[3]);
+//
+//        //white move up
+//        Pawn p1 = new Pawn(papan[1][0],false);
+//        Pawn p2 = new Pawn(papan[1][1],false);
+//        Pawn p3 = new Pawn(papan[1][2],false);
+//        Pawn p4 = new Pawn(papan[1][3],false);
+//        bidakP2[4] = p1;
+//        bidakP2[5] = p2;
+//        bidakP2[6] = p3;
+//        bidakP2[7] = p4;
+//        papan[1][0].setBidak(bidakP2[4]);
+//        papan[1][1].setBidak(bidakP2[5]);
+//        papan[1][2].setBidak(bidakP2[6]);
+//        papan[1][3].setBidak(bidakP2[7]);
+//
+//
+//         p1 = new Pawn(papan[6][0],true);
+//         p2 = new Pawn(papan[6][1],true);
+//         p3 = new Pawn(papan[6][2],true);
+//         p4 = new Pawn(papan[6][3],true);
+//        bidakP1[4] = p1;
+//        bidakP1[5] = p2;
+//        bidakP1[6] = p3;
+//        bidakP1[7] = p4;
+//
+//        papan[6][0].setBidak(bidakP1[4]);
+//        papan[6][1].setBidak(bidakP1[5]);
+//        papan[6][2].setBidak(bidakP1[6]);
+//        papan[6][3].setBidak(bidakP1[7]);
 
         for(int i=0;i<8;i++){
             for(int j=0;j<4;j++){
@@ -653,8 +652,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //do marks
-
-
         return  check;
     }
 }

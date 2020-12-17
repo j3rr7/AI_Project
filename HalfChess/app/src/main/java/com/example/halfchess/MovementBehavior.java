@@ -586,7 +586,6 @@ public interface MovementBehavior {
                         kananAtas = false;
                     }
                 }
-
             }
 
             Boolean kiri = true;

@@ -17,4 +17,6 @@ public class HalamanHome extends AppCompatActivity {
         Intent i = new Intent(HalamanHome.this,MainActivity.class);
         startActivity(i);
     }
+
+
 }
