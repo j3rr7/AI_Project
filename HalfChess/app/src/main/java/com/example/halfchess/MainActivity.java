@@ -407,9 +407,9 @@ public class MainActivity extends AppCompatActivity {
                         tiles[i][j].setImageResource(0);
                     }
                 }
-                resetMap();
+//                resetMap();
                 setPapan();
-                setBidak();
+//                setBidak();
                 cmTimer.setBase(SystemClock.elapsedRealtime());
                 cmTimer.stop();
                 cmTimer2.setBase(SystemClock.elapsedRealtime());
@@ -424,104 +424,41 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
 
-            case R.id.markArea:
-//                Toast.makeText(this, "Mark", Toast.LENGTH_SHORT).show();
-//                resetMarkedArea();
-//                bidakP1[1].mark.Mark(true,bidakP1[1].getX(),bidakP1[1].getY());
-//                bidakP2[1].mark.Mark(false,bidakP2[1].getX(),bidakP2[1].getY());
-                System.out.println("Marked");
-                for(int i=0;i<8;i++){
-                    for(int j=0;j<4;j++){
-                        if(markCheck[i][j]==false){
-                            System.out.print("[ ]");
-                        }else{
-                            System.out.print("[O]");
-                        }
-                    }
-                    System.out.println("");
-                }
 
-                System.out.println("Marked2");
-                for(int i=0;i<8;i++){
-                    for(int j=0;j<4;j++){
-                        if(markCheck2[i][j]==false){
-                            System.out.print("[ ]");
-                        }else{
-                            System.out.print("[O]");
-                        }
-                    }
-                    System.out.println("");
-                }
-                resetMarkedArea();
-                break;
-            case R.id.item_test:
-                AI.Node startAi = new AI.Node(MainActivity.papan, null);
-                AI.Node BestMove = null;
-                int boardValue = -99999;
-                for(int i=0;i<8;i++) {
-                    for(int j=0;j<4;j++) {
-                        if (MainActivity.papan[i][j].getBidak() != null)
-                        {
-                            if (!MainActivity.papan[i][j].getBidak().isP1() && MainActivity.papan[i][j].getBidak() instanceof Knight) {
-                                ArrayList<Papan[][]> allMoves = MainActivity.papan[i][j].getBidak().getMove().getAllPossibleMove( MainActivity.papan[i][j].getBidak() , turnP1);
-                                if (allMoves.size() > 0)
-                                    MainActivity.papan = allMoves.get(0);
-                                refreshTampilan();
-//                                while(!allMoves.isEmpty())
-//                                {
-//                                    //proses
-//                                    int current_boardValue = AI.AIBehaviour.boardEvaluation(allMoves.get(allMoves.size()-1));
-//                                    if (current_boardValue > boardValue)
-//                                    {
-//                                        boardValue = current_boardValue;
-//                                        BestMove = new AI.Node(allMoves.get(allMoves.size()-1), startAi);
-//                                    }
-//                                    allMoves.remove(allMoves.size()-1);
-//                                }
-                            }
-                        }
-                    }
-                }
-                turnP1 = !turnP1;
-                if (BestMove != null)
-                {
-                    MainActivity.papan = BestMove.papan;
-                }
-                break;
         }
         return super.onOptionsItemSelected(item);
     }
-    public static Boolean checkSimulation(Boolean p1,int x,int y,int newX,int newY){
-        Boolean check=false;
-//        Papan[][] tempPapan = new Papan[8][4];
-        Bidak[] tempBidak1 =  new Bidak[8];
-        Bidak[] tempBidak2 =  new Bidak[8];
-//        tempPapan = papan;
-        tempBidak1 = bidakP1;
-        tempBidak2 = bidakP2;
-
-        int index =0;
-        for(int i=0;i<8;i++){
-            if (p1){
-                if(tempBidak1[i]!=null && tempBidak1[i].getX() ==x  && tempBidak1[i].getY() == y){
-                    index = i;
-            }else{
-                }if(tempBidak2[i]!=null && tempBidak2[i].getX() == x  && tempBidak2[i].getY() == y){
-                    index = i;
-                }
-            }
-        }
-
-        //mindah bidak e
-        if (p1){
-            tempBidak1[index].setX(newX);
-            tempBidak1[index].setY(newY);
-        }else{
-            tempBidak2[index].setX(newX);
-            tempBidak2[index].setY(newY);
-        }
-
-        //do marks
-        return  check;
-    }
+//    public static Boolean checkSimulation(Boolean p1,int x,int y,int newX,int newY){
+//        Boolean check=false;
+////        Papan[][] tempPapan = new Papan[8][4];
+//        Bidak[] tempBidak1 =  new Bidak[8];
+//        Bidak[] tempBidak2 =  new Bidak[8];
+////        tempPapan = papan;
+//        tempBidak1 = bidakP1;
+//        tempBidak2 = bidakP2;
+//
+//        int index =0;
+//        for(int i=0;i<8;i++){
+//            if (p1){
+//                if(tempBidak1[i]!=null && tempBidak1[i].getX() ==x  && tempBidak1[i].getY() == y){
+//                    index = i;
+//            }else{
+//                }if(tempBidak2[i]!=null && tempBidak2[i].getX() == x  && tempBidak2[i].getY() == y){
+//                    index = i;
+//                }
+//            }
+//        }
+//
+//        //mindah bidak e
+//        if (p1){
+//            tempBidak1[index].setX(newX);
+//            tempBidak1[index].setY(newY);
+//        }else{
+//            tempBidak2[index].setX(newX);
+//            tempBidak2[index].setY(newY);
+//        }
+//
+//        //do marks
+//        return  check;
+//    }
 }

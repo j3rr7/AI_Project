@@ -36,6 +36,9 @@ public class Papan {
     }
 
     public void updatePapan(){
+        if(bidak.getValue()!=0){
+            letak.setImageResource(R.mipmap.bishop_new_2);
+        }
 //        if(!pressed){ // kalo papan ini not selected
 //            if(bidak.getValue() == 1) {
 //                if(bidak.isWhite()) letak.setImageResource(R.drawable.ic_white_pawn);
