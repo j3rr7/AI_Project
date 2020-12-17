@@ -733,8 +733,16 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.item_test:
                 ArrayList<AI.Move> listMove = AI.AIBehaviour.getAllPossibleMove(papan, turnP1);
-                papan[listMove.get(0).getDestx()][listMove.get(0).getDesty()].getBidak().setValue(papan[listMove.get(0).getSrcx()][listMove.get(0).getSrcy()].getBidak().getValue());
-                papan[listMove.get(0).getSrcx()][listMove.get(0).getSrcy()].getBidak().setValue(0);
+                System.out.println("----");
+                System.out.println(listMove.get(0).getSrcx());
+                System.out.println(listMove.get(0).getSrcy());
+                System.out.println(listMove.get(0).getDestx());
+                System.out.println(listMove.get(0).getDesty());
+                System.out.println("======");
+//                papan[y][x].setBidak(new Bidak(papan[selectY][selectX].getBidak().getValue(), papan[selectY][selectX].getBidak().isWhite()));
+//                papan[selectY][selectX].setBidak(new Bidak(0, false));
+                papan[listMove.get(0).getDesty()][listMove.get(0).getDestx()].setBidak(new Bidak(papan[listMove.get(0).getSrcy()][listMove.get(0).getSrcx()].getBidak().getValue() ,papan[listMove.get(0).getSrcy()][listMove.get(0).getSrcx()].getBidak().isWhite() ));
+                papan[listMove.get(0).getSrcy()][listMove.get(0).getSrcx()].setBidak(new Bidak(0, false));
                 for(int i=0;i<8;i++)
                 {
                     for (int j=0;j<4;j++)
