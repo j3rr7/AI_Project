@@ -34,6 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:onClick="clickP2"
         android:text="2 Player"
         app:layout_constraintEnd_toEndOf="@+id/btn1P"
         app:layout_constraintStart_toStartOf="@+id/btn1P"
