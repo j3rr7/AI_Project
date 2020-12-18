@@ -17,6 +17,10 @@ public class HalamanHome extends AppCompatActivity {
         Intent i = new Intent(HalamanHome.this,MainActivity.class);
         startActivity(i);
     }
-
+    public void clickP1(View v){
+        Intent i = new Intent(HalamanHome.this,MainActivity.class);
+        i.putExtra("COM", 1);
+        startActivity(i);
+    }
 
 }

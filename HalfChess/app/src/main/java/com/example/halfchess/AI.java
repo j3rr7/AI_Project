@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 import java.util.function.Function;
 import java.util.function.IntFunction;
 
@@ -818,26 +819,42 @@ public class AI {
 			return possibleMove;
 		}
 
-		public static Move minimaxRoot(Papan[][] board, int x, int y, int depth, boolean isMaximizingPlayer)
+		public static Move minimaxRoot(Papan[][] board, int depth, boolean isMaximizingPlayer)
 		{
 			// ToDo insert ArrayListMove here
 			ArrayList<Move> listMove = new ArrayList<>();
 			Papan[][] BoardMoveNow = new Papan[8][4];
-			listMove = getAllPossibleMove(board, board[x][y].getBidak().isWhite()); //?
-			int bestMoveValue = -99999; // Big negative value
+			float bestMoveValue = -99999; // Big negative value
 			Move bestMove = new Move(-1,-1,-1,-1);
 
+			ArrayList<Float> listValue = new ArrayList<>();
 			// ToDo Enumerate ArrayListMove
-			for(int i=listMove.size()-1;i>0;i--)
-			{
-				// ToDo Enumerate Move in ArrayListMove
-				BoardMoveNow = getBoard(board, listMove.get(i));
-				float value =  minimax(BoardMoveNow, x, y, depth - 1, -10000, 10000, !isMaximizingPlayer);
-				// ToDo Undo Move
-				if(value >= bestMoveValue) {
-					bestMoveValue = (int)Math.round(value);
-					bestMove = listMove.get(i);
+			for(int a=0;a<8;a++) {
+				for(int b=0;b<4;b++) {
+					listMove = getAllPossibleMove(board, board[a][b].getBidak().isWhite());
+					for(int i=0;i<listMove.size();i++)
+					{
+						BoardMoveNow = getBoard(board, listMove.get(i));
+						float value =  minimax(BoardMoveNow, a, b, depth - 1, -10000, 10000, !isMaximizingPlayer);
+						System.out.println("VALUE: "+value);
+						bestMoveValue = evaluateBoard(BoardMoveNow);
+						if(value >= bestMoveValue) {
+							bestMoveValue = value;
+							bestMove = listMove.get(i);
+							listValue.add(bestMoveValue);
+						}
+					}
 				}
+			}
+			float comparison = 0;
+			for(int i=0;i<listValue.size();i++) {
+				if (listValue.get(i) != comparison) {
+
+				}
+			}
+			if (listMove.size() > 0)
+			{
+				//bestMove = listMove.get(new Random().nextInt(listMove.size() - 1));
 			}
 			return bestMove;
 		}

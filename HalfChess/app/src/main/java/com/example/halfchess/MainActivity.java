@@ -64,6 +64,13 @@ public class MainActivity extends AppCompatActivity {
         setImageView();
         setPapan();
 
+        if( getIntent().hasExtra("COM"))
+        {
+            if (getIntent().getIntExtra("COM", 0) == 1)
+            {
+                vsAI = true;
+            }
+        }
 
         cmTimer.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
             public void onChronometerTick(Chronometer arg0) {
@@ -784,7 +791,72 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
             if (vsAI) {
+                if (!turnP1)
+                {
+                    AI.AIBehaviour.debug = virtualIV;
+                    AI.Move move = AI.AIBehaviour.minimaxRoot(papan, 5, false);
+                    if (move.getSrcy() != -1 || move.getSrcx() != -1 || move.getDestx() != -1 || move.getDesty() != -1) {
+                        AiDoMove(move.getSrcx(), move.getSrcy(), move.getDestx(), move.getDesty());
+                    }
+                    for(int i=0;i<8;i++) {
+                        for (int j=0;j<4;j++) {
+                            papan[i][j].setStatus(0);
+                        }
+                    }
+                    turnP1 = !turnP1;
+                }
+                else
+                {
+                    if(selectY == -1 && selectX == -1){
+                        if(papan[y][x].getBidak().getValue()!=0){ // nde papan e ono bidak e
+                            if(papan[y][x].getBidak().isWhite() == turnP1){ // bidak e punya e dee
+                                selectX = x;
+                                selectY = y;
+                                canMove(x,y); // y , x
+                            }else{
+                                Toast.makeText(this, "Not Your Turn ", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }else{ // player lagi nyelek papan
+                        if(papan[y][x].getStatus() == 1){ //Move
+                            if(y==0 && papan[selectY][selectX].getBidak().getValue()==1 && papan[selectY][selectX].getBidak().isWhite()){
+                                papan[y][x].setBidak(new Bidak(4, papan[selectY][selectX].getBidak().isWhite()));
+                                papan[selectY][selectX].setBidak(new Bidak(0, false));
+                            }else if(y==7 && papan[selectY][selectX].getBidak().getValue()==1 && !papan[selectY][selectX].getBidak().isWhite()){
+                                papan[y][x].setBidak(new Bidak(4, papan[selectY][selectX].getBidak().isWhite()));
+                                papan[selectY][selectX].setBidak(new Bidak(0, false));
+                            }else{
+                                papan[y][x].setBidak(new Bidak(papan[selectY][selectX].getBidak().getValue(), papan[selectY][selectX].getBidak().isWhite()));
+                                papan[selectY][selectX].setBidak(new Bidak(0, false));
+                            }
+                            for (int i = 0; i < 8; i++) {
+                                for (int j = 0; j < 4; j++) {
+                                    papan[i][j].setStatus(0);
+                                }
+                            }
+                            canMoveCounter=0;
+                            turnP1 = !turnP1;
 
+                            if(turnP1){
+                                tvTurn.setText("Player 1 Turn");
+                            }else{
+                                tvTurn.setText("Player 2 Turn");
+                            }
+                            cekWin();
+                            // check win
+
+
+                        }else { // Salah Klik
+                            for (int i = 0; i < 8; i++) {
+                                for (int j = 0; j < 4; j++) {
+                                    papan[i][j].setStatus(0);
+                                }
+                            }
+                            canMoveCounter++;
+                        }
+                        selectX = -1; selectY=-1;
+                    }
+                }
             }
             else {
                 if(selectY == -1 && selectX == -1){
@@ -853,7 +925,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.item_test:
-                int depth = 3;
+                int depth = 1;
                 AI.AIBehaviour.debug = virtualIV;
 //                ArrayList<AI.Move> listMove = AI.AIBehaviour.getAllPossibleMove(papan, turnP1);
 //                papan[y][x].setBidak(new Bidak(papan[selectY][selectX].getBidak().getValue(), papan[selectY][selectX].getBidak().isWhite()));
@@ -861,7 +933,7 @@ public class MainActivity extends AppCompatActivity {
 //                int debug = 2;
 //                papan[listMove.get(debug).getDesty()][listMove.get(debug).getDestx()].setBidak(new Bidak(papan[listMove.get(debug).getSrcy()][listMove.get(debug).getSrcx()].getBidak().getValue() ,papan[listMove.get(debug).getSrcy()][listMove.get(debug).getSrcx()].getBidak().isWhite() ));
 //                papan[listMove.get(debug).getSrcy()][listMove.get(debug).getSrcx()].setBidak(new Bidak(0, false));
-                AI.Move move = AI.AIBehaviour.minimaxRoot(papan, 0, 0, depth, true);
+                AI.Move move = AI.AIBehaviour.minimaxRoot(papan, depth, false);
                 if (move.getSrcy() != -1 || move.getSrcx() != -1 || move.getDestx() != -1 || move.getDesty() != -1)
                 {
                     AiDoMove(move.getSrcx(), move.getSrcy(), move.getDestx(), move.getDesty());
