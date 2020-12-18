@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         cmTimer = (Chronometer) findViewById(R.id.cmTimer);
         cmTimer2 = (Chronometer) findViewById(R.id.cmTimer2);
         virtualIV = findViewById(R.id.hiddenImg);
+        AI.AIBehaviour.debug = virtualIV;
         setImageView();
         setPapan();
 
@@ -775,130 +776,64 @@ public class MainActivity extends AppCompatActivity {
         canMoveCounter=0;
         return win;
     }
-    public void getBestMove(){
-
+    void AiDoMove(int x, int y, int i, int j)
+    {
+        papan[j][i].setBidak(new Bidak(papan[y][x].getBidak().getValue(), papan[y][x].getBidak().isWhite()));
+        papan[y][x].getBidak().setValue( 0 );
     }
-    public void clickImg(View v){
-        int y=0,x=0;
-        if(status== -1 ){ // masih main
-            for(int i=0;i<8;i++){
-                for(int j=0;j<4;j++){
-                    if(v.getId() == papan[i][j].letak.getId()){
+    public void clickImg(View v) {
+        int y = 0, x = 0;
+        if (status == -1) { // masih main
+            for (int i = 0; i < 8; i++) {
+                for (int j = 0; j < 4; j++) {
+                    if (v.getId() == papan[i][j].letak.getId()) {
                         y = i;
                         x = j;
                         break;
                     }
                 }
             }
-            if (vsAI) {
-                if (!turnP1)
-                {
-                    AI.AIBehaviour.debug = virtualIV;
-                    AI.Move move = AI.AIBehaviour.minimaxRoot(papan, 5, false);
-                    if (move.getSrcy() != -1 || move.getSrcx() != -1 || move.getDestx() != -1 || move.getDesty() != -1) {
-                        AiDoMove(move.getSrcx(), move.getSrcy(), move.getDestx(), move.getDesty());
+
+            if (selectY == -1 && selectX == -1) {
+                if (papan[y][x].getBidak().getValue() != 0) { // nde papan e ono bidak e
+                    if (papan[y][x].getBidak().isWhite() == turnP1) { // bidak e punya e dee
+                        selectX = x;
+                        selectY = y;
+                        canMove(x, y); // y , x
+                    } else {
+                        Toast.makeText(this, "Not Your Turn ", Toast.LENGTH_SHORT).show();
                     }
-                    for(int i=0;i<8;i++) {
-                        for (int j=0;j<4;j++) {
+                }
+            } else { // player lagi nyelek papan
+                if (papan[y][x].getStatus() == 1) { //Move
+                    if (y == 0 && papan[selectY][selectX].getBidak().getValue() == 1 && papan[selectY][selectX].getBidak().isWhite()) {
+                        papan[y][x].setBidak(new Bidak(4, papan[selectY][selectX].getBidak().isWhite()));
+                        papan[selectY][selectX].setBidak(new Bidak(0, false));
+                    } else if (y == 7 && papan[selectY][selectX].getBidak().getValue() == 1 && !papan[selectY][selectX].getBidak().isWhite()) {
+                        papan[y][x].setBidak(new Bidak(4, papan[selectY][selectX].getBidak().isWhite()));
+                        papan[selectY][selectX].setBidak(new Bidak(0, false));
+                    } else {
+                        papan[y][x].setBidak(new Bidak(papan[selectY][selectX].getBidak().getValue(), papan[selectY][selectX].getBidak().isWhite()));
+                        papan[selectY][selectX].setBidak(new Bidak(0, false));
+                    }
+                    for (int i = 0; i < 8; i++) {
+                        for (int j = 0; j < 4; j++) {
                             papan[i][j].setStatus(0);
                         }
                     }
+                    canMoveCounter = 0;
                     turnP1 = !turnP1;
-                }
-                else
-                {
-                    if(selectY == -1 && selectX == -1){
-                        if(papan[y][x].getBidak().getValue()!=0){ // nde papan e ono bidak e
-                            if(papan[y][x].getBidak().isWhite() == turnP1){ // bidak e punya e dee
-                                selectX = x;
-                                selectY = y;
-                                canMove(x,y); // y , x
-                            }else{
-                                Toast.makeText(this, "Not Your Turn ", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    }else{ // player lagi nyelek papan
-                        if(papan[y][x].getStatus() == 1){ //Move
-                            if(y==0 && papan[selectY][selectX].getBidak().getValue()==1 && papan[selectY][selectX].getBidak().isWhite()){
-                                papan[y][x].setBidak(new Bidak(4, papan[selectY][selectX].getBidak().isWhite()));
-                                papan[selectY][selectX].setBidak(new Bidak(0, false));
-                            }else if(y==7 && papan[selectY][selectX].getBidak().getValue()==1 && !papan[selectY][selectX].getBidak().isWhite()){
-                                papan[y][x].setBidak(new Bidak(4, papan[selectY][selectX].getBidak().isWhite()));
-                                papan[selectY][selectX].setBidak(new Bidak(0, false));
-                            }else{
-                                papan[y][x].setBidak(new Bidak(papan[selectY][selectX].getBidak().getValue(), papan[selectY][selectX].getBidak().isWhite()));
-                                papan[selectY][selectX].setBidak(new Bidak(0, false));
-                            }
-                            for (int i = 0; i < 8; i++) {
-                                for (int j = 0; j < 4; j++) {
-                                    papan[i][j].setStatus(0);
-                                }
-                            }
-                            canMoveCounter=0;
-                            turnP1 = !turnP1;
 
-                            if(turnP1){
-                                tvTurn.setText("Player 1 Turn");
-                            }else{
-                                tvTurn.setText("Player 2 Turn");
-                            }
-                            cekWin();
-                            // check win
-
-
-                        }else { // Salah Klik
-                            for (int i = 0; i < 8; i++) {
-                                for (int j = 0; j < 4; j++) {
-                                    papan[i][j].setStatus(0);
-                                }
-                            }
-                            canMoveCounter++;
-                        }
-                        selectX = -1; selectY=-1;
-                    }
-                }
-            }
-            else {
-                if(selectY == -1 && selectX == -1){
-                    if(papan[y][x].getBidak().getValue()!=0){ // nde papan e ono bidak e
-                        if(papan[y][x].getBidak().isWhite() == turnP1){ // bidak e punya e dee
-                            selectX = x;
-                            selectY = y;
-                            canMove(x,y); // y , x
-                        }else{
-                            Toast.makeText(this, "Not Your Turn ", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                }else{ // player lagi nyelek papan
-                    if(papan[y][x].getStatus() == 1){ //Move
-                        if(y==0 && papan[selectY][selectX].getBidak().getValue()==1 && papan[selectY][selectX].getBidak().isWhite()){
-                            papan[y][x].setBidak(new Bidak(4, papan[selectY][selectX].getBidak().isWhite()));
-                            papan[selectY][selectX].setBidak(new Bidak(0, false));
-                        }else if(y==7 && papan[selectY][selectX].getBidak().getValue()==1 && !papan[selectY][selectX].getBidak().isWhite()){
-                            papan[y][x].setBidak(new Bidak(4, papan[selectY][selectX].getBidak().isWhite()));
-                            papan[selectY][selectX].setBidak(new Bidak(0, false));
-                        }else{
-                            papan[y][x].setBidak(new Bidak(papan[selectY][selectX].getBidak().getValue(), papan[selectY][selectX].getBidak().isWhite()));
-                            papan[selectY][selectX].setBidak(new Bidak(0, false));
-                        }
-                        for (int i = 0; i < 8; i++) {
-                            for (int j = 0; j < 4; j++) {
-                                papan[i][j].setStatus(0);
-                            }
-                        }
-                        canMoveCounter=0;
-                        turnP1 = !turnP1;
-
-                        if(turnP1){
+                        if (turnP1) {
                             tvTurn.setText("Player 1 Turn");
-                        }else{
+                        } else {
                             tvTurn.setText("Player 2 Turn");
                         }
                         cekWin();
                         // check win
 
 
-                    }else { // Salah Klik
+                    } else { // Salah Klik
                         for (int i = 0; i < 8; i++) {
                             for (int j = 0; j < 4; j++) {
                                 papan[i][j].setStatus(0);
@@ -906,16 +841,27 @@ public class MainActivity extends AppCompatActivity {
                         }
                         canMoveCounter++;
                     }
-                    selectX = -1; selectY=-1;
+                    selectX = -1;
+                    selectY = -1;
+
+                if (vsAI) {
+                    if (!turnP1) {
+                        AI.Move move = AI.AIBehaviour.minimaxRoot(papan, 1, false);
+                        if (move.getSrcy() != -1 || move.getSrcx() != -1 || move.getDestx() != -1 || move.getDesty() != -1) {
+                            AiDoMove(move.getSrcx(), move.getSrcy(), move.getDestx(), move.getDesty());
+                        }
+                        for (int i = 0; i < 8; i++) {
+                            for (int j = 0; j < 4; j++) {
+                                papan[i][j].setStatus(0);
+                            }
+                        }
+                        turnP1 = !turnP1;
+                    }
                 }
             }
         }
     }
-    void AiDoMove(int x, int y, int i, int j)
-    {
-        papan[j][i].setBidak(new Bidak(papan[y][x].getBidak().getValue(), papan[y][x].getBidak().isWhite()));
-        papan[y][x].getBidak().setValue( 0 );
-    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.option_menu1,menu);
