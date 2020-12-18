@@ -379,7 +379,6 @@ public class AI {
 
 		}
 		public static ArrayList<int[]> canMove(int x, int y, Papan[][] papan, boolean turnP1){
-			System.out.println("Can Move Turn" + turnP1 +"" );
 //			 return Arraylist<int[2]>
 			ArrayList<int[]> listMove = new ArrayList<>();
 //			listMove.add(new int[]{1,3});
@@ -785,15 +784,9 @@ public class AI {
 						{
 							// Panggil Manual disini
 							ArrayList<int[]> temp = canMove(j,i,board,turnP1);
-							System.out.println("----");
-							System.out.println("X Awal : "+j);
-							System.out.println("Y Awal : "+i);
 							for(int k=0;k<temp.size();k++){
-								System.out.println("X Tujuan :"+temp.get(k)[0]);
-								System.out.println("Y Tujuan :"+temp.get(k)[1]);
 								possibleMove.add(new Move(j,i,temp.get(k)[0],temp.get(k)[1]));
 							}
-							System.out.println("----");
 						}
 					}
 				}
@@ -836,7 +829,7 @@ public class AI {
 					{
 						BoardMoveNow = getBoard(board, listMove.get(i));
 						float value =  minimax(BoardMoveNow, a, b, depth - 1, -10000, 10000, !isMaximizingPlayer);
-						System.out.println("VALUE: "+value);
+//						System.out.println("VALUE: "+value);
 						bestMoveValue = evaluateBoard(BoardMoveNow);
 						if(value >= bestMoveValue) {
 							bestMoveValue = value;
@@ -852,10 +845,15 @@ public class AI {
 
 				}
 			}
-			if (listMove.size() > 0)
-			{
-				//bestMove = listMove.get(new Random().nextInt(listMove.size() - 1));
+
+			if (bestMove.getSrcy() == -1 || bestMove.getSrcx() == -1 || bestMove.getDestx() == -1 || bestMove.getDesty() == -1) {
+
+				if (listMove.size() > 0)
+				{
+					bestMove = listMove.get(new Random().nextInt(listMove.size() - 1));
+				}
 			}
+
 			return bestMove;
 		}
 

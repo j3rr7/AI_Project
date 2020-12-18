@@ -179,6 +179,7 @@ public class MainActivity extends AppCompatActivity {
     boolean isSave(int baris, int kolom,Papan[][] papan){
         if(turnP1){
             //pawn
+
             if(baris - 1 >= 0 && kolom-1 >= 0 && papan[baris-1][kolom-1].getBidak().getValue() == 1 && papan[baris-1][kolom-1].getBidak().isWhite() != turnP1){
                 return false;
             }
@@ -354,7 +355,7 @@ public class MainActivity extends AppCompatActivity {
     // 4 : Queen
     // 5 : King
     public void canMove(int x, int y){
-        System.out.println("Can Move" + x +" - "+y );
+//        System.out.println("Can Move" + x +" - "+y );
         int baris = y;
         int kolom =x;
         //king
@@ -778,8 +779,16 @@ public class MainActivity extends AppCompatActivity {
     }
     void AiDoMove(int x, int y, int i, int j)
     {
-        papan[j][i].setBidak(new Bidak(papan[y][x].getBidak().getValue(), papan[y][x].getBidak().isWhite()));
-        papan[y][x].getBidak().setValue( 0 );
+
+
+         if (j == 7 && papan[y][x].getBidak().getValue() == 1 && !papan[y][x].getBidak().isWhite()) {
+            papan[j][i].setBidak(new Bidak(4, papan[y][x].getBidak().isWhite()));
+            papan[y][x].setBidak(new Bidak(0, false));
+        } else {
+            papan[j][i].setBidak(new Bidak(papan[y][x].getBidak().getValue(), papan[y][x].getBidak().isWhite()));
+            papan[y][x].setBidak(new Bidak(0, false));
+        }
+
     }
     public void clickImg(View v) {
         int y = 0, x = 0;
@@ -839,23 +848,33 @@ public class MainActivity extends AppCompatActivity {
                                 papan[i][j].setStatus(0);
                             }
                         }
-                        canMoveCounter++;
+                        canMoveCounter = 0;
+                        selectX = -1;
+                        selectY = -1;
                     }
-                    selectX = -1;
-                    selectY = -1;
 
                 if (vsAI) {
                     if (!turnP1) {
-                        AI.Move move = AI.AIBehaviour.minimaxRoot(papan, 1, false);
+                        AI.Move move = AI.AIBehaviour.minimaxRoot(papan, 3, false);
                         if (move.getSrcy() != -1 || move.getSrcx() != -1 || move.getDestx() != -1 || move.getDesty() != -1) {
                             AiDoMove(move.getSrcx(), move.getSrcy(), move.getDestx(), move.getDesty());
+                            System.out.println("Move AI");
                         }
                         for (int i = 0; i < 8; i++) {
                             for (int j = 0; j < 4; j++) {
                                 papan[i][j].setStatus(0);
                             }
                         }
+                        canMoveCounter = 0;
+                        selectX = -1;
+                        selectY = -1;
                         turnP1 = !turnP1;
+                        if (turnP1) {
+                            tvTurn.setText("Player 1 Turn");
+                        } else {
+                            tvTurn.setText("Player 2 Turn");
+                        }
+                        cekWin();
                     }
                 }
             }
@@ -892,7 +911,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
                 turnP1 = !turnP1;
-                System.out.println();
+//                System.out.println();
                 break;
             case R.id.item_reset:
                 turnP1 = true;
