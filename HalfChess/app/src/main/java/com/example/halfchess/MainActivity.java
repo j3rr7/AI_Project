@@ -798,8 +798,16 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }else{ // player lagi nyelek papan
                     if(papan[y][x].getStatus() == 1){ //Move
-                        papan[y][x].setBidak(new Bidak(papan[selectY][selectX].getBidak().getValue(), papan[selectY][selectX].getBidak().isWhite()));
-                        papan[selectY][selectX].setBidak(new Bidak(0, false));
+                        if(y==0 && papan[selectY][selectX].getBidak().getValue()==1 && papan[selectY][selectX].getBidak().isWhite()){
+                            papan[y][x].setBidak(new Bidak(4, papan[selectY][selectX].getBidak().isWhite()));
+                            papan[selectY][selectX].setBidak(new Bidak(0, false));
+                        }else if(y==7 && papan[selectY][selectX].getBidak().getValue()==1 && !papan[selectY][selectX].getBidak().isWhite()){
+                            papan[y][x].setBidak(new Bidak(4, papan[selectY][selectX].getBidak().isWhite()));
+                            papan[selectY][selectX].setBidak(new Bidak(0, false));
+                        }else{
+                            papan[y][x].setBidak(new Bidak(papan[selectY][selectX].getBidak().getValue(), papan[selectY][selectX].getBidak().isWhite()));
+                            papan[selectY][selectX].setBidak(new Bidak(0, false));
+                        }
                         for (int i = 0; i < 8; i++) {
                             for (int j = 0; j < 4; j++) {
                                 papan[i][j].setStatus(0);
@@ -807,13 +815,13 @@ public class MainActivity extends AppCompatActivity {
                         }
                         canMoveCounter=0;
                         turnP1 = !turnP1;
+
                         if(turnP1){
                             tvTurn.setText("Player 1 Turn");
                         }else{
                             tvTurn.setText("Player 2 Turn");
                         }
                         cekWin();
-
                         // check win
 
 
