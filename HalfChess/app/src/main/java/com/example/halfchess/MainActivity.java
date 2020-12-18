@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         tvTurn = findViewById(R.id.tvTurn);
         cmTimer = (Chronometer) findViewById(R.id.cmTimer);
+        cmTimer = (Chronometer) findViewById(R.id.cmTimer);
         cmTimer2 = (Chronometer) findViewById(R.id.cmTimer2);
         virtualIV = findViewById(R.id.hiddenImg);
         setImageView();
@@ -729,25 +730,40 @@ public class MainActivity extends AppCompatActivity {
     // abis p2 turn cekWin kalo P1 move e 0 dee kalah
     public boolean cekWin(){
         boolean win=false;
+        boolean check = false;
         for(int i=0;i<8;i++){
             for(int j=0;j<4;j++){
                 if(papan[i][j].getBidak().getValue()!=0 && papan[i][j].getBidak().isWhite() == turnP1){
                     canMove(j,i);
+                    if (papan[i][j].getBidak().getValue()==5 && !isSave(i,j,papan)){
+                        check = true;
+                        if(turnP1){
+                            tvTurn.setText("Check , Player 1 Turn");
+                        }else{
+                            tvTurn.setText("Check , Player 2 Turn");
+                        }
+                    }
                 }
             }
         }
+
         for(int i=0;i<8;i++){
             for(int j=0;j<4;j++){
                papan[i][j].setStatus(0);
             }
         }
-        if(canMoveCounter==0){
+        if(canMoveCounter == 0 && !check){ //draw
+            status = 0;
+            tvTurn.setText("Draw StaleMate");
+        }else if(canMoveCounter==0){
             win=true;
             if(turnP1){
-                status = 2; // whiteWin
+                status = 2; // BlackWIn
+                tvTurn.setText("Black Win");
+
             }else{
                 status = 1; // whiteWin
-
+                tvTurn.setText("White Win");
             }
         }
         canMoveCounter=0;
@@ -791,14 +807,13 @@ public class MainActivity extends AppCompatActivity {
                         }
                         canMoveCounter=0;
                         turnP1 = !turnP1;
-                        if(cekWin()){
-                            if(status == 1){
-                                tvTurn.setText("Player 1 Win");
-                            }else if(status == 2){
-                                tvTurn.setText("Player 2 Win");
+                        if(turnP1){
+                            tvTurn.setText("Player 1 Turn");
+                        }else{
+                            tvTurn.setText("Player 2 Turn");
+                        }
+                        cekWin();
 
-                            }
-                        };
                         // check win
 
 
