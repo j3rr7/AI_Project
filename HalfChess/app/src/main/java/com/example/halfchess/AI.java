@@ -1,12 +1,16 @@
 package com.example.halfchess;
 
 import android.os.Build;
+import android.widget.ImageView;
 
 import androidx.annotation.RequiresApi;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Function;
+import java.util.function.IntFunction;
 
 public class AI {
 	static class Move{
@@ -52,6 +56,7 @@ public class AI {
 		}
 	}
 	static class AIBehaviour{
+		public static ImageView debug;
 		static final float[][] evalPawn = {
 				{0.0f,  0.0f,  0.0f, 0.0f},
 				{5.0f,  5.0f,  5.0f, 5.0f},
@@ -155,13 +160,13 @@ public class AI {
 			return piece.isWhite() ? getAbsoluteValue(piece, piece.isWhite(), x, y) : -getAbsoluteValue(piece, piece.isWhite() , x, y);
 		}
 
-		public static float evaluateBoard(Papan[][] board , int x, int y){
+		public static float evaluateBoard(Papan[][] board){
 			float boardValue = 0.0f;
 			for (int i=0;i<8;i++)
 			{
 				for (int j=0;j<4;j++)
 				{
-					boardValue += (float)getPieceValue(board[i][j].getBidak(), x, y);
+					boardValue += (float)getPieceValue(board[i][j].getBidak(), i, j);
 				}
 			}
 			return  boardValue;
@@ -732,6 +737,44 @@ public class AI {
 			return listMove;
 		}
 
+//		@RequiresApi(api = Build.VERSION_CODES.N)
+//		static <T> T[][] deepCopy(final T[][] matrix) {
+//			return java.util.Arrays.stream(matrix).map(new Function<T[], Object>() {
+//				@Override
+//				public Object apply(T[] el) {
+//					return el.clone();
+//				}
+//			}).toArray(new IntFunction<T[][]>() {
+//				@Override
+//				public T[][] apply(int $) {
+//					return matrix.clone();
+//				}
+//			});
+//		}
+
+		public static Papan[][] getBoard(Papan[][] src, Move v){
+			Papan[][] tempBoard = new Papan[8][4];
+			for(int i=0;i<8;i++)
+			{
+				for(int j=0;j<4;j++)
+				{
+					tempBoard[i][j] = new Papan(new Bidak(src[i][j].getBidak().getValue(), src[i][j].getBidak().isWhite()), /*src[i][j].letak*/ debug, src[i][j].getColor());
+				}
+			}
+			//int val = tempBoard[v.getSrcy()][v.getSrcx()].getBidak().getValue();
+			//boolean putih = tempBoard[v.getSrcy()][v.getSrcx()].getBidak().isWhite();
+			//tempBoard[v.getDesty()][v.getDestx()].setBidak( new Bidak(val,putih));
+			//tempBoard[v.getSrcy()][v.getSrcx()].setBidak( new Bidak(0,false));
+
+			//tempBoard[v.getDesty()][v.getDestx()].setBidak( tempBoard[v.getDesty()][v.getDestx()].getBidak() );
+			//tempBoard[v.getSrcy()][v.getSrcx()].setBidak( new Bidak(0, !tempBoard[v.getSrcy()][v.getSrcx()].getBidak().isWhite()) );
+			tempBoard[v.getDesty()][v.getDestx()].setBidak( new Bidak(tempBoard[v.getSrcy()][v.getSrcx()].getBidak().getValue(), tempBoard[v.getSrcy()][v.getSrcx()].getBidak().isWhite()));
+			tempBoard[v.getSrcy()][v.getSrcx()].setBidak( new Bidak(0, !tempBoard[v.getSrcy()][v.getSrcx()].getBidak().isWhite()) );
+//			tempBoard[v.getDestx()][v.getDesty()].untouched = false;
+//			tempBoard[v.getSrcx()][v.getSrcy()].untouched = false;
+			return tempBoard;
+		}
+
 		public static ArrayList<Move> getAllPossibleMove(Papan[][] board, boolean turnP1){
 			ArrayList<Move> possibleMove = new ArrayList<>();
 			for (int i=0;i<8;i++) {
@@ -750,75 +793,92 @@ public class AI {
 								possibleMove.add(new Move(j,i,temp.get(k)[0],temp.get(k)[1]));
 							}
 							System.out.println("----");
-
 						}
 					}
 				}
 			}
-			System.out.println("All possible"+possibleMove.size());
+//			System.out.println("=====------=====-----=====-----=====");
+//			System.out.println("All possible "+possibleMove.size());
+//			System.out.println("=====------=====-----=====-----=====");
+//
+//			System.out.println("TEMPORARY PAPAN");
+//			System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+//			for(Move st : possibleMove)
+//			{
+//				Papan[][] temp = getBoard(board, st);
+//				for(int i=0;i<8;i++)
+//				{
+//					for (int j=0;j<4;j++)
+//					{
+//						System.out.print(temp[i][j].getBidak().getValue() + " ");
+//					}
+//				}
+//			}
+//			System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
 			return possibleMove;
 		}
 
-		public static void minimaxRoot(Papan[][] board, int x, int y, int depth, boolean isMaximizingPlayer)
+		public static Move minimaxRoot(Papan[][] board, int x, int y, int depth, boolean isMaximizingPlayer)
 		{
 			// ToDo insert ArrayListMove here
 			ArrayList<Move> listMove = new ArrayList<>();
-			listMove = getAllPossibleMove(board, board[x][y].getBidak().isWhite());
+			Papan[][] BoardMoveNow = new Papan[8][4];
+			listMove = getAllPossibleMove(board, board[x][y].getBidak().isWhite()); //?
 			int bestMoveValue = -99999; // Big negative value
-			Move bestMove = null;
+			Move bestMove = new Move(-1,-1,-1,-1);
 
 			// ToDo Enumerate ArrayListMove
-			for(int i=0;i<listMove.size();i++)
+			for(int i=listMove.size()-1;i>0;i--)
 			{
-
+				// ToDo Enumerate Move in ArrayListMove
+				BoardMoveNow = getBoard(board, listMove.get(i));
+				float value =  minimax(BoardMoveNow, x, y, depth - 1, -10000, 10000, !isMaximizingPlayer);
+				// ToDo Undo Move
+				if(value >= bestMoveValue) {
+					bestMoveValue = (int)Math.round(value);
+					bestMove = listMove.get(i);
+				}
 			}
-			// ToDo Enumerate Move in ArrayListMove
-			float value =  minimax(board, depth - 1, -10000, 10000, !isMaximizingPlayer);
-			// ToDo Undo Move
-			if(value >= bestMoveValue) {
-				bestMoveValue = (int)Math.round(value);
-				// bestMoveFound = newGameMove;
-			}
-			// return Move
+			return bestMove;
 		}
 
-		public static float minimax(Papan[][] board, int depth, int alpha, int beta, boolean isMaximizingPlayer)
+		public static float minimax(Papan[][] board, int x, int y, int depth, int alpha, int beta, boolean isMaximizingPlayer)
 		{
+			ArrayList<Move> listMove = new ArrayList<>();
 			int bestMoveValue;
 			if (depth == 0)
 			{
-				//return -evaluateBoard(board);
+				return -evaluateBoard(board);
 			}
-
 			// Todo add arraylist containing all available move
-			// ArrayList Here
-
-			if (isMaximizingPlayer)
-			{
-				bestMoveValue = -99999; // Big negative value
-				// ToDo get another move from ArrayListMove and count bestMove
-				// using this Collections.max();
-				// bestMove = Math.max(bestMove, minimax(depth - 1, game, alpha, beta, !isMaximisingPlayer));
-				// alpha = Math.max(alpha, bestMove);
-				// if (beta <= alpha) {
-				//	return bestMove;
-				// }
-				// return bestMove
+			listMove = getAllPossibleMove(board, false);
+			for(int i=listMove.size()-1;i<0;i--) {
+				if (isMaximizingPlayer)
+				{
+					bestMoveValue = -99999; // Big negative value
+					// ToDo get another move from ArrayListMove and count bestMove
+					// using this Collections.max();
+					bestMoveValue = Math.max(bestMoveValue, (int)Math.round(minimax(board, depth - 1, y, x, alpha, beta, !isMaximizingPlayer)));
+					alpha = Math.max(alpha, bestMoveValue);
+					if (beta <= alpha) {
+						return bestMoveValue;
+					}
+					return bestMoveValue;
+				}
+				else
+				{
+					bestMoveValue = 99999; // Big positive value
+					// ToDo get another move from ArrayListMove and count bestMove
+					// using this Collections.max();
+					bestMoveValue = Math.min(bestMoveValue, (int)Math.round(minimax(board, depth - 1, y, x, alpha, beta, !isMaximizingPlayer)));
+					beta = Math.min(beta, bestMoveValue);
+					if (beta <= alpha) {
+						return bestMoveValue;
+					}
+					return bestMoveValue;
+				}
 			}
-			else
-			{
-				bestMoveValue = 99999; // Big positive value
-				// ToDo get another move from ArrayListMove and count bestMove
-				// using this Collections.max();
-				// bestMove = Math.min(bestMove, minimax(depth - 1, game, alpha, beta, !isMaximisingPlayer));
-				// beta = Math.min(beta, bestMove);
-				// if (beta <= alpha) {
-				//	return bestMove;
-				// }
-				// return bestMove
-			}
-			return bestMoveValue;
+			return 0;
 		}
 	}
-
 }

@@ -340,7 +340,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     // 1 : Pawn
     // 2 : Bishop
     // 3 : Knight
@@ -769,7 +768,9 @@ public class MainActivity extends AppCompatActivity {
         canMoveCounter=0;
         return win;
     }
+    public void getBestMove(){
 
+    }
     public void clickImg(View v){
         int y=0,x=0;
         if(status== -1 ){ // masih main
@@ -838,7 +839,11 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
+    void AiDoMove(int x, int y, int i, int j)
+    {
+        papan[j][i].setBidak(new Bidak(papan[y][x].getBidak().getValue(), papan[y][x].getBidak().isWhite()));
+        papan[y][x].getBidak().setValue( 0 );
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.option_menu1,menu);
@@ -848,17 +853,19 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.item_test:
-                ArrayList<AI.Move> listMove = AI.AIBehaviour.getAllPossibleMove(papan, turnP1);
-                System.out.println("----");
-                System.out.println(listMove.get(0).getSrcx());
-                System.out.println(listMove.get(0).getSrcy());
-                System.out.println(listMove.get(0).getDestx());
-                System.out.println(listMove.get(0).getDesty());
-                System.out.println("======");
+                int depth = 3;
+                AI.AIBehaviour.debug = virtualIV;
+//                ArrayList<AI.Move> listMove = AI.AIBehaviour.getAllPossibleMove(papan, turnP1);
 //                papan[y][x].setBidak(new Bidak(papan[selectY][selectX].getBidak().getValue(), papan[selectY][selectX].getBidak().isWhite()));
 //                papan[selectY][selectX].setBidak(new Bidak(0, false));
-                papan[listMove.get(0).getDesty()][listMove.get(0).getDestx()].setBidak(new Bidak(papan[listMove.get(0).getSrcy()][listMove.get(0).getSrcx()].getBidak().getValue() ,papan[listMove.get(0).getSrcy()][listMove.get(0).getSrcx()].getBidak().isWhite() ));
-                papan[listMove.get(0).getSrcy()][listMove.get(0).getSrcx()].setBidak(new Bidak(0, false));
+//                int debug = 2;
+//                papan[listMove.get(debug).getDesty()][listMove.get(debug).getDestx()].setBidak(new Bidak(papan[listMove.get(debug).getSrcy()][listMove.get(debug).getSrcx()].getBidak().getValue() ,papan[listMove.get(debug).getSrcy()][listMove.get(debug).getSrcx()].getBidak().isWhite() ));
+//                papan[listMove.get(debug).getSrcy()][listMove.get(debug).getSrcx()].setBidak(new Bidak(0, false));
+                AI.Move move = AI.AIBehaviour.minimaxRoot(papan, 0, 0, depth, true);
+                if (move.getSrcy() != -1 || move.getSrcx() != -1 || move.getDestx() != -1 || move.getDesty() != -1)
+                {
+                    AiDoMove(move.getSrcx(), move.getSrcy(), move.getDestx(), move.getDesty());
+                }
                 for(int i=0;i<8;i++)
                 {
                     for (int j=0;j<4;j++)
